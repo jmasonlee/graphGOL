@@ -2,64 +2,67 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class AdjacencyMatrixGraphTest {
-  Integer node1 = 0;
-  Integer node2 = 1;
-  Integer node3 = 2;
+public class AdjacencyMatrixTest {
+  Integer nodeIndex1 = 0;
+  Integer nodeIndex2 = 1;
+  Integer nodeIndex3 = 2;
 
   Integer distance = 3;
-  Integer disconnectedDistance = -1;
+  Integer disconnectedDistance = AdjacencyMatrix.DISCONNECTED;
 
   @Test
   public void testDistanceBetweenTwoNodes() {
-    AdjacencyMatrixGraph graph = buildTestGraph();
-    assertEquals(distance, graph.distanceBetween(node1, node2));
+    AdjacencyMatrix graph = buildTestGraph();
+    assertEquals(distance, graph.distanceBetween(nodeIndex1, nodeIndex2));
   }
 
   @Test
   public void testDistanceBetweenTwoDisconnectedNodes() {
-    AdjacencyMatrixGraph graph = buildTestGraph();
-    assertEquals(disconnectedDistance, graph.distanceBetween(node2, node3));
+    AdjacencyMatrix graph = buildTestGraph();
+    assertEquals(disconnectedDistance, graph.distanceBetween(nodeIndex2, nodeIndex3));
   }
 
   @Test
   public void testDeleteDisconnectedNode() {
-    AdjacencyMatrixGraph graph = buildTestGraph();
-    assertEquals(3, graph.size());
-    graph.deleteNode(node3);
-    assertEquals(distance, graph.distanceBetween(node1, node2));
+    AdjacencyMatrix graph = setupNodeDeletionTest(nodeIndex3);
+    assertEquals(distance, graph.distanceBetween(nodeIndex1, nodeIndex2));
     assertEquals(2, graph.size());
   }
 
   @Test
   public void testDeleteConnectedNode() {
-    AdjacencyMatrixGraph graph = buildTestGraph();
-    assertEquals(3, graph.size());
-    graph.deleteNode(node2);
-    assertEquals(disconnectedDistance, graph.distanceBetween(node1, node2));
+    AdjacencyMatrix graph = setupNodeDeletionTest(nodeIndex2);
+    assertEquals(disconnectedDistance, graph.distanceBetween(nodeIndex1, nodeIndex2));
     assertEquals(2, graph.size());
   }
 
   @Test
   public void testRemoveEdge() {
-    AdjacencyMatrixGraph graph = buildTestGraph();
-    graph.deleteEdge(node1,node2);
-    assertEquals(disconnectedDistance, graph.distanceBetween(node1, node2));
+    AdjacencyMatrix graph = buildTestGraph();
+    graph.deleteEdge(nodeIndex1, nodeIndex2);
+    assertEquals(disconnectedDistance, graph.distanceBetween(nodeIndex1, nodeIndex2));
   }
 
   @Test
   public void testUpdateEdge() {
-      Integer newDistance = 7;
-      AdjacencyMatrixGraph graph = buildTestGraph();
-      graph.changeEdge(node1, node2, newDistance);
-      assertEquals(newDistance, graph.distanceBetween(node1, node2));
+    Integer newDistance = 7;
+    AdjacencyMatrix graph = buildTestGraph();
+    graph.changeEdge(nodeIndex1, nodeIndex2, newDistance);
+    assertEquals(newDistance, graph.distanceBetween(nodeIndex1, nodeIndex2));
   }
 
-    private AdjacencyMatrixGraph buildTestGraph() {
-    Integer[] nodes = new Integer[] {node1, node2, node3};
-    AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph();
+  private AdjacencyMatrix buildTestGraph() {
+    int[] nodes = new int[] {nodeIndex1, nodeIndex2, nodeIndex3};
+    AdjacencyMatrix graph = new AdjacencyMatrix();
     graph.addNodes(nodes);
-    graph.createEdge(node1, node2, distance);
+    graph.createEdge(nodeIndex1, nodeIndex2, distance);
+    return graph;
+  }
+
+  private AdjacencyMatrix setupNodeDeletionTest(Integer nodeToDelete) {
+    AdjacencyMatrix graph = buildTestGraph();
+    assertEquals(3, graph.size());
+    graph.deleteNode(nodeToDelete);
     return graph;
   }
 }
