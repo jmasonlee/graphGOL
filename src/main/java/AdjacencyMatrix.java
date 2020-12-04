@@ -25,12 +25,21 @@ public class AdjacencyMatrixGraph {
         Arrays.stream(nodes).forEach(n -> addNode(n));
     }
 
-//    public void deleteNode(Integer node) {
-//        matrix.remove(node);
-//        matrix.stream().forEach(n -> n.remove(node));
-//    }
+    public void deleteNode(int node) {
+        matrix.remove(node);
+        matrix.stream().forEach(n -> n.remove(node));
+    }
 
     public int size(){
         return matrix.size();
+    }
+
+    public void deleteEdge(Integer node1, Integer node2) {
+        changeEdge(node1, node2, -1);
+    }
+
+    public void changeEdge(Integer node1, Integer node2, int newDistance) {
+        matrix.get(node1).set(node2, newDistance);
+        matrix.get(node2).set(node1, newDistance);
     }
 }
