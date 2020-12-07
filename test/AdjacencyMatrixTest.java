@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class AdjacencyMatrixTest {
@@ -7,8 +9,8 @@ public class AdjacencyMatrixTest {
   Integer nodeIndex2 = 1;
   Integer nodeIndex3 = 2;
 
-  Integer distance = 3;
-  Integer disconnectedDistance = AdjacencyMatrix.DISCONNECTED;
+  Double distance = 3.00;
+  Double disconnectedDistance = AdjacencyMatrix.DISCONNECTED_DISTANCE;
 
   @Test
   public void testDistanceBetweenTwoNodes() {
@@ -45,14 +47,23 @@ public class AdjacencyMatrixTest {
 
   @Test
   public void testUpdateEdge() {
-    Integer newDistance = 7;
+    Double newDistance = 7.00;
     AdjacencyMatrix graph = buildTestGraph();
     graph.changeEdge(nodeIndex1, nodeIndex2, newDistance);
     assertEquals(newDistance, graph.distanceBetween(nodeIndex1, nodeIndex2));
   }
 
+  @Test
+  public void testNeighboursWithinAMaxDistance() {
+    AdjacencyMatrix graph = buildTestGraph();
+    graph.createEdge(nodeIndex1, nodeIndex3, 5.00);
+    List<Integer> nodes = graph.findNeighboursThatAreWithinAMaxDistance(nodeIndex1, distance);
+    assertEquals(1, nodes.size());
+    assertEquals(nodeIndex2, nodes.get(0));
+  }
+
   private AdjacencyMatrix buildTestGraph() {
-    int[] nodes = new int[] {nodeIndex1, nodeIndex2, nodeIndex3};
+    int nodes = 3;
     AdjacencyMatrix graph = new AdjacencyMatrix();
     graph.addNodes(nodes);
     graph.createEdge(nodeIndex1, nodeIndex2, distance);
