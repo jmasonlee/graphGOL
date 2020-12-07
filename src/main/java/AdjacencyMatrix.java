@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class AdjacencyMatrix<T extends Comparable> implements EdgeReporter {
+public class AdjacencyMatrix<T extends Comparable> implements EdgeReporter<T> {
   private T disconnectedDistance;
   private ArrayList<ArrayList<T>> matrix = new ArrayList<>();
 
@@ -47,7 +47,6 @@ public class AdjacencyMatrix<T extends Comparable> implements EdgeReporter {
     matrix.get(nodeIndex2).set(nodeIndex1, newDistance);
   }
 
-  @Override
   public T disconnectedDistance() {
     return disconnectedDistance;
   }
