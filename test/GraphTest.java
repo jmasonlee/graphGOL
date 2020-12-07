@@ -2,7 +2,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -27,14 +26,15 @@ public class GraphTest {
   }
 
   @Test
-  public void testAddNodeList(){
-      List<Integer> nodes = new ArrayList<>();
-      nodes.addAll(Arrays.asList(new Integer[]{20, 9, 0, 2, 1, 0}));
+  public void testAddNodeList() {
+    List<Integer> nodes = new ArrayList<>();
+    nodes.addAll(Arrays.asList(new Integer[] {20, 9, 0, 2, 1, 0}));
 
-      Graph<Integer> graph = new Graph<>();
-      graph.addNodes(nodes);
+    Graph<Integer> graph = new Graph<>();
+    graph.addNodes(nodes);
 
-      assertEquals(nodes.size(), graph.size());
-      assertEquals(nodes, graph.getNodes());
+    assertEquals(nodes.size(), graph.size());
+    assertEquals(nodes, graph.getNodes());
   }
+
 }
