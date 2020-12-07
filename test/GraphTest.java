@@ -26,7 +26,7 @@ public class GraphTest {
   // Graph should be able to delete a node
   // Graph should be able to delete a list of nodes
   // Graph should be able to update an edge between two nodes
-    //Graph should omly allow unique nodes
+  // Graph should omly allow unique nodes
   @Test
   public void testAddNode() {
     graph.addNode(10);
@@ -43,4 +43,13 @@ public class GraphTest {
     assertEquals(nodes, graph.getNodes());
   }
 
+  @Test
+  public void testGraphReportsDisconnectedLengthBetweenTwoUnrelatedNodes() {
+    List<Integer> nodes = new ArrayList<>();
+    nodes.addAll(Arrays.asList(new Integer[] {20, 9, 0, 2, 1, 0}));
+
+    graph.addNodes(nodes);
+
+    assertEquals(graph.getDisconnectedDistance(), graph.getEdge(20, 9));
+  }
 }
