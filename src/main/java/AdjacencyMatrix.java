@@ -1,25 +1,25 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
-public class AdjacencyMatrix {
-  public static final Double DISCONNECTED_DISTANCE = -1.00;
-  private ArrayList<ArrayList<Double>> matrix = new ArrayList<>();
+public class AdjacencyMatrix<T extends Comparable> implements EdgeReporter {
+  private T disconnectedDistance;
+  private ArrayList<ArrayList<T>> matrix = new ArrayList<>();
 
-  public AdjacencyMatrix() {}
+  public AdjacencyMatrix(T disconnectedDistance) {
+    this.disconnectedDistance = disconnectedDistance;
+  }
 
-  public Double distanceBetween(int nodeIndex1, int nodeIndex2) {
+  public T distanceBetween(int nodeIndex1, int nodeIndex2) {
     return matrix.get(nodeIndex1).get(nodeIndex2);
   }
 
   public void addNode() {
-    ArrayList<Double> edges =
-        new ArrayList<Double>(Collections.nCopies(matrix.size(), DISCONNECTED_DISTANCE));
+    ArrayList<T> edges = new ArrayList<T>(Collections.nCopies(matrix.size(), disconnectedDistance));
     matrix.add(edges);
-    matrix.forEach(n -> n.add(DISCONNECTED_DISTANCE));
+    matrix.forEach(n -> n.add(disconnectedDistance));
   }
 
-  public void createEdge(int nodeIndex1, int nodeIndex2, Double distance) {
+  public void createEdge(int nodeIndex1, int nodeIndex2, T distance) {
     matrix.get(nodeIndex1).set(nodeIndex2, distance);
   }
 
@@ -39,30 +39,16 @@ public class AdjacencyMatrix {
   }
 
   public void deleteEdge(int nodeIndex1, int nodeIndex2) {
-    changeEdge(nodeIndex1, nodeIndex2, DISCONNECTED_DISTANCE);
+    changeEdge(nodeIndex1, nodeIndex2, disconnectedDistance);
   }
 
-  public void changeEdge(int nodeIndex1, int nodeIndex2, Double newDistance) {
+  public void changeEdge(int nodeIndex1, int nodeIndex2, T newDistance) {
     matrix.get(nodeIndex1).set(nodeIndex2, newDistance);
     matrix.get(nodeIndex2).set(nodeIndex1, newDistance);
   }
 
-  public List<Integer> findNeighboursThatAreWithinAMaxDistance(
-      Integer nodeIndex1, Double maxDistance) {
-    List<Integer> indexes = new ArrayList<>();
-    ArrayList<Double> distances = matrix.get(nodeIndex1);
-
-    for (int i = 0; i < distances.size(); i++) {
-      Double distance = distances.get(i);
-      if (distanceIsWithinMax(maxDistance, distance)) {
-        indexes.add(i);
-      }
-    }
-
-    return indexes;
-  }
-
-  private boolean distanceIsWithinMax(Double maxDistance, Double distance) {
-    return distance != DISCONNECTED_DISTANCE && distance <= maxDistance;
+  @Override
+  public T disconnectedDistance() {
+    return disconnectedDistance;
   }
 }
