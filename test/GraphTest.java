@@ -24,13 +24,8 @@ public class GraphTest {
     assertEquals(disconnectedDistance, graph.getDisconnectedDistance());
   }
 
-  // Graph should be able to update an edge between two nodes
-  // Graph should omly allow unique nodes
-  // Graph should be able to retrieve edge between nodes
-  // Graph should be able to retrieve all edges between nodes
-
   @Test
-  public void testAddNode() {
+  public void testAddNode() throws DuplicateNodeException {
     graph.addNode(10);
     assertEquals(1, graph.size());
     assertEquals(new Integer(10), graph.getNodes().get(0));
@@ -56,7 +51,7 @@ public class GraphTest {
     populateGraphWithManyNodes();
     graph.deleteNode(2);
 
-    assertEquals(5, graph.size());
+    assertEquals(nodes.size() - 1, graph.size());
     assertFalse(graph.getNodes().contains(2));
   }
 
@@ -67,20 +62,26 @@ public class GraphTest {
     nodesToDelete.addAll(Arrays.asList(new Integer[] {20, 9, 2, 1}));
     graph.deleteListOfNodes(nodesToDelete);
 
-    assertEquals(2, graph.size());
+    assertEquals(1, graph.size());
     nodesToDelete.forEach(n -> assertFalse(graph.getNodes().contains(n)));
   }
 
   @Test
-  public void TestSetEdge() {
+  public void testSetEdge() {
       populateGraphWithManyNodes();
       Double edgeDistance = 2.00;
       graph.setEdge(20, 9, edgeDistance);
       assertEquals(edgeDistance, graph.getEdge(20, 9));
   }
 
+  @Test(expected = DuplicateNodeException.class)
+  public void testCannotAddDuplicateNodes() throws DuplicateNodeException {
+    populateGraphWithManyNodes();
+    graph.addNode(0);
+  }
+
   private void populateGraphWithManyNodes() {
-    nodes.addAll(Arrays.asList(new Integer[] {20, 9, 0, 2, 1, 0}));
+    nodes.addAll(Arrays.asList(new Integer[] {20, 9, 0, 2, 1}));
 
     graph.addNodes(nodes);
   }

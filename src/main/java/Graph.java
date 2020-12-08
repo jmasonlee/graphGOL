@@ -13,7 +13,10 @@ public class Graph<N extends Comparable, E extends Comparable> {
     return nodes.size();
   }
 
-  public void addNode(N node) {
+  public void addNode(N node) throws DuplicateNodeException {
+    if (nodes.contains(node)) {
+      throw new DuplicateNodeException();
+    }
     nodes.add(node);
     this.edgeReporter.addNode();
   }
