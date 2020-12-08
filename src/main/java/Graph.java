@@ -44,4 +44,11 @@ public class Graph<N extends Comparable, E extends Comparable> {
   public void deleteListOfNodes(ArrayList<N> nodesToDelete) {
     nodesToDelete.forEach(n -> deleteNode(n));
   }
+
+  public void setEdge(N node1, N node2, E edgeDistance) {
+    int node1index = nodes.indexOf(node1);
+    int node2index = nodes.indexOf(node2);
+
+    edgeReporter.changeEdge(node1index, node2index, edgeDistance);
+  }
 }
