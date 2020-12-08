@@ -24,11 +24,12 @@ public class GraphTest {
     assertEquals(disconnectedDistance, graph.getDisconnectedDistance());
   }
 
-  // Graph should be able to delete a node
   // Graph should be able to delete a list of nodes
   // Graph should be able to update an edge between two nodes
   // Graph should omly allow unique nodes
-    //Remove coupling between graph and edgereporter array.
+  // Graph should be able to retrieve edge between nodes
+  // Graph should be able to retrieve all edges between nodes
+
   @Test
   public void testAddNode() {
     graph.addNode(10);
@@ -38,8 +39,7 @@ public class GraphTest {
 
   @Test
   public void testAddNodeList() {
-    nodes.addAll(Arrays.asList(new Integer[] {20, 9, 0, 2, 1, 0}));
-    graph.addNodes(nodes);
+    populateGraphWithManyNodes();
 
     assertEquals(nodes.size(), graph.size());
     assertEquals(nodes, graph.getNodes());
@@ -47,21 +47,34 @@ public class GraphTest {
 
   @Test
   public void testGraphReportsDisconnectedLengthBetweenTwoUnrelatedNodes() {
-    nodes.addAll(Arrays.asList(new Integer[] {20, 9, 0, 2, 1, 0}));
-
-    graph.addNodes(nodes);
+    populateGraphWithManyNodes();
 
     assertEquals(graph.getDisconnectedDistance(), graph.getEdge(20, 9));
   }
 
   @Test
-  public void testDeleteANode(){
-      nodes.addAll(Arrays.asList(new Integer[] {20, 9, 0, 2, 1, 0}));
+  public void testDeleteANode() {
+    populateGraphWithManyNodes();
+    graph.deleteNode(2);
 
-      graph.addNodes(nodes);
-      graph.deleteNode(2);
+    assertEquals(5, graph.size());
+    assertFalse(graph.getNodes().contains(2));
+  }
 
-      assertEquals(5, graph.size());
-      assertFalse(graph.getNodes().contains(2));
+  @Test
+  public void testDeleteManyNodes() {
+    populateGraphWithManyNodes();
+    ArrayList<Integer> nodesToDelete = new ArrayList<>();
+    nodesToDelete.addAll(Arrays.asList(new Integer[] {20, 9, 2, 1}));
+    graph.deleteListOfNodes(nodesToDelete);
+
+    assertEquals(2, graph.size());
+    nodesToDelete.forEach(n -> assertFalse(graph.getNodes().contains(n)));
+  }
+
+  private void populateGraphWithManyNodes() {
+    nodes.addAll(Arrays.asList(new Integer[] {20, 9, 0, 2, 1, 0}));
+
+    graph.addNodes(nodes);
   }
 }

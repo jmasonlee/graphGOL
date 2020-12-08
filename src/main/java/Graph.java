@@ -36,8 +36,12 @@ public class Graph<N extends Comparable, E extends Comparable> {
   }
 
   public void deleteNode(N node) {
-      int nodeIndex = nodes.indexOf(node);
-      edgeReporter.deleteNode(nodeIndex);
-      nodes.remove(nodeIndex);
+    int nodeIndex = nodes.indexOf(node);
+    edgeReporter.deleteNode(nodeIndex);
+    nodes.remove(nodeIndex);
+  }
+
+  public void deleteListOfNodes(ArrayList<N> nodesToDelete) {
+    nodesToDelete.forEach(n -> deleteNode(n));
   }
 }
