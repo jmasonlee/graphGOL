@@ -34,4 +34,10 @@ public class Graph<N extends Comparable, E extends Comparable> {
   public E getEdge(N node1, N node2) {
     return edgeReporter.distanceBetween(nodes.indexOf(node1), nodes.indexOf(node2));
   }
+
+  public void deleteNode(N node) {
+      int nodeIndex = nodes.indexOf(node);
+      edgeReporter.deleteNode(nodeIndex);
+      nodes.remove(nodeIndex);
+  }
 }

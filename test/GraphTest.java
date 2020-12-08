@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class GraphTest {
   private final Double disconnectedDistance = -1.00;
@@ -27,6 +28,7 @@ public class GraphTest {
   // Graph should be able to delete a list of nodes
   // Graph should be able to update an edge between two nodes
   // Graph should omly allow unique nodes
+    //Remove coupling between graph and edgereporter array.
   @Test
   public void testAddNode() {
     graph.addNode(10);
@@ -45,11 +47,21 @@ public class GraphTest {
 
   @Test
   public void testGraphReportsDisconnectedLengthBetweenTwoUnrelatedNodes() {
-    List<Integer> nodes = new ArrayList<>();
     nodes.addAll(Arrays.asList(new Integer[] {20, 9, 0, 2, 1, 0}));
 
     graph.addNodes(nodes);
 
     assertEquals(graph.getDisconnectedDistance(), graph.getEdge(20, 9));
+  }
+
+  @Test
+  public void testDeleteANode(){
+      nodes.addAll(Arrays.asList(new Integer[] {20, 9, 0, 2, 1, 0}));
+
+      graph.addNodes(nodes);
+      graph.deleteNode(2);
+
+      assertEquals(5, graph.size());
+      assertFalse(graph.getNodes().contains(2));
   }
 }
