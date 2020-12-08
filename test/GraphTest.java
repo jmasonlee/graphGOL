@@ -1,3 +1,6 @@
+import graph.AdjacencyMatrix;
+import graph.DuplicateNodeException;
+import graph.Graph;
 import org.junit.Before;
 import org.junit.Test;
 
