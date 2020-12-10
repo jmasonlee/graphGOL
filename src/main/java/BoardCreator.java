@@ -19,7 +19,7 @@ public class BoardCreator {
     }
 
     private static Integer getCellPositionInBoard(Cell cell) {
-        return (cell.y * getBoardWidth()) + cell.x;
+        return (cell.x * getBoardWidth())+ cell.x + cell.y;
     }
 
     private static Integer getBoardWidth() {
