@@ -1,3 +1,5 @@
+package graph;
+
 import graph.AdjacencyMatrix;
 import graph.DuplicateNodeException;
 import graph.Graph;
