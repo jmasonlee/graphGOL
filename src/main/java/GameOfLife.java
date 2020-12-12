@@ -14,4 +14,10 @@ public class GameOfLife {
     public String outputBoard() {
         return BoardCreator.createBoardOutput(boardGraph.getNodes());
     }
+
+    public void next() {
+        //kill all isolated cells
+        boardGraph.deleteNode(boardGraph.getNodes().get(0));
+        //make all viable cells alive
+    }
 }

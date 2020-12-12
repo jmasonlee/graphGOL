@@ -13,13 +13,23 @@ public class GameOfLifeTest {
   }
 
   @Test
-  public void testOneCell() {
+  public void testOneCellDies() {
     List<Cell> cells = new ArrayList<>();
     cells.add(new Cell(0,1));
     // make board with one cell alive
     GameOfLife gameOfLife = new GameOfLife(cells);
-    Approvals.verify(gameOfLife.outputBoard());
+    String initialBoard = gameOfLife.outputBoard();
     // step
+    gameOfLife.next();
     // board with one cell should be dead
+    String finalBoard = gameOfLife.outputBoard();
+
+    StringBuilder sb = new StringBuilder();
+    sb.append("Start: \n");
+    sb.append(initialBoard + "\n");
+    sb.append("End: \n");
+    sb.append(finalBoard);
+
+    Approvals.verify(sb.toString());
   }
 }
