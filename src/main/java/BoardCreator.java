@@ -31,7 +31,9 @@ public class BoardCreator {
 
         for (int i = 0; i < height; i++) {
             board.append(StringUtils.repeat(" ", width));
-            board.append("\n");
+            if(i < height-1){
+                board.append("\n");
+            }
         }
 
         return board;
