@@ -16,7 +16,12 @@ public class GameOfLife {
     }
 
     public void next() {
+        //Get list of cells to kill
+            //Check cells to determine which have < 2 neighbours
+        //Get list of cells to make alive
+            //Do some fancy stuff with set intersections...
         //kill all isolated cells
+            //Remove cells with <2 neighbours from graph
         boardGraph.deleteNode(boardGraph.getNodes().get(0));
         //make all viable cells alive
     }
