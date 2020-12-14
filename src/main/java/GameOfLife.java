@@ -5,14 +5,14 @@ import org.apache.commons.lang.StringUtils;
 import java.util.List;
 
 public class GameOfLife {
-    private Graph<Cell, Integer> boardGraph = new Graph<Cell, Integer>(new AdjacencyMatrix<>(-1));
+    private LiveCellsGraph board;
 
     public GameOfLife(List<Cell> initialCells) {
-        boardGraph.addNodes(initialCells);
+        board = new LiveCellsGraph(initialCells);
     }
 
     public String outputBoard() {
-        return BoardCreator.createBoardOutput(boardGraph.getNodes());
+        return BoardCreator.createBoardOutput(board.getCells());
     }
 
     public void next() {
@@ -22,7 +22,6 @@ public class GameOfLife {
             //Do some fancy stuff with set intersections...
         //kill all isolated cells
             //Remove cells with <2 neighbours from graph
-        boardGraph.deleteNode(boardGraph.getNodes().get(0));
         //make all viable cells alive
     }
 }
