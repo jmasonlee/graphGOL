@@ -76,6 +76,7 @@ public class GraphTest {
       populateGraphWithManyNodes();
       Double edgeDistance = 2.00;
       graph.setEdge(20, 9, edgeDistance);
+
       assertEquals(edgeDistance, graph.getEdge(20, 9));
   }
 
@@ -83,6 +84,18 @@ public class GraphTest {
   public void testCannotAddDuplicateNodes() throws DuplicateNodeException {
     populateGraphWithManyNodes();
     graph.addNode(0);
+  }
+
+  @Test
+  public void testFindAllNodesWithSpecifiedDistance(){
+    populateGraphWithManyNodes();
+    Double edgeDistance = 2.00;
+    Integer node1 = 20;
+    Integer node2 = 9;
+
+    graph.setEdge(node1, node2, edgeDistance);
+
+    assertEquals(node1, graph.findAllNodesWithSpecifiedDistance(node2, edgeDistance).get(0));
   }
 
   private void populateGraphWithManyNodes() {
