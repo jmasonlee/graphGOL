@@ -1,7 +1,6 @@
 package graph;
 
 import java.util.ArrayList;
-import java.util.BitSet;
 import java.util.List;
 
 public class Graph<N extends Comparable, E extends Comparable> {
@@ -60,7 +59,8 @@ public class Graph<N extends Comparable, E extends Comparable> {
 
   public List<N> findAllNodesWithSpecifiedDistance(N targetNode, E edgeDistance) {
     List<Integer> indicesOfNodes =
-        edgeReporter.getIndexOfNodesWithEdgesMatchingDistance(nodes.indexOf(targetNode), edgeDistance);
+        edgeReporter.getIndexOfNodesWithEdgesMatchingDistance(
+            nodes.indexOf(targetNode), edgeDistance);
     List<N> matchingNodes = new ArrayList<>();
 
     indicesOfNodes.forEach(i -> matchingNodes.add(nodes.get(i)));

@@ -1,8 +1,5 @@
 package graph;
 
-import graph.AdjacencyMatrix;
-import graph.DuplicateNodeException;
-import graph.Graph;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -73,11 +70,11 @@ public class GraphTest {
 
   @Test
   public void testSetEdge() {
-      populateGraphWithManyNodes();
-      Double edgeDistance = 2.00;
-      graph.setEdge(20, 9, edgeDistance);
+    populateGraphWithManyNodes();
+    Double edgeDistance = 2.00;
+    graph.setEdge(20, 9, edgeDistance);
 
-      assertEquals(edgeDistance, graph.getEdge(20, 9));
+    assertEquals(edgeDistance, graph.getEdge(20, 9));
   }
 
   @Test(expected = DuplicateNodeException.class)
@@ -87,7 +84,7 @@ public class GraphTest {
   }
 
   @Test
-  public void testFindAllNodesWithSpecifiedDistance(){
+  public void testFindAllNodesWithSpecifiedDistance() {
     populateGraphWithManyNodes();
     Double edgeDistance = 2.00;
     Integer node1 = 20;
