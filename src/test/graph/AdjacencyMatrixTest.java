@@ -1,6 +1,5 @@
 package graph;
 
-import graph.AdjacencyMatrix;
 import org.junit.Test;
 
 import java.util.List;
@@ -59,7 +58,8 @@ public class AdjacencyMatrixTest {
   @Test
   public void testFetchIndexOfNodesWithEdgeLengthsEqualToDistance() {
     AdjacencyMatrix<Double> graph = buildTestGraph();
-    List<Integer> nodeIndicesAtDistance = graph.getIndexOfNodesWithEdgesMatchingDistance(nodeIndex2, distance);
+    List<Integer> nodeIndicesAtDistance =
+        graph.getIndexOfNodesWithEdgesMatchingDistance(nodeIndex2, distance);
     assertEquals(1, nodeIndicesAtDistance.size());
     assertEquals(nodeIndex1, nodeIndicesAtDistance.get(0));
   }

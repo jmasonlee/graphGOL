@@ -54,8 +54,8 @@ public class AdjacencyMatrix<T extends Comparable> implements EdgeReporter<T> {
   public List<Integer> getIndexOfNodesWithEdgesMatchingDistance(int nodeIndex, T distance) {
     List<Integer> matchingIndices = new ArrayList<>();
 
-    for( int i = 0; i < matrix.size(); i++){
-      if(matrix.get(nodeIndex).get(i).equals(distance)){
+    for (int i = 0; i < matrix.size(); i++) {
+      if (matrix.get(nodeIndex).get(i).equals(distance)) {
         matchingIndices.add(i);
       }
     }
