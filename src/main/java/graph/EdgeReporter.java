@@ -1,5 +1,7 @@
 package graph;
 
+import java.util.List;
+
 public interface EdgeReporter<T extends Comparable> {
   public T disconnectedDistance();
 
@@ -18,4 +20,6 @@ public interface EdgeReporter<T extends Comparable> {
   public void deleteEdge(int nodeIndex1, int nodeIndex2);
 
   public void changeEdge(int nodeIndex1, int nodeIndex2, T newDistance);
+
+  public List<Integer> getIndexOfNodesWithEdgesMatchingDistance(int nodeIndex, T distance);
 }
