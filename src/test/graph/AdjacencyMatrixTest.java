@@ -3,6 +3,8 @@ package graph;
 import graph.AdjacencyMatrix;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class AdjacencyMatrixTest {
@@ -16,6 +18,7 @@ public class AdjacencyMatrixTest {
   public void testDistanceBetweenTwoNodes() {
     AdjacencyMatrix<Double> graph = buildTestGraph();
     assertEquals(distance, graph.distanceBetween(nodeIndex1, nodeIndex2));
+    assertEquals(distance, graph.distanceBetween(nodeIndex2, nodeIndex1));
   }
 
   @Test
@@ -51,6 +54,14 @@ public class AdjacencyMatrixTest {
     AdjacencyMatrix<Double> graph = buildTestGraph();
     graph.changeEdge(nodeIndex1, nodeIndex2, newDistance);
     assertEquals(newDistance, graph.distanceBetween(nodeIndex1, nodeIndex2));
+  }
+
+  @Test
+  public void testFetchIndexOfNodesWithEdgeLengthsEqualToDistance() {
+    AdjacencyMatrix<Double> graph = buildTestGraph();
+    List<Integer> nodeIndicesAtDistance = graph.getIndexOfNodesWithEdgesMatchingDistance(nodeIndex2, distance);
+    assertEquals(1, nodeIndicesAtDistance.size());
+    assertEquals(nodeIndex1, nodeIndicesAtDistance.get(0));
   }
 
   private AdjacencyMatrix buildTestGraph() {

@@ -2,6 +2,7 @@ package graph;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class AdjacencyMatrix<T extends Comparable> implements EdgeReporter<T> {
   private T disconnectedDistance;
@@ -23,6 +24,7 @@ public class AdjacencyMatrix<T extends Comparable> implements EdgeReporter<T> {
 
   public void createEdge(int nodeIndex1, int nodeIndex2, T distance) {
     matrix.get(nodeIndex1).set(nodeIndex2, distance);
+    matrix.get(nodeIndex2).set(nodeIndex1, distance);
   }
 
   public void addNodes(int numberToAdd) {
@@ -47,6 +49,18 @@ public class AdjacencyMatrix<T extends Comparable> implements EdgeReporter<T> {
   public void changeEdge(int nodeIndex1, int nodeIndex2, T newDistance) {
     matrix.get(nodeIndex1).set(nodeIndex2, newDistance);
     matrix.get(nodeIndex2).set(nodeIndex1, newDistance);
+  }
+
+  public List<Integer> getIndexOfNodesWithEdgesMatchingDistance(int nodeIndex, T distance) {
+    List<Integer> matchingIndices = new ArrayList<>();
+
+    for( int i = 0; i < matrix.size(); i++){
+      if(matrix.get(nodeIndex).get(i).equals(distance)){
+        matchingIndices.add(i);
+      }
+    }
+
+    return matchingIndices;
   }
 
   public T disconnectedDistance() {
