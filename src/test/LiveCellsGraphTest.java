@@ -13,14 +13,14 @@ public class LiveCellsGraphTest {
   // or DISCONNECTED edges
   // For a list of cells that are neighbours, the graph should have NEIGHBOUR, COPARENT, or
   // DISCONNECTED edges
-    // Should be able to retrieve a list of cells to live for the next turn
+  // Should be able to retrieve a list of cells to live for the next turn
 
   @Test
   public void testCanBeCreatedWithArrayOfCells() {
-      List<Cell> cells = new ArrayList<>();
-      cells.addAll(Arrays.asList(new Cell[]{new Cell(0,0), new Cell(0, 1)}));
-      LiveCellsGraph liveCells = new LiveCellsGraph(cells);
-      assertEquals(cells, liveCells.getCells());
+    List<Cell> cells = new ArrayList<>();
+    cells.addAll(Arrays.asList(new Cell[] {new Cell(0, 0), new Cell(0, 1)}));
+    LiveCellsGraph liveCells = new LiveCellsGraph(cells);
+    assertEquals(cells, liveCells.getCells());
   }
 
 
