@@ -1,6 +1,6 @@
 package cell;
 
-public class CellRelationshipClassifier {
+public class RelationshipClassifier {
     public static Relationships classify(Cell cell, Cell cell1) {
         return Relationships.SELF;
     }
