@@ -1,3 +1,5 @@
+package cell;
+
 import cell.Cell;
 import org.junit.Test;
 
