@@ -1,8 +1,13 @@
 package cell;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RelationshipClassifier {
-    public static Relationships classify(Cell cell, Cell cell1) {
-        return Relationships.SELF;
+    public static Map<Relationships, Cell> classify(Cell cell, Cell otherCell) {
+        Map<Relationships, Cell> relationshipsMap = new HashMap<Relationships, Cell>();
+        relationshipsMap.put(Relationships.SELF, otherCell);
+        return relationshipsMap;
     }
 
     public enum Relationships {
