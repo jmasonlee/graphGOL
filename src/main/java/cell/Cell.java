@@ -29,4 +29,9 @@ public class Cell implements Comparable {
 
     return otherCell.x == this.x && otherCell.y == this.y;
   }
+
+  @Override
+  public String toString(){
+      return "[" + x + "," + y + "]";
+  }
 }
