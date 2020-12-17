@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 public class RelationshipClassifier {
-  public static Map<Relationships, List<Cell>> classify(Cell cell, Cell otherCell) {
+  public static Map<Relationships, List<Cell>> classify(Cell cell, List<Cell> otherCells) {
     Map<Relationships, List<Cell>> relationshipsMap = new HashMap<>();
-    relationshipsMap.put(Relationships.SELF, Arrays.asList(new Cell[]{otherCell}));
+    otherCells.forEach(otherCell -> {
+        relationshipsMap.put(Relationships.SELF, Arrays.asList(new Cell[]{otherCell}));
+    });
     return relationshipsMap;
   }
 
