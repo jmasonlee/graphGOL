@@ -1,12 +1,14 @@
 package cell;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RelationshipClassifier {
-  public static Map<Relationships, Cell> classify(Cell cell, Cell otherCell) {
-    Map<Relationships, Cell> relationshipsMap = new HashMap<Relationships, Cell>();
-    relationshipsMap.put(Relationships.SELF, otherCell);
+  public static Map<Relationships, List<Cell>> classify(Cell cell, Cell otherCell) {
+    Map<Relationships, List<Cell>> relationshipsMap = new HashMap<>();
+    relationshipsMap.put(Relationships.SELF, Arrays.asList(new Cell[]{otherCell}));
     return relationshipsMap;
   }
 
