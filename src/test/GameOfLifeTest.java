@@ -1,3 +1,4 @@
+import cell.Cell;
 import org.approvaltests.Approvals;
 import org.junit.Test;
 

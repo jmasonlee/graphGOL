@@ -1,3 +1,5 @@
+package cell;
+
 public class CellRelationshipClassifier {
     public static Relationships classify(Cell cell, Cell cell1) {
         return Relationships.SELF;

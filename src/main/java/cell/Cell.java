@@ -1,3 +1,5 @@
+package cell;
+
 public class Cell implements Comparable {
   public Integer y;
   public Integer x;

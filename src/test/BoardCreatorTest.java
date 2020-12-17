@@ -1,11 +1,8 @@
+import cell.Cell;
 import org.approvaltests.Approvals;
-import org.approvaltests.combinations.pairwise.Case;
-import org.approvaltests.combinations.pairwise.Pairwise;
 import org.junit.Test;
 
 import java.util.*;
-
-import static org.junit.Assert.*;
 
 public class BoardCreatorTest {
   @Test

@@ -1,5 +1,5 @@
+import cell.Cell;
 import org.junit.Test;
-import org.w3c.dom.html.HTMLTableRowElement;
 
 import java.util.ArrayList;
 import java.util.Arrays;

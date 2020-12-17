@@ -1,3 +1,5 @@
+import cell.Cell;
+
 import java.util.ArrayList;
 
 public class Foo {

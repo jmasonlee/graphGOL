@@ -1,3 +1,5 @@
+import cell.Cell;
+import cell.CellRelationshipClassifier;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

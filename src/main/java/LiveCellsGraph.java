@@ -1,3 +1,4 @@
+import cell.Cell;
 import graph.AdjacencyMatrix;
 import graph.Graph;
 
