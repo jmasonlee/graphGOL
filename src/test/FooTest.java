@@ -14,16 +14,16 @@ public class FooTest {
     assertEquals(new ArrayList<>(), Foo.livingCellsOnNextTurn(liveCellsGraph));
   }
 
-  @Test
-  public void testReturnsCellsWith2Neighbours(){
-      List<Cell> cellWithTwoNeighbours = Arrays.asList(
-          new Cell[]{
-              new Cell(0,1),
-              new Cell(0,0),
-              new Cell(0,2)
-          });
-
-      LiveCellsGraph liveCellsGraph = new LiveCellsGraph(cellWithTwoNeighbours);
-      assertTrue(Foo.livingCellsOnNextTurn(liveCellsGraph).contains(cellWithTwoNeighbours.get(0)));
-  }
+//  @Test
+//  public void testReturnsCellsWith2Neighbours(){
+//      List<Cell> cellWithTwoNeighbours = Arrays.asList(
+//          new Cell[]{
+//              new Cell(0,1),
+//              new Cell(0,0),
+//              new Cell(0,2)
+//          });
+//
+//      LiveCellsGraph liveCellsGraph = new LiveCellsGraph(cellWithTwoNeighbours);
+//      assertTrue(Foo.livingCellsOnNextTurn(liveCellsGraph).contains(cellWithTwoNeighbours.get(0)));
+//  }
 }
