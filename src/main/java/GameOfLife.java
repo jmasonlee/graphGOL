@@ -1,5 +1,6 @@
 import cell.Cell;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameOfLife {
@@ -10,10 +11,11 @@ public class GameOfLife {
     }
 
     public String outputBoard() {
-        return BoardCreator.createBoardOutput(board.getCells());
+        return BoardCreator.createBoardOutput(board.getCells()).toString();
     }
 
     public void next() {
+        board = new LiveCellsGraph(new ArrayList<>());
         //Get list of cells to kill
             //Check cells to determine which have < 2 neighbours
         //Get list of cells to make alive
