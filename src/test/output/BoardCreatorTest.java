@@ -1,6 +1,9 @@
+package output;
+
 import cell.Cell;
 import org.approvaltests.Approvals;
 import org.junit.Test;
+import output.BoardCreator;
 
 import java.util.*;
 
