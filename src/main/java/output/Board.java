@@ -7,29 +7,28 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Board {
-  private int width;
-  private int height;
+  private int upperYValue;
+  private int lowerYValue;
+  private int leftmostXValue;
+  private int rightmostXValue;
 
   public Board(List<Cell> cellsForBoard) {
     calculateBoardBounds(cellsForBoard);
   }
 
   public int getWidth() {
-    return width;
+    return Math.abs(leftmostXValue - rightmostXValue);
   }
 
   public int getHeight() {
-    return height;
+    return Math.abs(upperYValue - lowerYValue);
   }
 
   private void calculateBoardBounds(List<Cell> cellsForBoard) {
-    int upperYValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
-    int lowerYValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
-    int leftmostXValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
-    int rightmostXValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
-
-    this.width = Math.abs(leftmostXValue - rightmostXValue);
-    this.height =  Math.abs(upperYValue - lowerYValue);
+    upperYValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
+    lowerYValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
+    leftmostXValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
+    rightmostXValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
   }
 
 }
