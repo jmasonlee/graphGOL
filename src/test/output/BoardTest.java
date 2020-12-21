@@ -34,4 +34,13 @@ public class BoardTest {
 
     Approvals.verifyAll("", testResults);
   }
+
+  @Test
+  public void testCreateBoardWithHighestCellsInNegativeSpace(){
+    Board board = new Board(Arrays.asList(new Cell[]{new Cell(-1,-4)}));
+    assertEquals(5, board.getHeight());
+    assertEquals(5, board.getWidth());
+    assertEquals(-1, board.getLeftmostXValue());
+    assertEquals(-4, board.getUpperYValue());
+  }
 }
