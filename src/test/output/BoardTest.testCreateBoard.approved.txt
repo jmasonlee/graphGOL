@@ -1,1 +1,8 @@
-height:5 width:5 Upper Left Coordinates: (0, 5)
+[0] = inputCells: []
+	 Height:5
+	 Width:5
+	 Upper Left Coordinates: (0, 5)
+[1] = inputCells: [[1,4]]
+	 Height:5
+	 Width:5
+	 Upper Left Coordinates: (1, 4)
