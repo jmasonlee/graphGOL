@@ -6,3 +6,7 @@
 	 Height:5
 	 Width:5
 	 Upper Left Coordinates: (1, 4)
+[2] = inputCells: [[-1,-4]]
+	 Height:5
+	 Width:5
+	 Upper Left Coordinates: (-1, -4)
