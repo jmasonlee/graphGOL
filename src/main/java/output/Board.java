@@ -44,8 +44,8 @@ public class Board {
       return;
     }
 
-    upperYValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
-    int lowerYValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
+    upperYValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
+    int lowerYValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
     height = Math.abs(upperYValue - lowerYValue) > 5 ? Math.abs(upperYValue - lowerYValue) : this.height;
 
     leftmostXValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;

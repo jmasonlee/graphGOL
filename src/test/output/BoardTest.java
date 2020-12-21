@@ -31,5 +31,13 @@ public class BoardTest {
 
     Approvals.verifyAll("", testResults);
   }
-  
+
+  @Test
+  public void testCreateBoardWithCellsMoreThan5ApartForHeight(){
+    Board board = new Board(Arrays.asList(new Cell[]{new Cell(-2,-5), new Cell(1, 3)}));
+    assertEquals(8, board.getHeight());
+    assertEquals(5, board.getWidth());
+    assertEquals(-2, board.getLeftmostXValue());
+    assertEquals(3, board.getUpperYValue());
+  }
 }
