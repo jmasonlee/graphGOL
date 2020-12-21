@@ -14,6 +14,8 @@ public class BoardTest {
   @Test
   public void testCreateBoard() {
     Board board = new Board(new ArrayList<>());
-    Approvals.verify("height:" + board.getHeight() + " width:" + board.getWidth());
+    Approvals.verify("height:" + board.getHeight() +
+        " width:" + board.getWidth() +
+        " Upper Left Coordinates: (" + board.getLeftmostXValue() + ", "+ board.getUpperYValue()+")");
   }
 }
