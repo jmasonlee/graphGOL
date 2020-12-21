@@ -10,3 +10,7 @@
 	 Height:5
 	 Width:5
 	 Upper Left Coordinates: (-1, -4)
+[3] = inputCells: [[-2,-5], [1,3]]
+	 Height:8
+	 Width:5
+	 Upper Left Coordinates: (-2, 3)
