@@ -26,6 +26,14 @@ public class Board {
     return height;
   }
 
+  public int getUpperYValue() {
+    return upperYValue;
+  }
+
+  public int getLeftmostXValue() {
+    return leftmostXValue;
+  }
+
   @Override
   public String toString() {
     return board.toString();
@@ -38,10 +46,10 @@ public class Board {
 
     upperYValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
     int lowerYValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
-    height = Math.abs(upperYValue - lowerYValue);
+    height = Math.abs(upperYValue - lowerYValue) > 5 ? Math.abs(upperYValue - lowerYValue) : this.height;
 
     leftmostXValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
     int rightmostXValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
-    width =  Math.abs(leftmostXValue - rightmostXValue);
+    width =  Math.abs(leftmostXValue - rightmostXValue) > 5 ? Math.abs(leftmostXValue - rightmostXValue) : this.width;
   }
 }
