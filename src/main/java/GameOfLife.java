@@ -1,5 +1,5 @@
 import cell.Cell;
-import output.BoardCreator;
+import output.BoardOutputter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ public class GameOfLife {
     }
 
     public String outputBoard() {
-        return BoardCreator.createBoardOutput(board.getCells()).toString();
+        return BoardOutputter.createBoardOutput(board.getCells()).toString();
     }
 
     public void next() {

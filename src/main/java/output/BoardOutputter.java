@@ -5,7 +5,7 @@ import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 
-public class BoardCreator {
+public class BoardOutputter {
 
     public static String createBoardOutput(List<Cell> cells){
         StringBuilder emptyBoard = emptyBoardOfSize(getBoardWidth(), 5);

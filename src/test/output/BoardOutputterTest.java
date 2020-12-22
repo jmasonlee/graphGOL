@@ -3,11 +3,10 @@ package output;
 import cell.Cell;
 import org.approvaltests.Approvals;
 import org.junit.Test;
-import output.BoardCreator;
 
 import java.util.*;
 
-public class BoardCreatorTest {
+public class BoardOutputterTest {
   @Test
   public void testBoardIsGeneratedWithCellsInCorrectLocation() {
       List<Integer> coordinateNumbers = Arrays.asList(0, 1, 2, 3, 4);
@@ -18,7 +17,7 @@ public class BoardCreatorTest {
           for(int y = 0; y < coordinateNumbers.size(); y++){
               int index = x*5 + y;
               String input = String.format("(%d,%d):\n",x,y);
-              allBoards[index] = input + BoardCreator.createBoardOutput(Arrays.asList(new Cell(x,y)));
+              allBoards[index] = input + BoardOutputter.createBoardOutput(Arrays.asList(new Cell(x,y)));
           }
       }
 
