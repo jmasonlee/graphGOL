@@ -1,6 +1,7 @@
 package output;
 
 import cell.Cell;
+import org.apache.commons.lang.math.Range;
 import org.approvaltests.Approvals;
 import org.junit.Test;
 
@@ -16,12 +17,15 @@ public class BoardOutputterTest {
       for(int x = 0; x < coordinateNumbers.size(); x++){
           for(int y = 0; y < coordinateNumbers.size(); y++){
               int index = x*5 + y;
-              String input = String.format("(%d,%d):\n",x,y);
-              allBoards[index] = input + BoardOutputter.createBoardOutput(Arrays.asList(new Cell(x,y)));
+              allBoards[index] = createBoardWithCellInLocation(x,y);
           }
       }
 
       Approvals.verifyAll("",allBoards);
   }
 
+  private String createBoardWithCellInLocation(Integer x, Integer y) {
+    String input = String.format("(%d,%d):\n",x,y);
+    return input + BoardOutputter.createBoardOutput(Arrays.asList(new Cell(x,y)));
+  }
 }
