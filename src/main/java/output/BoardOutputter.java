@@ -8,25 +8,23 @@ import java.util.List;
 public class BoardOutputter {
 
     public static String createBoardOutput(List<Cell> cells){
-        StringBuilder emptyBoard = emptyBoardOfSize(getBoardWidth(), 5);
-        return populateBoardWithCells(emptyBoard, cells);
+        BoardBounds boardBounds = new BoardBounds(cells);
+        StringBuilder emptyBoard = emptyBoardOfSize(boardBounds.getWidth(), boardBounds.getHeight());
+        return populateBoardWithCells(emptyBoard, cells, boardBounds);
     }
 
-    private static String populateBoardWithCells(StringBuilder emptyBoard, List<Cell> cells) {
-        StringBuilder populatedBoard = emptyBoard;
+    private static String populateBoardWithCells(StringBuilder board, List<Cell> cells, BoardBounds boardBounds) {
         cells.forEach(c -> {
-            Integer positionInBoard = getCellPositionInBoard(c);
-            populatedBoard.setCharAt(positionInBoard, 'X');
+            int positionInBoard = getCellPositionInBoard(c, boardBounds);
+            board.setCharAt(positionInBoard, 'X');
         });
-        return populatedBoard.toString();
+        return board.toString();
     }
 
-    private static Integer getCellPositionInBoard(Cell cell) {
-        return (cell.x * getBoardWidth())+ cell.x + cell.y;
-    }
-
-    private static Integer getBoardWidth() {
-        return 5;
+    private static int getCellPositionInBoard(Cell cell, BoardBounds boardBounds) {
+        int adjustedX = Math.abs(boardBounds.getLeftmostXValue() - cell.x);
+        int adjustedY = Math.abs(boardBounds.getUpperYValue() - cell.y);
+        return (adjustedY * boardBounds.getWidth())+ adjustedY + adjustedX;
     }
 
     private static StringBuilder emptyBoardOfSize(int width, int height) {

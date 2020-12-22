@@ -7,6 +7,8 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class BoardOutputterTest {
   @Test
   public void testBoardIsGeneratedWithCellsInCorrectLocation() {
@@ -16,7 +18,13 @@ public class BoardOutputterTest {
         this::createBoardWithCellInLocation, coordinateNumbers, coordinateNumbers);
   }
 
+  @Test
+  public void testBoardIsGeneratedWithCellsInCorrectLocationIfCellIsInNegativeSpace() {
+    String expectedBoardOutput = "X    \n     \n     \n     \n     ";
+    assertEquals(expectedBoardOutput, BoardOutputter.createBoardOutput(Arrays.asList(new Cell(-2, -1))));
+  }
+
   private String createBoardWithCellInLocation(Integer x, Integer y) {
-    return "\n"+BoardOutputter.createBoardOutput(Arrays.asList(new Cell(x, y)));
+    return "\n"+BoardOutputter.createBoardOutput(Arrays.asList(new Cell(0,0), new Cell(x, y)));
   }
 }
