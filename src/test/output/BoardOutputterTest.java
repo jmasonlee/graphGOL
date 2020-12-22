@@ -1,31 +1,22 @@
 package output;
 
 import cell.Cell;
-import org.apache.commons.lang.math.Range;
-import org.approvaltests.Approvals;
+import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class BoardOutputterTest {
   @Test
   public void testBoardIsGeneratedWithCellsInCorrectLocation() {
-      List<Integer> coordinateNumbers = Arrays.asList(0, 1, 2, 3, 4);
-      String[] allBoards = new String[25];
+    Integer[] coordinateNumbers = new Integer[]{0, 1, 2, 3, 4};
 
-
-      for(int x = 0; x < coordinateNumbers.size(); x++){
-          for(int y = 0; y < coordinateNumbers.size(); y++){
-              int index = x*5 + y;
-              allBoards[index] = createBoardWithCellInLocation(x,y);
-          }
-      }
-
-      Approvals.verifyAll("",allBoards);
+    CombinationApprovals.verifyAllCombinations(
+        this::createBoardWithCellInLocation, coordinateNumbers, coordinateNumbers);
   }
 
   private String createBoardWithCellInLocation(Integer x, Integer y) {
-    String input = String.format("(%d,%d):\n",x,y);
-    return input + BoardOutputter.createBoardOutput(Arrays.asList(new Cell(x,y)));
+    return "\n"+BoardOutputter.createBoardOutput(Arrays.asList(new Cell(x, y)));
   }
 }
