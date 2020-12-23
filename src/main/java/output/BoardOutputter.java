@@ -77,17 +77,17 @@ public class BoardOutputter {
       upperYValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
       int lowerYValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
       height =
-          getDimension(lowerYValue, upperYValue, this.height);
+          getDimension(lowerYValue, upperYValue);
 
       leftmostXValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
       int rightmostXValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
       width =
-          getDimension(rightmostXValue, leftmostXValue, this.width);
+          getDimension(rightmostXValue, leftmostXValue);
     }
 
-    private int getDimension(int lowestDimensionValue, int highestDimensionValue, int p) {
+    private int getDimension(int lowestDimensionValue, int highestDimensionValue) {
       return Math.abs(highestDimensionValue - lowestDimensionValue) < DEFAULT_BOARD_SIZE ?
-          p :
+          DEFAULT_BOARD_SIZE :
           Math.abs(highestDimensionValue - lowestDimensionValue) + 1;
     }
 
