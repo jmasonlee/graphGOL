@@ -86,7 +86,9 @@ public class BoardOutputter {
     }
 
     private int getDimension(int lowestDimensionValue, int highestDimensionValue, int p) {
-      return Math.abs(highestDimensionValue - lowestDimensionValue) > 4 ? Math.abs(highestDimensionValue - lowestDimensionValue) + 1 : p;
+      return Math.abs(highestDimensionValue - lowestDimensionValue) < DEFAULT_BOARD_SIZE ?
+          p :
+          Math.abs(highestDimensionValue - lowestDimensionValue) + 1;
     }
 
   }
