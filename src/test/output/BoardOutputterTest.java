@@ -12,16 +12,10 @@ import static org.junit.Assert.assertEquals;
 public class BoardOutputterTest {
   @Test
   public void testBoardIsGeneratedWithCellsInCorrectLocation() {
-    Integer[] coordinateNumbers = new Integer[]{0, 1, 2, 3, 4};
+    Integer[] coordinateNumbers = new Integer[]{-3,-2, -1, 0, 1, 2, 3};
 
     CombinationApprovals.verifyAllCombinations(
         this::createBoardWithCellInLocation, coordinateNumbers, coordinateNumbers);
-  }
-
-  @Test
-  public void testBoardIsGeneratedWithCellsInCorrectLocationIfCellIsInNegativeSpace() {
-    String expectedBoardOutput = "X    \n     \n     \n     \n     ";
-    assertEquals(expectedBoardOutput, BoardOutputter.createBoardOutput(Arrays.asList(new Cell(-2, -1))));
   }
 
   private String createBoardWithCellInLocation(Integer x, Integer y) {
