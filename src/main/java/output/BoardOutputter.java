@@ -43,10 +43,11 @@ public class BoardOutputter {
     }
 
     public static class BoardBounds {
+      public static final int DEFAULT_BOARD_SIZE = 5;
       private int upperYValue = 5;
       private int leftmostXValue = 0;
-      private int height = 5;
-      private int width = 5;
+      private int height = DEFAULT_BOARD_SIZE;
+      private int width = DEFAULT_BOARD_SIZE;
 
       public BoardBounds(List<Cell> cellsForBoard) {
         calculateBoardBounds(cellsForBoard);
