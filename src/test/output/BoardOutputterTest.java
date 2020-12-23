@@ -16,7 +16,7 @@ public class BoardOutputterTest {
   @Test
   public void testBoardIsGeneratedWithCellsInCorrectLocation() {
     CombinationApprovals.verifyAllCombinations(
-        this::createBoardWithTwoCells, coordinateNumbers, coordinateNumbers);
+        this::createBoardWithTwoCells, coordinateNumbers, coordinateNumbers, coordinateNumbers, coordinateNumbers);
   }
 
   @Test
@@ -33,7 +33,7 @@ public class BoardOutputterTest {
     return "\n"+BoardOutputter.createBoardOutput(Arrays.asList(new Cell(x, y)));
   }
 
-  private String createBoardWithTwoCells(Integer x, Integer y) {
-    return "\n"+BoardOutputter.createBoardOutput(Arrays.asList(new Cell(-3,3), new Cell(x, y)));
+  private String createBoardWithTwoCells(Integer cell1x, Integer cell1y, Integer cell2x, Integer cell2y) {
+    return "\n"+BoardOutputter.createBoardOutput(Arrays.asList(new Cell(cell1x,cell1y), new Cell(cell2x, cell2y)));
   }
 }
