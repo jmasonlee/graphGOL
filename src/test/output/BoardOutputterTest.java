@@ -19,6 +19,6 @@ public class BoardOutputterTest {
   }
 
   private String createBoardWithCellInLocation(Integer x, Integer y) {
-    return "\n"+BoardOutputter.createBoardOutput(Arrays.asList(new Cell(0,0), new Cell(x, y)));
+    return "\n"+BoardOutputter.createBoardOutput(Arrays.asList(new Cell(-3,3), new Cell(x, y)));
   }
 }
