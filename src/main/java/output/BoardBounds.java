@@ -40,13 +40,13 @@ public class BoardBounds {
     upperYValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
     int lowerYValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
     height =
-        Math.abs(upperYValue - lowerYValue) > 5 ? Math.abs(upperYValue - lowerYValue) : this.height;
+        Math.abs(upperYValue - lowerYValue) > 4 ? Math.abs(upperYValue - lowerYValue) + 1 : this.height;
 
     leftmostXValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
     int rightmostXValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
     width =
-        Math.abs(leftmostXValue - rightmostXValue) > 5
-            ? Math.abs(leftmostXValue - rightmostXValue)
+        Math.abs(leftmostXValue - rightmostXValue) > 4
+            ? Math.abs(leftmostXValue - rightmostXValue) + 1
             : this.width;
   }
 }
