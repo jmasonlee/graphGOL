@@ -6,6 +6,7 @@ import org.apache.commons.lang.StringUtils;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 
 public class BoardOutputter {
 
@@ -74,7 +75,8 @@ public class BoardOutputter {
         return;
       }
 
-      upperYValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
+      Function<Cell, Integer> fetchYvalue = c->c.y;
+      upperYValue = getCellWithMaxDimension(cellsForBoard, fetchYvalue).y;
       int lowerYValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.y)).y;
       height =
           getDimension(lowerYValue, upperYValue);
@@ -85,10 +87,18 @@ public class BoardOutputter {
           getDimension(rightmostXValue, leftmostXValue);
     }
 
+    private Cell getCellWithMaxDimension(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCellDimension) {
+      return Collections.max(cellsForBoard, Comparator.comparing(c->fetchCellDimension.apply(c)));
+    }
+
     private int getDimension(int lowestDimensionValue, int highestDimensionValue) {
       return Math.abs(highestDimensionValue - lowestDimensionValue) < DEFAULT_BOARD_SIZE ?
           DEFAULT_BOARD_SIZE :
-          Math.abs(highestDimensionValue - lowestDimensionValue) + 1;
+          calculateDimensionLargerThanDefault(lowestDimensionValue, highestDimensionValue);
+    }
+
+    private int calculateDimensionLargerThanDefault(int lowestDimensionValue, int highestDimensionValue) {
+      return Math.abs(highestDimensionValue - lowestDimensionValue) + 1;
     }
 
   }
