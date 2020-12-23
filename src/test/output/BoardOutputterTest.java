@@ -5,7 +5,6 @@ import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,10 +14,10 @@ public class BoardOutputterTest {
     Integer[] coordinateNumbers = new Integer[]{-3,-2, -1, 0, 1, 2, 3};
 
     CombinationApprovals.verifyAllCombinations(
-        this::createBoardWithCellInLocation, coordinateNumbers, coordinateNumbers);
+        this::createBoardWithTwoCells, coordinateNumbers, coordinateNumbers);
   }
 
-  private String createBoardWithCellInLocation(Integer x, Integer y) {
+  private String createBoardWithTwoCells(Integer x, Integer y) {
     return "\n"+BoardOutputter.createBoardOutput(Arrays.asList(new Cell(-3,3), new Cell(x, y)));
   }
 }
