@@ -81,8 +81,9 @@ public class BoardOutputter {
       height =
           getDimension(lowerYValue, upperYValue);
 
+      Function<Cell, Integer> fetchXvalue = c->c.x;
       leftmostXValue = Collections.min(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
-      int rightmostXValue = Collections.max(cellsForBoard, Comparator.comparing(cell -> cell.x)).x;
+      int rightmostXValue = getCellWithMaxDimension(cellsForBoard, fetchXvalue).x;
       width =
           getDimension(rightmostXValue, leftmostXValue);
     }
