@@ -1,4 +1,4 @@
-package graph;
+package gameOfLife.graph;
 
 import org.junit.Before;
 import org.junit.Test;

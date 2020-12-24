@@ -1,6 +1,6 @@
 import gameOfLife.cell.Cell;
-import graph.AdjacencyMatrix;
-import graph.Graph;
+import gameOfLife.graph.AdjacencyMatrix;
+import gameOfLife.graph.Graph;
 
 import java.util.List;
 

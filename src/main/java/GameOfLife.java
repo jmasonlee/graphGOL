@@ -22,7 +22,7 @@ public class GameOfLife {
         //Get list of cells to make alive
             //Do some fancy stuff with set intersections...
         //kill all isolated cells
-            //Remove cells with <2 neighbours from graph
+            //Remove cells with <2 neighbours from gameOfLife.graph
         //make all viable cells alive
     }
 }
