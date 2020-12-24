@@ -9,11 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 public class RelationshipClassifierTest {
-  private final TestHelper testHelper = new TestHelper();
 
   @Test
   public void testCellClassification() {
-    List<Cell> cellsToClassify = testHelper.getListOfCellsToClassify(new Cell(0, 0));
+    List<Cell> cellsToClassify = getListOfCellsToClassify(new Cell(0, 0));
 
     Map<RelationshipClassifier.Relationships, List<Cell>> relationship =
         RelationshipClassifier.classify(new Cell(0, 0), cellsToClassify);
