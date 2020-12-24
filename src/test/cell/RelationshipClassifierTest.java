@@ -27,23 +27,15 @@ public class RelationshipClassifierTest {
     Approvals.verifyAll("Boards", relationshipBoards);
   }
 
-  @Test
-  public void testNeighbourRelationship() {
-    List<Cell> cellsToClassify = Arrays.asList(new Cell[]{new Cell(1, 1)});
-
-    Map<RelationshipClassifier.Relationships, List<Cell>> relationship =
-        RelationshipClassifier.classify(new Cell(1, 2), cellsToClassify);
-
-    assertEquals(new Cell(1, 1), relationship.get(RelationshipClassifier.Relationships.NEIGHBOUR).get(0));
-  }
-
   private List<Cell> getListOfCellsToClassify(Cell cell) {
     List<Cell> cellsToClassify = new ArrayList<>();
+
     for (int x = cell.x - 3; x <= cell.x + 3; x++) {
       for (int y = cell.y - 3; y <= cell.y + 3; y++) {
         cellsToClassify.add(new Cell(x, y));
       }
     }
+
     return cellsToClassify;
   }
 }
