@@ -14,4 +14,8 @@ public class LiveCellsGraph {
   public List<Cell> getCells() {
     return liveCellsGraph.getNodes();
   }
+
+  public List<Cell> getCellsWithNumberOfNeighbours(int desiredNumberOfNeighbours) {
+    return liveCellsGraph.getNodes();
+  }
 }
