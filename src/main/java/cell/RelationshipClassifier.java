@@ -40,7 +40,7 @@ public class RelationshipClassifier {
     DISCONNECTED(-1),
     SELF(0),
     NEIGHBOUR(Math.sqrt(2)),
-    COPARENT(Math.sqrt(3));
+    COPARENT(Math.sqrt(8));
 
     public final double maxDistance;
 

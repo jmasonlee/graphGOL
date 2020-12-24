@@ -10,3 +10,9 @@ X X
 XXX  
      
      
+Boards[2] = 
+XXXXX
+X   X
+X   X
+X   X
+XXXXX
