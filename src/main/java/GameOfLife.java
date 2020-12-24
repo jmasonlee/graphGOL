@@ -1,5 +1,5 @@
 import gameOfLife.cell.Cell;
-import output.BoardOutputter;
+import gameOfLife.output.BoardOutputter;
 
 import java.util.ArrayList;
 import java.util.List;

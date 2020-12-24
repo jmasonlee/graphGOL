@@ -2,7 +2,7 @@ package gameOfLife.cell;
 
 import org.approvaltests.Approvals;
 import org.junit.Test;
-import output.BoardOutputter;
+import gameOfLife.output.BoardOutputter;
 
 import java.util.ArrayList;
 import java.util.List;

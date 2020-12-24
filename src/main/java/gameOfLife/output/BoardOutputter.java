@@ -1,4 +1,4 @@
-package output;
+package gameOfLife.output;
 
 import gameOfLife.cell.Cell;
 import org.apache.commons.lang.StringUtils;
