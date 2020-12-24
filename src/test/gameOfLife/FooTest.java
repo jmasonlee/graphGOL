@@ -1,3 +1,7 @@
+package gameOfLife;
+
+import gameOfLife.Foo;
+import gameOfLife.LiveCellsGraph;
 import gameOfLife.cell.Cell;
 import org.junit.Test;
 
@@ -22,7 +26,7 @@ public class FooTest {
 //              new Cell(0,2)
 //          });
 //
-//      LiveCellsGraph liveCellsGraph = new LiveCellsGraph(cellWithTwoNeighbours);
-//      assertTrue(Foo.livingCellsOnNextTurn(liveCellsGraph).contains(cellWithTwoNeighbours.get(0)));
+//      gameOfLife.LiveCellsGraph liveCellsGraph = new gameOfLife.LiveCellsGraph(cellWithTwoNeighbours);
+//      assertTrue(gameOfLife.Foo.livingCellsOnNextTurn(liveCellsGraph).contains(cellWithTwoNeighbours.get(0)));
 //  }
 }

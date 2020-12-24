@@ -1,3 +1,6 @@
+package gameOfLife;
+
+import gameOfLife.LiveCellsGraph;
 import gameOfLife.cell.Cell;
 import org.junit.Test;
 

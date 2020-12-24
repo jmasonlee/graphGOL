@@ -1,3 +1,5 @@
+package gameOfLife;
+
 import gameOfLife.cell.Cell;
 import gameOfLife.graph.AdjacencyMatrix;
 import gameOfLife.graph.Graph;

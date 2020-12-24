@@ -1,3 +1,5 @@
+package gameOfLife;
+
 import gameOfLife.cell.Cell;
 import gameOfLife.output.BoardOutputter;
 

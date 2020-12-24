@@ -1,3 +1,6 @@
+package gameOfLife;
+
+import gameOfLife.GameOfLife;
 import gameOfLife.cell.Cell;
 import org.approvaltests.Approvals;
 import org.junit.Test;
