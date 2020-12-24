@@ -32,10 +32,11 @@ public class RelationshipClassifierTest {
   }
 
   private List<Cell> getListOfCellsToClassify(Cell cell) {
+    int maxOneDimensionalDistance = 3;
     List<Cell> cellsToClassify = new ArrayList<>();
 
-    for (int x = cell.x - 3; x <= cell.x + 3; x++) {
-      for (int y = cell.y - 3; y <= cell.y + 3; y++) {
+    for (int x = cell.x - maxOneDimensionalDistance; x <= cell.x + maxOneDimensionalDistance; x++) {
+      for (int y = cell.y - maxOneDimensionalDistance; y <= cell.y + maxOneDimensionalDistance; y++) {
         cellsToClassify.add(new Cell(x, y));
       }
     }
