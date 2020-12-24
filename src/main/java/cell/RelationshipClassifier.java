@@ -15,6 +15,7 @@ public class RelationshipClassifier {
                     otherCell -> {
                       Double distanceBetweenCells =
                           calculateEuclideanDistanceBetweenCells(cell, (Cell) otherCell);
+                      
                       if (distanceBetweenCells == Relationships.SELF.maxDistance) {
                         return Relationships.SELF;
                       } else if (distanceBetweenCells <= Relationships.NEIGHBOUR.maxDistance) {

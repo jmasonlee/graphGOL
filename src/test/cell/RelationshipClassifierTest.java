@@ -5,11 +5,8 @@ import org.junit.Test;
 import output.BoardOutputter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.Assert.assertEquals;
 
 public class RelationshipClassifierTest {
   @Test
@@ -27,7 +24,7 @@ public class RelationshipClassifierTest {
     relationshipBoards.add("\n"
         + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.COPARENT)));
     relationshipBoards.add("\n"
-      + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.DISCONNECTED)));
+        + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.DISCONNECTED)));
     Approvals.verifyAll("Boards", relationshipBoards);
   }
 
