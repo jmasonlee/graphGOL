@@ -1,16 +1,31 @@
 package gameOfLife;
 
 import gameOfLife.cell.Cell;
+import gameOfLife.cell.RelationshipClassifier;
+import gameOfLife.cell.Relationships;
 import gameOfLife.graph.AdjacencyMatrix;
 import gameOfLife.graph.Graph;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LiveCellsGraph {
-  Graph<Cell, Integer> liveCellsGraph = new Graph<Cell, Integer>(new AdjacencyMatrix<>(-1));
+  Graph<Cell, Relationships> liveCellsGraph =
+      new Graph<Cell, Relationships>(new AdjacencyMatrix<>(Relationships.DISCONNECTED));
 
   public LiveCellsGraph(List<Cell> cells) {
     this.liveCellsGraph.addNodes(cells);
+    for(int i = 0; i < cells.size(); i++){
+      Map<Relationships, List<Cell>> relatedCells = RelationshipClassifier.classify(cells.get(i),cells);
+      for(Relationships relationshipType : relatedCells.keySet()){
+        if(relationshipType == Relationships.NEIGHBOUR || relationshipType == Relationships.COPARENT){
+          for (Cell cell: relatedCells.get(relationshipType)){
+            liveCellsGraph.setEdge(cells.get(i), cell, relationshipType);
+          }
+        }
+      }
+    }
   }
 
   public List<Cell> getCells() {
@@ -18,6 +33,14 @@ public class LiveCellsGraph {
   }
 
   public List<Cell> getCellsWithNumberOfNeighbours(int desiredNumberOfNeighbours) {
-    return liveCellsGraph.getNodes();
+    List<Cell> cellsWithEnoughNeighbours = new ArrayList<>();
+
+    for(Cell cell: liveCellsGraph.getNodes()) {
+      if(liveCellsGraph.findAllNodesWithSpecifiedDistance(cell, Relationships.NEIGHBOUR).size() == desiredNumberOfNeighbours){
+        cellsWithEnoughNeighbours.add(cell);
+      }
+    }
+
+    return cellsWithEnoughNeighbours;
   }
 }

@@ -14,18 +14,18 @@ public class RelationshipClassifierTest {
   public void testCellClassification() {
     List<Cell> cellsToClassify = getListOfCellsToClassify(new Cell(0, 0));
 
-    Map<RelationshipClassifier.Relationships, List<Cell>> relationship =
+    Map<Relationships, List<Cell>> relationship =
         RelationshipClassifier.classify(new Cell(0, 0), cellsToClassify);
 
     List<String> relationshipBoards = new ArrayList<>();
     relationshipBoards.add("\n"
-        + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.SELF)));
+        + BoardOutputter.createBoardOutput(relationship.get(Relationships.SELF)));
     relationshipBoards.add("\n"
-        + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.NEIGHBOUR)));
+        + BoardOutputter.createBoardOutput(relationship.get(Relationships.NEIGHBOUR)));
     relationshipBoards.add("\n"
-        + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.COPARENT)));
+        + BoardOutputter.createBoardOutput(relationship.get(Relationships.COPARENT)));
     relationshipBoards.add("\n"
-        + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.DISCONNECTED)));
+        + BoardOutputter.createBoardOutput(relationship.get(Relationships.DISCONNECTED)));
     Approvals.verifyAll("Boards", relationshipBoards);
   }
 
