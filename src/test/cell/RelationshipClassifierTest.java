@@ -26,6 +26,8 @@ public class RelationshipClassifierTest {
         + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.NEIGHBOUR)));
     relationshipBoards.add("\n"
         + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.COPARENT)));
+    relationshipBoards.add("\n"
+      + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.DISCONNECTED)));
     Approvals.verifyAll("Boards", relationshipBoards);
   }
 
