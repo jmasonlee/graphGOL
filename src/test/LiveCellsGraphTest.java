@@ -17,13 +17,18 @@ public class LiveCellsGraphTest {
 
   @Test
   public void testCanBeCreatedWithArrayOfCells() {
-    List<Cell> cells = new ArrayList<>();
-    cells.addAll(Arrays.asList(new Cell[] {new Cell(0, 0), new Cell(0, 1)}));
-    LiveCellsGraph liveCells = new LiveCellsGraph(cells);
-    assertEquals(cells, liveCells.getCells());
+
   }
 
+  @Test
+  public void testCanGetCellsWithSpecifiedNumberOfNeighbours() {
+    List<Cell> cells = new ArrayList<>();
+    cells.add(new Cell(0,0));
+    cells.add(new Cell(0, 1));
 
+    LiveCellsGraph liveCells = new LiveCellsGraph(cells);
+    assertEquals(cells, liveCells.getCellsWithNumberOfNeighbours(1));
+  }
 
-    //Approvals - how?
+  //Approvals - how
 }
