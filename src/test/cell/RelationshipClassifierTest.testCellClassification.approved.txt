@@ -4,3 +4,9 @@ X
      
      
      
+Boards[1] = 
+XXX  
+X X  
+XXX  
+     
+     

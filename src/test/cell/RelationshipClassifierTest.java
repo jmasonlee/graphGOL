@@ -20,7 +20,10 @@ public class RelationshipClassifierTest {
         RelationshipClassifier.classify(new Cell(0, 0), cellsToClassify);
 
     List<String> relationshipBoards = new ArrayList<>();
-    relationshipBoards.add("\n" + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.SELF)));
+    relationshipBoards.add("\n"
+        + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.SELF)));
+    relationshipBoards.add("\n"
+        + BoardOutputter.createBoardOutput(relationship.get(RelationshipClassifier.Relationships.NEIGHBOUR)));
     Approvals.verifyAll("Boards", relationshipBoards);
   }
 

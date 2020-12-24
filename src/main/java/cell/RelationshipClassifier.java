@@ -39,12 +39,12 @@ public class RelationshipClassifier {
   public enum Relationships {
     DISCONNECTED(-1),
     SELF(0),
-    NEIGHBOUR(1),
-    COPARENT(2);
+    NEIGHBOUR(Math.sqrt(2)),
+    COPARENT(Math.sqrt(3));
 
-    public final int maxDistance;
+    public final double maxDistance;
 
-    private Relationships(int maxDistance) {
+    private Relationships(double maxDistance) {
       this.maxDistance = maxDistance;
     }
   }
