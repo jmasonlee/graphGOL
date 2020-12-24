@@ -1,4 +1,4 @@
-import cell.Cell;
+import gameOfLife.cell.Cell;
 import output.BoardOutputter;
 
 import java.util.ArrayList;

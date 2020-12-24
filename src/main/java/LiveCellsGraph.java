@@ -1,4 +1,4 @@
-import cell.Cell;
+import gameOfLife.cell.Cell;
 import graph.AdjacencyMatrix;
 import graph.Graph;
 

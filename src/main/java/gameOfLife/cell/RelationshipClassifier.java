@@ -1,4 +1,4 @@
-package cell;
+package gameOfLife.cell;
 
 import java.util.List;
 import java.util.Map;

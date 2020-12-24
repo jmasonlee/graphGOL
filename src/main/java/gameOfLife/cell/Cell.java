@@ -1,4 +1,4 @@
-package cell;
+package gameOfLife.cell;
 
 public class Cell implements Comparable {
   public Integer y;

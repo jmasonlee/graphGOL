@@ -1,6 +1,6 @@
 package output;
 
-import cell.Cell;
+import gameOfLife.cell.Cell;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Collections;

@@ -1,6 +1,5 @@
-package cell;
+package gameOfLife.cell;
 
-import cell.Cell;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

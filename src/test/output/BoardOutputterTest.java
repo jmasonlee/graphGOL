@@ -1,6 +1,6 @@
 package output;
 
-import cell.Cell;
+import gameOfLife.cell.Cell;
 import org.approvaltests.Approvals;
 import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Test;

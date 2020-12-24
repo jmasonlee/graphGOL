@@ -1,4 +1,4 @@
-import cell.Cell;
+import gameOfLife.cell.Cell;
 import org.approvaltests.Approvals;
 import org.junit.Test;
 
@@ -17,12 +17,12 @@ public class GameOfLifeTest {
   public void testOneCellDies() {
     List<Cell> cells = new ArrayList<>();
     cells.add(new Cell(0,1));
-    // make board with one cell alive
+    // make board with one gameOfLife.cell alive
     GameOfLife gameOfLife = new GameOfLife(cells);
     String initialBoard = gameOfLife.outputBoard();
     // step
     gameOfLife.next();
-    // board with one cell should be dead
+    // board with one gameOfLife.cell should be dead
     String finalBoard = gameOfLife.outputBoard();
 
     StringBuilder sb = new StringBuilder();

@@ -1,4 +1,4 @@
-import cell.Cell;
+import gameOfLife.cell.Cell;
 import org.junit.Test;
 
 import java.util.ArrayList;

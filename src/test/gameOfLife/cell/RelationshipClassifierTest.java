@@ -1,4 +1,4 @@
-package cell;
+package gameOfLife.cell;
 
 import org.approvaltests.Approvals;
 import org.junit.Test;
