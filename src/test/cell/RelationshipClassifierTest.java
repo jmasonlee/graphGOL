@@ -1,6 +1,5 @@
 package cell;
 
-import gameOfLife.TestHelper;
 import org.approvaltests.Approvals;
 import org.junit.Test;
 import output.BoardOutputter;
@@ -31,8 +30,18 @@ public class RelationshipClassifierTest {
     Approvals.verifyAll("Boards", relationshipBoards);
   }
 
-  private List<Cell> getListOfCellsToClassify(Cell cell) {
+  public List<Cell> getListOfCellsToClassify(Cell cell) {
+    int maxOneDimensionalDistance = 3;
+    List<Cell> cellsToClassify = new ArrayList<Cell>();
 
-    return testHelper.getListOfCellsToClassify(cell);
+    for (int x = cell.x - maxOneDimensionalDistance; x <= cell.x + maxOneDimensionalDistance; x++) {
+      for (int y = cell.y - maxOneDimensionalDistance;
+           y <= cell.y + maxOneDimensionalDistance;
+           y++) {
+        cellsToClassify.add(new Cell(x, y));
+      }
+    }
+
+    return cellsToClassify;
   }
 }
