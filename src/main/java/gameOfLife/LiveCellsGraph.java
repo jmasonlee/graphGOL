@@ -20,11 +20,15 @@ public class LiveCellsGraph {
       Map<Relationships, List<Cell>> relatedCells = RelationshipClassifier.classify(cells.get(i),cells);
       for(Relationships relationshipType : relatedCells.keySet()){
         if(relationshipType == Relationships.NEIGHBOUR || relationshipType == Relationships.COPARENT){
-          for (Cell cell: relatedCells.get(relationshipType)){
-            liveCellsGraph.setEdge(cells.get(i), cell, relationshipType);
-          }
+          setAllRelationshipsOfTypeForCell(cells, i, relatedCells, relationshipType);
         }
       }
+    }
+  }
+
+  private void setAllRelationshipsOfTypeForCell(List<Cell> cells, int i, Map<Relationships, List<Cell>> relatedCells, Relationships relationshipType) {
+    for (Cell cell: relatedCells.get(relationshipType)){
+      liveCellsGraph.setEdge(cells.get(i), cell, relationshipType);
     }
   }
 
