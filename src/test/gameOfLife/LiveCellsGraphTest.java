@@ -15,36 +15,36 @@ public class LiveCellsGraphTest {
   public void testCanGetCellsWithSpecifiedNumberOfNeighbours() {
     Integer[] neighbourRange = new Integer[] {- 1,0,1};
 
-    List<Cell> cells = new ArrayList<>();
-    StringBuilder testOutput = new StringBuilder("\n");
 
+    StringBuilder testOutput = new StringBuilder();
+
+    testOutput.append("ONE NEIGHBOUR:\n");
     for(int x = 0; x < neighbourRange.length; x++){
       for(int y = 0; y < neighbourRange.length; y++) {
         if(neighbourRange[x] == 0 && neighbourRange[y] == 0){
           continue;
         }
-
+        List<Cell> cells = new ArrayList<>();
         Cell centre = calculateCentreBasedOnXandY(x,y);
         cells.add(centre);
         cells.add(new Cell(centre.x+neighbourRange[x], centre.y+neighbourRange[y]));
+        testOutput.append(cells);
+        LiveCellsGraph graph = new LiveCellsGraph(cells);
+        testOutput.append(" => ");
+        testOutput.append(graph.getCellsWithNumberOfNeighbours(1));
+        testOutput.append("\n");
       }
     }
 
-    LiveCellsGraph graph = new LiveCellsGraph(cells);
-    testOutput.append("ONE NEIGHBOUR:\n");
-    testOutput.append(BoardOutputter.createBoardOutput(cells));
-    testOutput.append("\n Detect Cells With 1 neighbour:\n");
-    testOutput.append(BoardOutputter.createBoardOutput(graph.getCellsWithNumberOfNeighbours(1)));
-
     testOutput.append("\nTWO NEIGHBOURS:\n");
-    cells = new ArrayList<>();
+    List<Cell> cells = new ArrayList<>();
     cells.add(new Cell(0, 0));
     cells.add(new Cell(0, 1));
     cells.add(new Cell(0, -1));
-    graph = new LiveCellsGraph(cells);
-    testOutput.append(BoardOutputter.createBoardOutput(cells));
-    testOutput.append("\n Detect Cells With 2 neighbours:\n");
-    testOutput.append(BoardOutputter.createBoardOutput(graph.getCellsWithNumberOfNeighbours(2)));
+    LiveCellsGraph graph = new LiveCellsGraph(cells);
+    testOutput.append(cells);
+    testOutput.append(" => ");
+    testOutput.append(graph.getCellsWithNumberOfNeighbours(2));
     Approvals.verify(testOutput);
   }
 
