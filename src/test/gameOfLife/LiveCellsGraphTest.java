@@ -31,9 +31,20 @@ public class LiveCellsGraphTest {
     }
 
     LiveCellsGraph graph = new LiveCellsGraph(cells);
+    testOutput.append("ONE NEIGHBOUR:\n");
     testOutput.append(BoardOutputter.createBoardOutput(cells));
-    testOutput.append("\nCells With 1 neighbour:\n");
+    testOutput.append("\n Detect Cells With 1 neighbour:\n");
     testOutput.append(BoardOutputter.createBoardOutput(graph.getCellsWithNumberOfNeighbours(1)));
+
+    testOutput.append("\nTWO NEIGHBOURS:\n");
+    cells = new ArrayList<>();
+    cells.add(new Cell(0, 0));
+    cells.add(new Cell(0, 1));
+    cells.add(new Cell(0, -1));
+    graph = new LiveCellsGraph(cells);
+    testOutput.append(BoardOutputter.createBoardOutput(cells));
+    testOutput.append("\n Detect Cells With 2 neighbours:\n");
+    testOutput.append(BoardOutputter.createBoardOutput(graph.getCellsWithNumberOfNeighbours(2)));
     Approvals.verify(testOutput);
   }
 
