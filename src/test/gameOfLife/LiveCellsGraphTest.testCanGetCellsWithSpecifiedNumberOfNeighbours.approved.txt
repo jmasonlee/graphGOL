@@ -1,0 +1,12 @@
+
+            X                  X                  X
+ X    XX     X     X           X     X     XX    X 
+X                  X                  X            
+                                                   
+                                                   
+Cells With 1 neighbour:
+            X                  X                  X
+ X    XX     X     X           X     X     XX    X 
+X                  X                  X            
+                                                   
+                                                   
