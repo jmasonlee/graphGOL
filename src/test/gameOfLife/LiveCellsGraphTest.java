@@ -1,7 +1,6 @@
 package gameOfLife;
 
 import gameOfLife.cell.Cell;
-import gameOfLife.output.BoardOutputter;
 import org.approvaltests.Approvals;
 import org.junit.Test;
 
@@ -13,27 +12,22 @@ import static org.junit.Assert.assertEquals;
 public class LiveCellsGraphTest {
   @Test
   public void testCanGetCellsWithSpecifiedNumberOfNeighbours() {
-    Integer[] neighbourRange = new Integer[] {- 1,0,1};
-
-
     StringBuilder testOutput = new StringBuilder();
 
+    Cell centre = new Cell(0, 0);
+    List<Cell> possibleNeighbours = generateAllPossibleNeighboursForCell(centre);
+
     testOutput.append("ONE NEIGHBOUR:\n");
-    for(int x = 0; x < neighbourRange.length; x++){
-      for(int y = 0; y < neighbourRange.length; y++) {
-        if(neighbourRange[x] == 0 && neighbourRange[y] == 0){
-          continue;
-        }
+
+    for(int i = 0; i< possibleNeighbours.size(); i++) {
         List<Cell> cells = new ArrayList<>();
-        Cell centre = calculateCentreBasedOnXandY(x,y);
         cells.add(centre);
-        cells.add(new Cell(centre.x+neighbourRange[x], centre.y+neighbourRange[y]));
+        cells.add(possibleNeighbours.get(i));
         testOutput.append(cells);
         LiveCellsGraph graph = new LiveCellsGraph(cells);
         testOutput.append(" => ");
         testOutput.append(graph.getCellsWithNumberOfNeighbours(1));
         testOutput.append("\n");
-      }
     }
 
     testOutput.append("\nTWO NEIGHBOURS:\n");
@@ -48,12 +42,33 @@ public class LiveCellsGraphTest {
     Approvals.verify(testOutput);
   }
 
+
+
+  private List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
+    Integer[] neighbourRange = new Integer[] {-1, 0, 1};
+    List<Cell> possibleNeighbours = new ArrayList<>();
+    for (int x = 0; x < neighbourRange.length; x++) {
+      for (int y = 0; y < neighbourRange.length; y++) {
+        if (neighbourRange[x] == 0 && neighbourRange[y] == 0) {
+          continue;
+        }
+
+        int neighbourX = cell.x+neighbourRange[x];
+        int neighbourY = cell.y+neighbourRange[y];
+
+        possibleNeighbours.add(new Cell(neighbourX, neighbourY));
+      }
+    }
+
+    return possibleNeighbours;
+  }
+
   private Cell calculateCentreBasedOnXandY(Integer x, Integer y) {
     int initialX = 0;
     int centreSeparator = 6;
-    int gridNumber = x*3 + y;
+    int gridNumber = x * 3 + y;
 
-    return new Cell(initialX + (centreSeparator*gridNumber),0);
+    return new Cell(initialX + (centreSeparator * gridNumber), 0);
   }
 
   @Test
