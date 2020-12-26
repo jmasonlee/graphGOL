@@ -20,14 +20,7 @@ public class LiveCellsGraphTest {
     testOutput.append("ONE NEIGHBOUR:\n");
 
     for(int i = 0; i< possibleNeighbours.size(); i++) {
-        List<Cell> cells = new ArrayList<>();
-        cells.add(centre);
-        cells.add(possibleNeighbours.get(i));
-        testOutput.append(cells);
-        LiveCellsGraph graph = new LiveCellsGraph(cells);
-        testOutput.append(" => ");
-        testOutput.append(graph.getCellsWithNumberOfNeighbours(1));
-        testOutput.append("\n");
+      testOutput = findCellsWithSpecifiedNumberOfNeighbours(testOutput, centre, possibleNeighbours.get(i));
     }
 
     testOutput.append("\nTWO NEIGHBOURS:\n");
@@ -42,6 +35,17 @@ public class LiveCellsGraphTest {
     Approvals.verify(testOutput);
   }
 
+  private StringBuilder findCellsWithSpecifiedNumberOfNeighbours(StringBuilder testOutput, Cell centre, Cell neighbour) {
+    List<Cell> cells = new ArrayList<>();
+    cells.add(centre);
+    cells.add(neighbour);
+    testOutput.append(cells);
+    LiveCellsGraph graph = new LiveCellsGraph(cells);
+    testOutput.append(" => ");
+    testOutput.append(graph.getCellsWithNumberOfNeighbours(1));
+    testOutput.append("\n");
+    return testOutput;
+  }
 
 
   private List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
