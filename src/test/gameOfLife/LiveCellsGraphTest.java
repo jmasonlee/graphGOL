@@ -13,6 +13,14 @@ import static org.junit.Assert.assertEquals;
 
 public class LiveCellsGraphTest {
 
+  @Test
+  public void testCanGetCellsWithNoNeighbours() {
+    List<Cell> cellWithNoNeighbours = Arrays.asList(new Cell[]{new Cell(0, 0)});
+
+    LiveCellsGraph graph = new LiveCellsGraph(cellWithNoNeighbours);
+
+    Approvals.verify(cellWithNoNeighbours.toString() + " => " + graph.getCellsWithNumberOfNeighbours(0));
+  }
 
   @Test
   public void testCanGetCellsWithOneNeighbour() {
