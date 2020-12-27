@@ -2,49 +2,53 @@ package gameOfLife;
 
 import gameOfLife.cell.Cell;
 import org.approvaltests.Approvals;
+import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class LiveCellsGraphTest {
+
+
   @Test
-  public void testCanGetCellsWithSpecifiedNumberOfNeighbours() {
-    StringBuilder testOutput = new StringBuilder();
+  public void testCanGetCellsWithOneNeighbour() {
+    Cell[] centre = new Cell[]{new Cell(0, 0)};
+    Cell[] possibleNeighbours = new Cell[8];
+    generateAllPossibleNeighboursForCell(centre[0]).toArray(possibleNeighbours);
 
-    Cell centre = new Cell(0, 0);
-    List<Cell> possibleNeighbours = generateAllPossibleNeighboursForCell(centre);
+    //testOutput.append("ONE NEIGHBOUR:\n");
 
-    testOutput.append("ONE NEIGHBOUR:\n");
+    CombinationApprovals.verifyAllCombinations(this::findCellsWithSpecifiedNumberOfNeighbours, centre, possibleNeighbours);
 
-    for(int i = 0; i< possibleNeighbours.size(); i++) {
-      testOutput = findCellsWithSpecifiedNumberOfNeighbours(testOutput, centre, possibleNeighbours.get(i));
-    }
-
-    testOutput.append("\nTWO NEIGHBOURS:\n");
-    List<Cell> cells = new ArrayList<>();
-    cells.add(new Cell(0, 0));
-    cells.add(new Cell(0, 1));
-    cells.add(new Cell(0, -1));
-    LiveCellsGraph graph = new LiveCellsGraph(cells);
-    testOutput.append(cells);
-    testOutput.append(" => ");
-    testOutput.append(graph.getCellsWithNumberOfNeighbours(2));
-    Approvals.verify(testOutput);
+//    testOutput.append("\nTWO NEIGHBOURS:\n");
+//    List<Cell> cells = new ArrayList<>();
+//    cells.add(new Cell(0, 0));
+//    cells.add(new Cell(0, 1));
+//    cells.add(new Cell(0, -1));
+//    LiveCellsGraph graph = new LiveCellsGraph(cells);
+//    testOutput.append(cells);
+//    testOutput.append(" => ");
+//    testOutput.append(graph.getCellsWithNumberOfNeighbours(2));
+//    Approvals.verify(testOutput);
   }
 
-  private StringBuilder findCellsWithSpecifiedNumberOfNeighbours(StringBuilder testOutput, Cell centre, Cell neighbour) {
+  private String findCellsWithSpecifiedNumberOfNeighbours(Cell centre, Cell neighbour) {
+    StringBuilder testOutput = new StringBuilder();
+
     List<Cell> cells = new ArrayList<>();
     cells.add(centre);
     cells.add(neighbour);
-    testOutput.append(cells);
+
     LiveCellsGraph graph = new LiveCellsGraph(cells);
-    testOutput.append(" => ");
+
     testOutput.append(graph.getCellsWithNumberOfNeighbours(1));
     testOutput.append("\n");
-    return testOutput;
+
+    return testOutput.toString();
   }
 
 
