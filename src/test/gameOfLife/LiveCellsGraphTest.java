@@ -44,10 +44,10 @@ public class LiveCellsGraphTest {
   public void testCanGetCellsWithTwoNeighbours() {
     Cell centre = new Cell(0, 0);
     int desiredNumberOfNeighbours = 2;
-    List<Cell> possibleNeighbours = generateAllPossibleNeighboursForCell(centre);
+    List<Cell> allNeighbours = generateAllPossibleNeighboursForCell(centre);
 
     List<List<Cell>> neighbourCombinations =
-        allCombinationsOfDesiredNumberOfNeighbours(possibleNeighbours, desiredNumberOfNeighbours);
+        allCombinationsOfDesiredNumberOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
 
     StringBuilder testOutput =
         testFilteringOnNeighbourCountForAllCombinationsOfNeighbours(
