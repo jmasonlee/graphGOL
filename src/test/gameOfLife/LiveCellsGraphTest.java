@@ -24,13 +24,24 @@ public class LiveCellsGraphTest {
 
   @Test
   public void testCanGetCellsWithOneNeighbour() {
-    Cell[] centre = new Cell[]{new Cell(0, 0)};
+    Cell centre = new Cell(0, 0);
+    List<Cell> possibleNeighbours = generateAllPossibleNeighboursForCell(centre);
+    int desiredNumberOfNeighbours = 1;
+    StringBuilder testOutput = new StringBuilder();
+
+    possibleNeighbours.forEach(neighbour -> {
+      List<Cell> neighbourList = new ArrayList<>();
+      neighbourList.add(neighbour);
+      testOutput.append(findCellsWithSpecifiedNumberOfNeighbours(centre, neighbourList, desiredNumberOfNeighbours));
+    });
+
+    Approvals.verify(testOutput);
+  }
     Cell[] possibleNeighbours = new Cell[8];
     generateAllPossibleNeighboursForCell(centre[0]).toArray(possibleNeighbours);
 
     //testOutput.append("ONE NEIGHBOUR:\n");
 
-    CombinationApprovals.verifyAllCombinations(this::findCellsWithSpecifiedNumberOfNeighbours, centre, possibleNeighbours);
 
 //    testOutput.append("\nTWO NEIGHBOURS:\n");
 //    List<Cell> cells = new ArrayList<>();
@@ -44,12 +55,15 @@ public class LiveCellsGraphTest {
 //    Approvals.verify(testOutput);
   }
 
-  private String findCellsWithSpecifiedNumberOfNeighbours(Cell centre, Cell neighbour) {
+  private String findCellsWithSpecifiedNumberOfNeighbours(Cell centre, List<Cell> neighbours, int desiredNumberOfNeighbours) {
     StringBuilder testOutput = new StringBuilder();
 
     List<Cell> cells = new ArrayList<>();
     cells.add(centre);
-    cells.add(neighbour);
+    cells.addAll(neighbours);
+
+    testOutput.append(cells);
+    testOutput.append(" => ");
 
     LiveCellsGraph graph = new LiveCellsGraph(cells);
 
@@ -58,7 +72,6 @@ public class LiveCellsGraphTest {
 
     return testOutput.toString();
   }
-
 
   private List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
     Integer[] neighbourRange = new Integer[] {-1, 0, 1};
