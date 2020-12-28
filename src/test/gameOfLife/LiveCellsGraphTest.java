@@ -31,7 +31,7 @@ public class LiveCellsGraphTest {
     int desiredNumberOfNeighbours = 1;
 
     List<List<Cell>> neighbourCombinations =
-        allCombinationsOfDesiredNumberOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
+        allCombinationsOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
 
     StringBuilder testOutput =
         testFilteringOnNeighbourCountForAllCombinationsOfNeighbours(
@@ -47,7 +47,7 @@ public class LiveCellsGraphTest {
     List<Cell> allNeighbours = generateAllPossibleNeighboursForCell(centre);
 
     List<List<Cell>> neighbourCombinations =
-        allCombinationsOfDesiredNumberOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
+        allCombinationsOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
 
     StringBuilder testOutput =
         testFilteringOnNeighbourCountForAllCombinationsOfNeighbours(
@@ -70,7 +70,7 @@ public class LiveCellsGraphTest {
     return testOutput;
   }
 
-  private List<List<Cell>> allCombinationsOfDesiredNumberOfNeighbours(
+  private List<List<Cell>> allCombinationsOfNeighbours(
       List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
 
     Iterator<int[]> neighbourIterator =
