@@ -73,23 +73,38 @@ public class LiveCellsGraphTest {
   private List<List<Cell>> allCombinationsOfDesiredNumberOfNeighbours(
       List<Cell> possibleNeighbours, int desiredNumberOfNeighbours) {
 
-    List<List<Cell>> neighbourCombinations = new ArrayList<>();
     Iterator<int[]> neighbourIterator =
-        CombinatoricsUtils.combinationsIterator(
-            possibleNeighbours.size(), desiredNumberOfNeighbours);
+      createCombinationsIterator(possibleNeighbours, desiredNumberOfNeighbours);
+
+    return iterateOverAllPossibleCombinations(possibleNeighbours, neighbourIterator);
+  }
+
+  private Iterator<int[]> createCombinationsIterator(List<Cell> possibleNeighbours, int desiredNumberOfNeighbours) {
+    return CombinatoricsUtils.combinationsIterator(possibleNeighbours.size(), desiredNumberOfNeighbours);
+  }
+
+  private List<List<Cell>> iterateOverAllPossibleCombinations(List<Cell> allNeighbours, Iterator<int[]> neighbourIterator) {
+    List<List<Cell>> neighbourCombinations = new ArrayList<>();
 
     while (neighbourIterator.hasNext()) {
-      int[] combinationIndices = neighbourIterator.next();
-      List<Cell> neighbours = new ArrayList<>();
+      int[] neighbourIndices = neighbourIterator.next();
 
-      for (int index : combinationIndices) {
-        neighbours.add(possibleNeighbours.get(index));
-      }
+      List<Cell> neighbours = matchIndicesToNeighbours(allNeighbours, neighbourIndices);
 
       neighbourCombinations.add(neighbours);
     }
 
     return neighbourCombinations;
+  }
+
+  private List<Cell> matchIndicesToNeighbours(List<Cell> allNeighbours, int[] neighbourIndices) {
+    List<Cell> neighbours = new ArrayList<>();
+
+    for (int index : neighbourIndices) {
+      neighbours.add(allNeighbours.get(index));
+    }
+
+    return neighbours;
   }
 
   private String findCellsWithSpecifiedNumberOfNeighbours(
@@ -108,7 +123,7 @@ public class LiveCellsGraphTest {
     testOutput.append(" => ");
     testOutput.append(graph.getCellsWithNumberOfNeighbours(desiredNumberOfNeighbours));
     testOutput.append("\n");
-    
+
     return testOutput;
   }
 
