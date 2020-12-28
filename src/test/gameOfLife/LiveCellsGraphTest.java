@@ -79,8 +79,8 @@ public class LiveCellsGraphTest {
     return iterateOverAllPossibleCombinations(allNeighbours, neighbourIterator);
   }
 
-  private Iterator<int[]> createCombinationsIterator(List<Cell> possibleNeighbours, int desiredNumberOfNeighbours) {
-    return CombinatoricsUtils.combinationsIterator(possibleNeighbours.size(), desiredNumberOfNeighbours);
+  private Iterator<int[]> createCombinationsIterator(List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
+    return CombinatoricsUtils.combinationsIterator(allNeighbours.size(), desiredNumberOfNeighbours);
   }
 
   private List<List<Cell>> iterateOverAllPossibleCombinations(List<Cell> allNeighbours, Iterator<int[]> neighbourIterator) {
