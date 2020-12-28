@@ -136,7 +136,7 @@ public class LiveCellsGraphTest {
 
   private List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
     Integer[] neighbourRange = new Integer[] {-1, 0, 1};
-    List<Cell> possibleNeighbours = new ArrayList<>();
+    List<Cell> allNeighbours = new ArrayList<>();
 
     for (int x = 0; x < neighbourRange.length; x++) {
       for (int y = 0; y < neighbourRange.length; y++) {
@@ -144,11 +144,11 @@ public class LiveCellsGraphTest {
           continue;
         }
 
-        possibleNeighbours.add(createNeighbour(cell, neighbourRange[x], neighbourRange[y]));
+        allNeighbours.add(createNeighbour(cell, neighbourRange[x], neighbourRange[y]));
       }
     }
 
-    return possibleNeighbours;
+    return allNeighbours;
   }
 
   private Cell createNeighbour(Cell centre, int relativeX, int relativeY) {
