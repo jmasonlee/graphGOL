@@ -47,7 +47,8 @@ public class LiveCellsGraphTest {
 
     StringBuilder testOutput = new StringBuilder();
 
-    Iterator<int[]> neighbourIterator = CombinatoricsUtils.combinationsIterator(possibleNeighbours.size(), 2);
+    int desiredNumberOfNeighbours = 2;
+    Iterator<int[]> neighbourIterator = CombinatoricsUtils.combinationsIterator(possibleNeighbours.size(), desiredNumberOfNeighbours);
     while (neighbourIterator.hasNext()) {
       int[] combinationIndices = neighbourIterator.next();
       List<Cell> neighbours = new ArrayList<>();
@@ -60,7 +61,7 @@ public class LiveCellsGraphTest {
     }
 
     neighbourCombinations.forEach(neighbourList -> {
-      testOutput.append(findCellsWithSpecifiedNumberOfNeighbours(centre, neighbourList, 2));
+      testOutput.append(findCellsWithSpecifiedNumberOfNeighbours(centre, neighbourList, desiredNumberOfNeighbours));
     });
 
     Approvals.verify(testOutput);
