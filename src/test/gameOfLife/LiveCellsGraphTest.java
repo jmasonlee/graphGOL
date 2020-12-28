@@ -94,16 +94,22 @@ public class LiveCellsGraphTest {
 
   private String findCellsWithSpecifiedNumberOfNeighbours(
       Cell centre, List<Cell> neighbours, int desiredNumberOfNeighbours) {
-    StringBuilder testOutput = new StringBuilder();
 
     LiveCellsGraph graph = new LiveCellsGraph(getCellsUnderTest(centre, neighbours));
+    StringBuilder testOutput = getOutputFromFilteringBasedOnNumberOfNeighbours(desiredNumberOfNeighbours, graph);
+
+    return testOutput.toString();
+  }
+
+  private StringBuilder getOutputFromFilteringBasedOnNumberOfNeighbours(int desiredNumberOfNeighbours, LiveCellsGraph graph) {
+    StringBuilder testOutput = new StringBuilder();
 
     testOutput.append(graph.getCells());
     testOutput.append(" => ");
     testOutput.append(graph.getCellsWithNumberOfNeighbours(desiredNumberOfNeighbours));
     testOutput.append("\n");
-
-    return testOutput.toString();
+    
+    return testOutput;
   }
 
   private List<Cell> getCellsUnderTest(Cell centre, List<Cell> neighbours) {
