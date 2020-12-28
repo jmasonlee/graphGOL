@@ -53,6 +53,12 @@ public class LiveCellsGraphTest {
     List<List<Cell>> neighbourCombinations =
         allCombinationsOfDesiredNumberOfNeighbours(possibleNeighbours, desiredNumberOfNeighbours);
 
+    StringBuilder testOutput = testFilteringOnNeighbourCountForAllCombinationsOfNeighbours(centre, desiredNumberOfNeighbours, neighbourCombinations);
+
+    Approvals.verify(testOutput);
+  }
+
+  private StringBuilder testFilteringOnNeighbourCountForAllCombinationsOfNeighbours(Cell centre, int desiredNumberOfNeighbours, List<List<Cell>> neighbourCombinations) {
     StringBuilder testOutput = new StringBuilder();
 
     neighbourCombinations.forEach(
@@ -61,8 +67,7 @@ public class LiveCellsGraphTest {
               findCellsWithSpecifiedNumberOfNeighbours(
                   centre, neighbourList, desiredNumberOfNeighbours));
         });
-
-    Approvals.verify(testOutput);
+    return testOutput;
   }
 
   private List<List<Cell>> allCombinationsOfDesiredNumberOfNeighbours(
