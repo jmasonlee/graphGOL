@@ -34,7 +34,7 @@ public class LiveCellsGraphTest {
         allCombinationsOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
 
     StringBuilder testOutput =
-        testFilteringOnNeighbourCountForAllCombinationsOfNeighbours(
+        filterOnNeighbourCountForAllNeighbourCombinations(
             centre, desiredNumberOfNeighbours, neighbourCombinations);
 
     Approvals.verify(testOutput);
@@ -50,13 +50,13 @@ public class LiveCellsGraphTest {
         allCombinationsOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
 
     StringBuilder testOutput =
-        testFilteringOnNeighbourCountForAllCombinationsOfNeighbours(
+        filterOnNeighbourCountForAllNeighbourCombinations(
             centre, desiredNumberOfNeighbours, neighbourCombinations);
 
     Approvals.verify(testOutput);
   }
 
-  private StringBuilder testFilteringOnNeighbourCountForAllCombinationsOfNeighbours(
+  private StringBuilder filterOnNeighbourCountForAllNeighbourCombinations(
       Cell centre, int desiredNumberOfNeighbours, List<List<Cell>> neighbourCombinations) {
     StringBuilder testOutput = new StringBuilder();
 
