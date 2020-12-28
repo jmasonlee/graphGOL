@@ -71,12 +71,12 @@ public class LiveCellsGraphTest {
   }
 
   private List<List<Cell>> allCombinationsOfDesiredNumberOfNeighbours(
-      List<Cell> possibleNeighbours, int desiredNumberOfNeighbours) {
+      List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
 
     Iterator<int[]> neighbourIterator =
-      createCombinationsIterator(possibleNeighbours, desiredNumberOfNeighbours);
+      createCombinationsIterator(allNeighbours, desiredNumberOfNeighbours);
 
-    return iterateOverAllPossibleCombinations(possibleNeighbours, neighbourIterator);
+    return iterateOverAllPossibleCombinations(allNeighbours, neighbourIterator);
   }
 
   private Iterator<int[]> createCombinationsIterator(List<Cell> possibleNeighbours, int desiredNumberOfNeighbours) {
