@@ -61,7 +61,7 @@ public class LiveCellsGraphTest {
     neighbourCombinations.forEach(
         neighbourList -> {
           testOutput.append(
-              findCellsWithSpecifiedNumberOfNeighbours(
+              filterCellsOnNeighbourCount(
                   centre, neighbourList, desiredNumberOfNeighbours));
         });
 
@@ -107,7 +107,7 @@ public class LiveCellsGraphTest {
     return neighbours;
   }
 
-  private String findCellsWithSpecifiedNumberOfNeighbours(
+  private String filterCellsOnNeighbourCount(
       Cell centre, List<Cell> neighbours, int desiredNumberOfNeighbours) {
 
     LiveCellsGraph graph = new LiveCellsGraph(getCellsUnderTest(centre, neighbours));
