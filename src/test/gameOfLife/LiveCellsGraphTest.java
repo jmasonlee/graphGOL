@@ -96,19 +96,21 @@ public class LiveCellsGraphTest {
       Cell centre, List<Cell> neighbours, int desiredNumberOfNeighbours) {
     StringBuilder testOutput = new StringBuilder();
 
-    List<Cell> cells = new ArrayList<>();
-    cells.add(centre);
-    cells.addAll(neighbours);
+    LiveCellsGraph graph = new LiveCellsGraph(getCellsUnderTest(centre, neighbours));
 
-    testOutput.append(cells);
+    testOutput.append(graph.getCells());
     testOutput.append(" => ");
-
-    LiveCellsGraph graph = new LiveCellsGraph(cells);
-
     testOutput.append(graph.getCellsWithNumberOfNeighbours(desiredNumberOfNeighbours));
     testOutput.append("\n");
 
     return testOutput.toString();
+  }
+
+  private List<Cell> getCellsUnderTest(Cell centre, List<Cell> neighbours) {
+    List<Cell> cells = new ArrayList<>();
+    cells.add(centre);
+    cells.addAll(neighbours);
+    return cells;
   }
 
   private List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
