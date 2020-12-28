@@ -121,14 +121,18 @@ public class LiveCellsGraphTest {
           continue;
         }
 
-        int neighbourX = cell.x + neighbourRange[x];
-        int neighbourY = cell.y + neighbourRange[y];
-
-        possibleNeighbours.add(new Cell(neighbourX, neighbourY));
+        possibleNeighbours.add(createNeighbour(cell, neighbourRange[x], neighbourRange[y]));
       }
     }
 
     return possibleNeighbours;
+  }
+
+  private Cell createNeighbour(Cell centre, int relativeX, int relativeY) {
+    int neighbourX = centre.x + relativeX;
+    int neighbourY = centre.y + relativeY;
+
+    return new Cell(neighbourX, neighbourY);
   }
 
   private Cell calculateCentreBasedOnXandY(Integer x, Integer y) {
