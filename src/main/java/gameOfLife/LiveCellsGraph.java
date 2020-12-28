@@ -36,7 +36,7 @@ public class LiveCellsGraph {
     return liveCellsGraph.getNodes();
   }
 
-  public List<Cell> getCellsWithNumberOfNeighbours(int desiredNumberOfNeighbours) {
+  public List<Cell> filterCellsByNeighbourCount(int desiredNumberOfNeighbours) {
     List<Cell> cellsWithEnoughNeighbours = new ArrayList<>();
 
     for(Cell cell: liveCellsGraph.getNodes()) {

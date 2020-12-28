@@ -19,7 +19,7 @@ public class LiveCellsGraphTest {
     LiveCellsGraph graph = new LiveCellsGraph(cellWithNoNeighbours);
 
     Approvals.verify(
-        cellWithNoNeighbours.toString() + " => " + graph.getCellsWithNumberOfNeighbours(0));
+        cellWithNoNeighbours.toString() + " => " + graph.filterCellsByNeighbourCount(0));
   }
 
   @Test
@@ -136,7 +136,7 @@ public class LiveCellsGraphTest {
 
     LiveCellsGraph graph = new LiveCellsGraph(getCellsUnderTest(centre, neighbours));
     List<Cell> originalCells = graph.getCells();
-    List<Cell> filteredCells = graph.getCellsWithNumberOfNeighbours(desiredNumberOfNeighbours);
+    List<Cell> filteredCells = graph.filterCellsByNeighbourCount(desiredNumberOfNeighbours);
 
     StringBuilder testOutput =
         formatFilteringResults(originalCells, filteredCells);
