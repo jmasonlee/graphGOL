@@ -138,18 +138,4 @@ public class LiveCellsGraphTest {
 
     return new Cell(initialX + (centreSeparator * gridNumber), 0);
   }
-
-  @Test
-  public void testCanGetCellsWithTwoNeighboursAssert() {
-    List<Cell> cells = new ArrayList<>();
-    cells.add(new Cell(0, 0));
-    cells.add(new Cell(0, 1));
-    cells.add(new Cell(0, -1));
-
-    List<Cell> expectedOutput = new ArrayList<>();
-    expectedOutput.add(cells.get(0));
-
-    LiveCellsGraph liveCells = new LiveCellsGraph(cells);
-    assertEquals(expectedOutput, liveCells.getCellsWithNumberOfNeighbours(2));
-  }
 }
