@@ -5,9 +5,7 @@ import org.approvaltests.Approvals;
 import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,11 +13,12 @@ public class LiveCellsGraphTest {
 
   @Test
   public void testCanGetCellsWithNoNeighbours() {
-    List<Cell> cellWithNoNeighbours = Arrays.asList(new Cell[]{new Cell(0, 0)});
+    List<Cell> cellWithNoNeighbours = Arrays.asList(new Cell[] {new Cell(0, 0)});
 
     LiveCellsGraph graph = new LiveCellsGraph(cellWithNoNeighbours);
 
-    Approvals.verify(cellWithNoNeighbours.toString() + " => " + graph.getCellsWithNumberOfNeighbours(0));
+    Approvals.verify(
+        cellWithNoNeighbours.toString() + " => " + graph.getCellsWithNumberOfNeighbours(0));
   }
 
   @Test
@@ -82,8 +81,8 @@ public class LiveCellsGraphTest {
           continue;
         }
 
-        int neighbourX = cell.x+neighbourRange[x];
-        int neighbourY = cell.y+neighbourRange[y];
+        int neighbourX = cell.x + neighbourRange[x];
+        int neighbourY = cell.y + neighbourRange[y];
 
         possibleNeighbours.add(new Cell(neighbourX, neighbourY));
       }
