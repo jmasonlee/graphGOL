@@ -41,20 +41,19 @@ public class LiveCellsGraphTest {
   @Test
   public void testCanGetCellsWithTwoNeighbours() {
     Cell centre = new Cell(0, 0);
-    Cell[] possibleNeighbours = new Cell[8];
-    generateAllPossibleNeighboursForCell(centre).toArray(possibleNeighbours);
+    List<Cell> possibleNeighbours = generateAllPossibleNeighboursForCell(centre);
 
     List<List<Cell>> neighbourCombinations = new ArrayList<>();
 
     StringBuilder testOutput = new StringBuilder();
 
-    Iterator<int[]> neighbourIterator = CombinatoricsUtils.combinationsIterator(possibleNeighbours.length, 2);
+    Iterator<int[]> neighbourIterator = CombinatoricsUtils.combinationsIterator(possibleNeighbours.size(), 2);
     while (neighbourIterator.hasNext()) {
       int[] combinationIndices = neighbourIterator.next();
       List<Cell> neighbours = new ArrayList<>();
 
       for(int index : combinationIndices){
-        neighbours.add(possibleNeighbours[index]);
+        neighbours.add(possibleNeighbours.get(index));
       }
 
       neighbourCombinations.add(neighbours);
