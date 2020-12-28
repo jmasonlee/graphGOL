@@ -135,19 +135,22 @@ public class LiveCellsGraphTest {
       Cell centre, List<Cell> neighbours, int desiredNumberOfNeighbours) {
 
     LiveCellsGraph graph = new LiveCellsGraph(getCellsUnderTest(centre, neighbours));
+    List<Cell> originalCells = graph.getCells();
+    List<Cell> filteredCells = graph.getCellsWithNumberOfNeighbours(desiredNumberOfNeighbours);
+
     StringBuilder testOutput =
-        getOutputFromFilteringBasedOnNumberOfNeighbours(desiredNumberOfNeighbours, graph);
+        formatFilteringResults(originalCells, filteredCells);
 
     return testOutput.toString();
   }
 
-  private StringBuilder getOutputFromFilteringBasedOnNumberOfNeighbours(
-      int desiredNumberOfNeighbours, LiveCellsGraph graph) {
+  private StringBuilder formatFilteringResults(
+    List<Cell> originalCells, List<Cell> filteredCells) {
     StringBuilder testOutput = new StringBuilder();
 
-    testOutput.append(graph.getCells());
+    testOutput.append(originalCells);
     testOutput.append(" => ");
-    testOutput.append(graph.getCellsWithNumberOfNeighbours(desiredNumberOfNeighbours));
+    testOutput.append(filteredCells);
     testOutput.append("\n");
 
     return testOutput;
