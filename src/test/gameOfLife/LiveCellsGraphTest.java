@@ -31,10 +31,11 @@ public class LiveCellsGraphTest {
     int desiredNumberOfNeighbours = 1;
     StringBuilder testOutput = new StringBuilder();
 
-    possibleNeighbours.forEach(
-        neighbour -> {
-          List<Cell> neighbourList = new ArrayList<>();
-          neighbourList.add(neighbour);
+    List<List<Cell>> neighbourCombinations =
+      allCombinationsOfDesiredNumberOfNeighbours(possibleNeighbours, desiredNumberOfNeighbours);
+
+    neighbourCombinations.forEach(
+        neighbourList -> {
           testOutput.append(
               findCellsWithSpecifiedNumberOfNeighbours(
                   centre, neighbourList, desiredNumberOfNeighbours));
