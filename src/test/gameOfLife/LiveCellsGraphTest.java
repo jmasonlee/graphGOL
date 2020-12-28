@@ -10,8 +10,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
 public class LiveCellsGraphTest {
 
   @Test
@@ -74,16 +72,18 @@ public class LiveCellsGraphTest {
       List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
 
     Iterator<int[]> neighbourIterator =
-      createCombinationsIterator(allNeighbours, desiredNumberOfNeighbours);
+        createCombinationsIterator(allNeighbours, desiredNumberOfNeighbours);
 
     return iterateOverAllPossibleCombinations(allNeighbours, neighbourIterator);
   }
 
-  private Iterator<int[]> createCombinationsIterator(List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
+  private Iterator<int[]> createCombinationsIterator(
+      List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
     return CombinatoricsUtils.combinationsIterator(allNeighbours.size(), desiredNumberOfNeighbours);
   }
 
-  private List<List<Cell>> iterateOverAllPossibleCombinations(List<Cell> allNeighbours, Iterator<int[]> neighbourIterator) {
+  private List<List<Cell>> iterateOverAllPossibleCombinations(
+      List<Cell> allNeighbours, Iterator<int[]> neighbourIterator) {
     List<List<Cell>> neighbourCombinations = new ArrayList<>();
 
     while (neighbourIterator.hasNext()) {
@@ -111,12 +111,14 @@ public class LiveCellsGraphTest {
       Cell centre, List<Cell> neighbours, int desiredNumberOfNeighbours) {
 
     LiveCellsGraph graph = new LiveCellsGraph(getCellsUnderTest(centre, neighbours));
-    StringBuilder testOutput = getOutputFromFilteringBasedOnNumberOfNeighbours(desiredNumberOfNeighbours, graph);
+    StringBuilder testOutput =
+        getOutputFromFilteringBasedOnNumberOfNeighbours(desiredNumberOfNeighbours, graph);
 
     return testOutput.toString();
   }
 
-  private StringBuilder getOutputFromFilteringBasedOnNumberOfNeighbours(int desiredNumberOfNeighbours, LiveCellsGraph graph) {
+  private StringBuilder getOutputFromFilteringBasedOnNumberOfNeighbours(
+      int desiredNumberOfNeighbours, LiveCellsGraph graph) {
     StringBuilder testOutput = new StringBuilder();
 
     testOutput.append(graph.getCells());
