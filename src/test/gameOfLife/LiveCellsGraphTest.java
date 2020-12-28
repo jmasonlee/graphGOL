@@ -27,11 +27,11 @@ public class LiveCellsGraphTest {
   @Test
   public void testCanGetCellsWithOneNeighbour() {
     Cell centre = new Cell(0, 0);
-    List<Cell> possibleNeighbours = generateAllPossibleNeighboursForCell(centre);
+    List<Cell> allNeighbours = generateAllPossibleNeighboursForCell(centre);
     int desiredNumberOfNeighbours = 1;
 
     List<List<Cell>> neighbourCombinations =
-        allCombinationsOfDesiredNumberOfNeighbours(possibleNeighbours, desiredNumberOfNeighbours);
+        allCombinationsOfDesiredNumberOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
 
     StringBuilder testOutput =
         testFilteringOnNeighbourCountForAllCombinationsOfNeighbours(
