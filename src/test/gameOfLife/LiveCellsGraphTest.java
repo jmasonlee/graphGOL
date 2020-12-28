@@ -54,36 +54,46 @@ public class LiveCellsGraphTest {
     Approvals.verify(testOutput);
   }
 
-  private StringBuilder filterOnNeighbourCountForAllNeighbourCombinations(
-      Cell centre, int desiredNumberOfNeighbours, List<List<Cell>> neighbourCombinations) {
-    StringBuilder testOutput = new StringBuilder();
+  private List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
+    Integer[] neighbourRange = new Integer[] {-1, 0, 1};
+    List<Cell> allNeighbours = new ArrayList<>();
 
-    neighbourCombinations.forEach(
-        neighbourList -> {
-          testOutput.append(
-              filterCellsOnNeighbourCount(
-                  centre, neighbourList, desiredNumberOfNeighbours));
-        });
+    for (int x = 0; x < neighbourRange.length; x++) {
+      for (int y = 0; y < neighbourRange.length; y++) {
+        if (neighbourRange[x] == 0 && neighbourRange[y] == 0) {
+          continue;
+        }
 
-    return testOutput;
+        allNeighbours.add(createNeighbour(cell, neighbourRange[x], neighbourRange[y]));
+      }
+    }
+
+    return allNeighbours;
+  }
+
+  private Cell createNeighbour(Cell centre, int relativeX, int relativeY) {
+    int neighbourX = centre.x + relativeX;
+    int neighbourY = centre.y + relativeY;
+
+    return new Cell(neighbourX, neighbourY);
   }
 
   private List<List<Cell>> allCombinationsOfNeighbours(
-      List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
+    List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
 
     Iterator<int[]> neighbourIterator =
-        createCombinationsIterator(allNeighbours, desiredNumberOfNeighbours);
+      createCombinationsIterator(allNeighbours, desiredNumberOfNeighbours);
 
     return iterateOverAllPossibleCombinations(allNeighbours, neighbourIterator);
   }
 
   private Iterator<int[]> createCombinationsIterator(
-      List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
+    List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
     return CombinatoricsUtils.combinationsIterator(allNeighbours.size(), desiredNumberOfNeighbours);
   }
 
   private List<List<Cell>> iterateOverAllPossibleCombinations(
-      List<Cell> allNeighbours, Iterator<int[]> neighbourIterator) {
+    List<Cell> allNeighbours, Iterator<int[]> neighbourIterator) {
     List<List<Cell>> neighbourCombinations = new ArrayList<>();
 
     while (neighbourIterator.hasNext()) {
@@ -105,6 +115,20 @@ public class LiveCellsGraphTest {
     }
 
     return neighbours;
+  }
+
+  private StringBuilder filterOnNeighbourCountForAllNeighbourCombinations(
+      Cell centre, int desiredNumberOfNeighbours, List<List<Cell>> neighbourCombinations) {
+    StringBuilder testOutput = new StringBuilder();
+
+    neighbourCombinations.forEach(
+        neighbourList -> {
+          testOutput.append(
+              filterCellsOnNeighbourCount(
+                  centre, neighbourList, desiredNumberOfNeighbours));
+        });
+
+    return testOutput;
   }
 
   private String filterCellsOnNeighbourCount(
@@ -134,30 +158,6 @@ public class LiveCellsGraphTest {
     cells.add(centre);
     cells.addAll(neighbours);
     return cells;
-  }
-
-  private List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
-    Integer[] neighbourRange = new Integer[] {-1, 0, 1};
-    List<Cell> allNeighbours = new ArrayList<>();
-
-    for (int x = 0; x < neighbourRange.length; x++) {
-      for (int y = 0; y < neighbourRange.length; y++) {
-        if (neighbourRange[x] == 0 && neighbourRange[y] == 0) {
-          continue;
-        }
-
-        allNeighbours.add(createNeighbour(cell, neighbourRange[x], neighbourRange[y]));
-      }
-    }
-
-    return allNeighbours;
-  }
-
-  private Cell createNeighbour(Cell centre, int relativeX, int relativeY) {
-    int neighbourX = centre.x + relativeX;
-    int neighbourY = centre.y + relativeY;
-
-    return new Cell(neighbourX, neighbourY);
   }
 
   private Cell calculateCentreBasedOnXandY(Integer x, Integer y) {
