@@ -16,11 +16,13 @@ public class LiveCellsGraph {
 
   public LiveCellsGraph(List<Cell> cells) {
     this.liveCellsGraph.addNodes(cells);
-    for(int i = 0; i < cells.size(); i++){
-      Map<Relationships, List<Cell>> relatedCells = RelationshipClassifier.classify(cells.get(i),cells);
-      setAllRelationshipsOfTypeForCell(cells.get(i), relatedCells, Relationships.NEIGHBOUR);
-      setAllRelationshipsOfTypeForCell(cells.get(i), relatedCells, Relationships.COPARENT);
-    }
+
+    cells.forEach(cell -> {
+      Map<Relationships, List<Cell>> relatedCells = RelationshipClassifier.classify(cell,cells);
+      setAllRelationshipsOfTypeForCell(cell, relatedCells, Relationships.NEIGHBOUR);
+      setAllRelationshipsOfTypeForCell(cell, relatedCells, Relationships.COPARENT);
+    });
+    
   }
 
   private void setAllRelationshipsOfTypeForCell(Cell cell, Map<Relationships, List<Cell>> relatedCells, Relationships relationshipType) {
