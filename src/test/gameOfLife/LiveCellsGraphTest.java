@@ -1,5 +1,6 @@
 package gameOfLife;
 
+import gameOfLife.TestUtils.CellCoverage;
 import gameOfLife.cell.Cell;
 import org.apache.commons.math3.util.CombinatoricsUtils;
 import org.approvaltests.Approvals;
@@ -58,15 +59,20 @@ public class LiveCellsGraphTest {
     Integer[] neighbourRange = new Integer[] {-1, 0, 1};
     List<Cell> allNeighbours = new ArrayList<>();
 
-    for (int x = 0; x < neighbourRange.length; x++) {
-      for (int y = 0; y < neighbourRange.length; y++) {
-        if (neighbourRange[x] == 0 && neighbourRange[y] == 0) {
-          continue;
-        }
+    Cell lowerLeftCell = new Cell(-1, -1);
+    Cell upperRightCell = new Cell(1,1);
+    allNeighbours = CellCoverage.generateAllPossibleCellsBetweenTwoCells(lowerLeftCell,upperRightCell);
+    allNeighbours.remove(cell);
 
-        allNeighbours.add(createNeighbour(cell, neighbourRange[x], neighbourRange[y]));
-      }
-    }
+//    for (int x = 0; x < neighbourRange.length; x++) {
+//      for (int y = 0; y < neighbourRange.length; y++) {
+//        if (neighbourRange[x] == 0 && neighbourRange[y] == 0) {
+//          continue;
+//        }
+//
+//        allNeighbours.add(createNeighbour(cell, neighbourRange[x], neighbourRange[y]));
+//      }
+//    }
 
     return allNeighbours;
   }
