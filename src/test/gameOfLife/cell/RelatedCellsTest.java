@@ -10,18 +10,18 @@ public class RelatedCellsTest {
 
   @Test
   public void testGetRelationshipsByType() {
-    Cell centreCell = new Cell(0, 0);
 
-    Cell lowerLeftCell = new Cell(-3, -3);
-    Cell upperRightCell = new Cell(3, 3);
 
-    StringBuilder testOutput = fetchCategorizationOfAllRelationshipTypes(centreCell, lowerLeftCell, upperRightCell);
+    StringBuilder testOutput = fetchCategorizationOfAllRelationshipTypes(3, 3);
 
     Approvals.verify(testOutput);
   }
 
-  private StringBuilder fetchCategorizationOfAllRelationshipTypes(Cell centreCell, Cell lowerLeftCell, Cell upperRightCell) {
+  private StringBuilder fetchCategorizationOfAllRelationshipTypes(Integer xValue, Integer yValue) {
+    Cell centreCell = new Cell(0, 0);
     StringBuilder testOutput = new StringBuilder();
+    Cell lowerLeftCell = new Cell(xValue*-1, yValue*-1);
+    Cell upperRightCell = new Cell(xValue, yValue);
 
     List<Cell> fullCellRelationshipTestSet =
         CellCoverage.generateAllPossibleCellsBetweenTwoCells(lowerLeftCell, upperRightCell);
@@ -30,8 +30,10 @@ public class RelatedCellsTest {
         RelationshipClassifier.classify(centreCell, fullCellRelationshipTestSet);
 
     for (Relationships relationship : Relationships.values()) {
-      testOutput.append(
-          relationship + " => " + relatedCells.getCellsOfRelationshipType(relationship) + "\n");
+      testOutput.append(relationship)
+          .append(" => ")
+          .append(relatedCells.getCellsOfRelationshipType(relationship))
+          .append("\n");
     }
     return testOutput;
   }
