@@ -1,6 +1,7 @@
 package gameOfLife;
 
 import gameOfLife.cell.Cell;
+import gameOfLife.cell.RelatedCells;
 import gameOfLife.cell.RelationshipClassifier;
 import gameOfLife.cell.Relationships;
 import gameOfLife.graph.AdjacencyMatrix;
@@ -8,7 +9,6 @@ import gameOfLife.graph.Graph;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class LiveCellsGraph {
   Graph<Cell, Relationships> liveCellsGraph =
@@ -18,16 +18,16 @@ public class LiveCellsGraph {
     this.liveCellsGraph.addNodes(cells);
 
     cells.forEach(cell -> {
-      Map<Relationships, List<Cell>> relatedCells = RelationshipClassifier.classify(cell, cells).getRelationships();
+      RelatedCells relatedCells = RelationshipClassifier.classify(cell, cells);
       setAllRelationshipsOfTypeForCell(cell, relatedCells, Relationships.NEIGHBOUR);
       setAllRelationshipsOfTypeForCell(cell, relatedCells, Relationships.COPARENT);
     });
 
   }
 
-  private void setAllRelationshipsOfTypeForCell(Cell cell, Map<Relationships, List<Cell>> relatedCells, Relationships relationshipType) {
-    if(relatedCells.containsKey(relationshipType)){
-      for (Cell relatedCell: relatedCells.get(relationshipType)){
+  private void setAllRelationshipsOfTypeForCell(Cell cell, RelatedCells relatedCells, Relationships relationshipType) {
+    if(relatedCells.getRelationships().containsKey(relationshipType)){
+      for (Cell relatedCell: relatedCells.getRelationships().get(relationshipType)){
         liveCellsGraph.setEdge(cell, relatedCell, relationshipType);
       }
     }
