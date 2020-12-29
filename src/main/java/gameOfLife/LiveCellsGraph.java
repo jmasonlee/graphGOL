@@ -18,11 +18,11 @@ public class LiveCellsGraph {
     this.liveCellsGraph.addNodes(cells);
 
     cells.forEach(cell -> {
-      Map<Relationships, List<Cell>> relatedCells = RelationshipClassifier.classify(cell,cells);
+      Map<Relationships, List<Cell>> relatedCells = RelationshipClassifier.classify(cell, cells).getValue();
       setAllRelationshipsOfTypeForCell(cell, relatedCells, Relationships.NEIGHBOUR);
       setAllRelationshipsOfTypeForCell(cell, relatedCells, Relationships.COPARENT);
     });
-    
+
   }
 
   private void setAllRelationshipsOfTypeForCell(Cell cell, Map<Relationships, List<Cell>> relatedCells, Relationships relationshipType) {

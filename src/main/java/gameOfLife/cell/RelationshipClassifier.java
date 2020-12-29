@@ -6,7 +6,7 @@ import java.util.Map;
 import static java.util.stream.Collectors.groupingBy;
 
 public class RelationshipClassifier {
-  public static Map<Relationships, List<Cell>> classify(Cell cell, List<Cell> otherCells) {
+  public static RelatedCells classify(Cell cell, List<Cell> otherCells) {
     Map<Relationships, List<Cell>> relationshipsMap =
         otherCells
             .stream()
@@ -27,7 +27,7 @@ public class RelationshipClassifier {
                       }
                     }));
 
-    return relationshipsMap;
+    return new RelatedCells(relationshipsMap);
   }
 
   private static Double calculateEuclideanDistanceBetweenCells(Cell cell1, Cell cell2) {
