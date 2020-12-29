@@ -15,6 +15,12 @@ public class RelatedCellsTest {
     Cell lowerLeftCell = new Cell(-3, -3);
     Cell upperRightCell = new Cell(3, 3);
 
+    StringBuilder testOutput = fetchCategorizationOfAllRelationshipTypes(centreCell, lowerLeftCell, upperRightCell);
+
+    Approvals.verify(testOutput);
+  }
+
+  private StringBuilder fetchCategorizationOfAllRelationshipTypes(Cell centreCell, Cell lowerLeftCell, Cell upperRightCell) {
     StringBuilder testOutput = new StringBuilder();
 
     List<Cell> fullCellRelationshipTestSet =
@@ -27,7 +33,6 @@ public class RelatedCellsTest {
       testOutput.append(
           relationship + " => " + relatedCells.getCellsOfRelationshipType(relationship) + "\n");
     }
-
-    Approvals.verify(testOutput);
+    return testOutput;
   }
 }
