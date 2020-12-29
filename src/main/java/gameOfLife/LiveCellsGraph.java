@@ -23,10 +23,10 @@ public class LiveCellsGraph {
     }
   }
 
-  private void setAllRelationshipsOfTypeForCell(Cell cell1, Map<Relationships, List<Cell>> relatedCells, Relationships relationshipType) {
+  private void setAllRelationshipsOfTypeForCell(Cell cell, Map<Relationships, List<Cell>> relatedCells, Relationships relationshipType) {
     if(relatedCells.containsKey(relationshipType)){
       for (Cell relatedCell: relatedCells.get(relationshipType)){
-        liveCellsGraph.setEdge(cell1, relatedCell, relationshipType);
+        liveCellsGraph.setEdge(cell, relatedCell, relationshipType);
       }
     }
   }
