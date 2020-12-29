@@ -33,9 +33,9 @@ public class RelationshipClassifierTest {
   public List<Cell> getListOfCellsToClassify(Cell cell) {
     int maxOneDimensionalDistance = 3;
 
-    Cell upperLeftCell = new Cell(cell.x - maxOneDimensionalDistance, cell.y + maxOneDimensionalDistance + 1);
-    Cell lowerRightCell = new Cell(cell.x  + maxOneDimensionalDistance + 1, cell.y - maxOneDimensionalDistance);
-    List<Cell> cellsToClassify = CellCoverage.generateAllPossibleCellsBetweenTwoCells(upperLeftCell, lowerRightCell);
+    Cell lowerLeftCell = new Cell(cell.x - maxOneDimensionalDistance, cell.y - maxOneDimensionalDistance);
+    Cell upperRightCell = new Cell(cell.x  + maxOneDimensionalDistance + 1, cell.y + maxOneDimensionalDistance + 1);
+    List<Cell> cellsToClassify = CellCoverage.generateAllPossibleCellsBetweenTwoCells(lowerLeftCell, upperRightCell);
 
     return cellsToClassify;
   }
