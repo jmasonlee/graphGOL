@@ -25,8 +25,8 @@ public class LiveCellsGraph {
 
   private void setAllRelationshipsOfTypeForCell(Cell cell1, Map<Relationships, List<Cell>> relatedCells, Relationships relationshipType) {
     if(relatedCells.containsKey(relationshipType)){
-      for (Cell cell: relatedCells.get(relationshipType)){
-        liveCellsGraph.setEdge(cell1, cell, relationshipType);
+      for (Cell relatedCell: relatedCells.get(relationshipType)){
+        liveCellsGraph.setEdge(cell1, relatedCell, relationshipType);
       }
     }
   }
