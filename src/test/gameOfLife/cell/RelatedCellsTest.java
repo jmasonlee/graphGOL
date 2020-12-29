@@ -1,14 +1,10 @@
 package gameOfLife.cell;
 
+import gameOfLife.TestUtils.CellCoverage;
 import org.approvaltests.Approvals;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import static org.junit.Assert.*;
 
 public class RelatedCellsTest {
 
@@ -16,24 +12,19 @@ public class RelatedCellsTest {
   public void testGetRelationshipsByType() {
     StringBuilder testOutput = new StringBuilder();
 
-    Map<Relationships,List<Cell>> relatedCellsMap = new HashMap<>();
+    Cell lowerLeftCell = new Cell(-3, -3);
+    Cell upperRightCell = new Cell(3, 3);
 
-    List<Cell> selfList = Arrays.asList(new Cell[]{new Cell(0, -1)});
-    relatedCellsMap.put(Relationships.SELF, selfList);
+    List<Cell> fullCellRelationshipTestSet =
+        CellCoverage.generateAllPossibleCellsBetweenTwoCells(lowerLeftCell, upperRightCell);
 
-    List<Cell> neighbourList = Arrays.asList(new Cell[]{new Cell(-1, 0)});
-    relatedCellsMap.put(Relationships.NEIGHBOUR, neighbourList);
+    Cell testSetCentre = new Cell(0, 0);
+    RelatedCells relatedCells =
+        RelationshipClassifier.classify(testSetCentre, fullCellRelationshipTestSet);
 
-    List<Cell> coparentList = Arrays.asList(new Cell[]{new Cell(-1, 2)});
-    relatedCellsMap.put(Relationships.COPARENT, coparentList);
-
-    List<Cell> disconnectedList = Arrays.asList(new Cell[]{new Cell(-1, 0)});
-    relatedCellsMap.put(Relationships.DISCONNECTED, disconnectedList);
-
-    RelatedCells relatedCells = new RelatedCells(relatedCellsMap);
-
-    for(Relationships relationship: Relationships.values()){
-      testOutput.append(relationship + " => " + relatedCells.getCellsOfRelationshipType(relationship) + "\n");
+    for (Relationships relationship : Relationships.values()) {
+      testOutput.append(
+          relationship + " => " + relatedCells.getCellsOfRelationshipType(relationship) + "\n");
     }
 
     Approvals.verify(testOutput);
