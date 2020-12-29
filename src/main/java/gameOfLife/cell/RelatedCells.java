@@ -5,9 +5,15 @@ import java.util.Map;
 
 public class RelatedCells {
   private final Map<Relationships, List<Cell>> relationships;
+  private final Cell centralCell;
 
-  public RelatedCells(Map<Relationships, List<Cell>> relationships) {
+  public RelatedCells(Cell centralCell, Map<Relationships, List<Cell>> relationships) {
+    this.centralCell = centralCell;
     this.relationships = relationships;
+  }
+
+  public Cell getCentralCell() {
+    return centralCell;
   }
 
   public Map<Relationships, List<Cell>> getRelationships() {
@@ -15,7 +21,7 @@ public class RelatedCells {
   }
 
   @Override
-  public String toString(){
+  public String toString() {
     return relationships.toString();
   }
 }
