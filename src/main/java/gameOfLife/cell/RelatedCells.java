@@ -18,4 +18,8 @@ public class RelatedCells {
   public String toString() {
     return relationships.toString();
   }
+
+  public List<Cell> getCellsOfRelationshipType(Relationships relationshipType) {
+    return relationships.get(relationshipType);
+  }
 }

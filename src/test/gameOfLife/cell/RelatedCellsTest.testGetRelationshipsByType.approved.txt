@@ -1,0 +1,4 @@
+DISCONNECTED => [[-1,0]]
+SELF => [[0,-1]]
+NEIGHBOUR => [[-1,0]]
+COPARENT => [[-1,2]]
