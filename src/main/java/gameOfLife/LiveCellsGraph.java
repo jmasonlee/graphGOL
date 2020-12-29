@@ -18,7 +18,7 @@ public class LiveCellsGraph {
     this.liveCellsGraph.addNodes(cells);
 
     cells.forEach(cell -> {
-      Map<Relationships, List<Cell>> relatedCells = RelationshipClassifier.classify(cell, cells).getValue();
+      Map<Relationships, List<Cell>> relatedCells = RelationshipClassifier.classify(cell, cells).getRelationships();
       setAllRelationshipsOfTypeForCell(cell, relatedCells, Relationships.NEIGHBOUR);
       setAllRelationshipsOfTypeForCell(cell, relatedCells, Relationships.COPARENT);
     });

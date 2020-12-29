@@ -15,7 +15,7 @@ public class RelationshipClassifierTest {
     List<Cell> cellsToClassify = getListOfCellsToClassify(new Cell(0, 0));
 
     Map<Relationships, List<Cell>> relationship =
-      RelationshipClassifier.classify(new Cell(0, 0), cellsToClassify).getValue();
+      RelationshipClassifier.classify(new Cell(0, 0), cellsToClassify).getRelationships();
 
     List<String> relationshipBoards = new ArrayList<>();
     relationshipBoards.add("\n"

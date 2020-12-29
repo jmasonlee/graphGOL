@@ -4,18 +4,18 @@ import java.util.List;
 import java.util.Map;
 
 public class RelatedCells {
-  private final Map<Relationships, List<Cell>> value;
+  private final Map<Relationships, List<Cell>> relationships;
 
-  public RelatedCells(Map<Relationships, List<Cell>> value) {
-    this.value = value;
+  public RelatedCells(Map<Relationships, List<Cell>> relationships) {
+    this.relationships = relationships;
   }
 
-  public Map<Relationships, List<Cell>> getValue() {
-    return value;
+  public Map<Relationships, List<Cell>> getRelationships() {
+    return relationships;
   }
 
   @Override
   public String toString(){
-    return value.toString();
+    return relationships.toString();
   }
 }
