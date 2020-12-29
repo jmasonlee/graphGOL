@@ -18,17 +18,16 @@ public class LiveCellsGraph {
     this.liveCellsGraph.addNodes(cells);
     for(int i = 0; i < cells.size(); i++){
       Map<Relationships, List<Cell>> relatedCells = RelationshipClassifier.classify(cells.get(i),cells);
-      for(Relationships relationshipType : relatedCells.keySet()){
-        if(relationshipType == Relationships.NEIGHBOUR || relationshipType == Relationships.COPARENT){
-          setAllRelationshipsOfTypeForCell(cells, i, relatedCells, relationshipType);
-        }
-      }
+      setAllRelationshipsOfTypeForCell(cells, i, relatedCells, Relationships.NEIGHBOUR);
+      setAllRelationshipsOfTypeForCell(cells, i, relatedCells, Relationships.COPARENT);
     }
   }
 
   private void setAllRelationshipsOfTypeForCell(List<Cell> cells, int i, Map<Relationships, List<Cell>> relatedCells, Relationships relationshipType) {
-    for (Cell cell: relatedCells.get(relationshipType)){
-      liveCellsGraph.setEdge(cells.get(i), cell, relationshipType);
+    if(relatedCells.containsKey(relationshipType)){
+      for (Cell cell: relatedCells.get(relationshipType)){
+        liveCellsGraph.setEdge(cells.get(i), cell, relationshipType);
+      }
     }
   }
 
