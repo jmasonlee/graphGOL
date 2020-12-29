@@ -1,5 +1,6 @@
 package gameOfLife.cell;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,6 @@ public class RelatedCells {
   }
 
   public List<Cell> getCellsOfRelationshipType(Relationships relationshipType) {
-    return relationships.get(relationshipType);
+    return relationships.containsKey(relationshipType) ? relationships.get(relationshipType) : new ArrayList<Cell>();
   }
 }

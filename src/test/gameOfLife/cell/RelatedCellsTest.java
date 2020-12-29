@@ -2,19 +2,19 @@ package gameOfLife.cell;
 
 import gameOfLife.TestUtils.CellCoverage;
 import org.approvaltests.Approvals;
+import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class RelatedCellsTest {
 
   @Test
   public void testGetRelationshipsByType() {
+    Integer[] oneDimensionalRangeLimits = new Integer[]{0, 1, 2, 3};
 
-
-    StringBuilder testOutput = fetchCategorizationOfAllRelationshipTypes(3, 3);
-
-    Approvals.verify(testOutput);
+    CombinationApprovals.verifyAllCombinations(this::fetchCategorizationOfAllRelationshipTypes, oneDimensionalRangeLimits, oneDimensionalRangeLimits);
   }
 
   private StringBuilder fetchCategorizationOfAllRelationshipTypes(Integer xValue, Integer yValue) {
