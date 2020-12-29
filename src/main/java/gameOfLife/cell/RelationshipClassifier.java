@@ -27,7 +27,7 @@ public class RelationshipClassifier {
                       }
                     }));
 
-    return new RelatedCells(cell, relationshipsMap);
+    return new RelatedCells(relationshipsMap);
   }
 
   private static Double calculateEuclideanDistanceBetweenCells(Cell cell1, Cell cell2) {
