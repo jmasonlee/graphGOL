@@ -93,11 +93,11 @@ public class BoardOutputter {
     }
 
     private Cell getCellWithMinDimension(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCellDimension) {
-      return Collections.min(cellsForBoard, Comparator.comparing(c -> fetchCellDimension.apply(c)));
+      return Collections.min(cellsForBoard, Comparator.comparing(fetchCellDimension));
     }
 
     private Cell getCellWithMaxDimension(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCellDimension) {
-      return Collections.max(cellsForBoard, Comparator.comparing(c->fetchCellDimension.apply(c)));
+      return Collections.max(cellsForBoard, Comparator.comparing(fetchCellDimension));
     }
 
     private int getDimension(int lowestDimensionValue, int highestDimensionValue) {
