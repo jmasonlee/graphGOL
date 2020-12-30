@@ -27,17 +27,21 @@ public class BoardOutputter {
   private static int getCellPositionInBoard(Cell cell, BoardBounds boardBounds) {
     int adjustedX = Math.abs(boardBounds.getLeftmostXValue() - cell.x);
     int adjustedY = Math.abs(boardBounds.getUpperYValue() - cell.y);
-    return (adjustedY * boardBounds.getWidth()) + adjustedY + adjustedX;
+
+    int boardWidth = (3 * boardBounds.getWidth()) + 2;
+
+    return boardWidth + (adjustedY * boardWidth) + (adjustedX * 3);
   }
 
   private static StringBuilder emptyBoardOfSize(int width, int height) {
     StringBuilder board = new StringBuilder();
 
+    board.append(StringUtils.repeat(" __", width));
+    board.append("\n");
+
     for (int i = 0; i < height; i++) {
-      board.append(StringUtils.repeat(" ", width));
-      if (i < height - 1) {
-        board.append("\n");
-      }
+      board.append(StringUtils.repeat("|__", width));
+      board.append("|\n");
     }
 
     return board;
