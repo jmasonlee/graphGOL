@@ -10,6 +10,8 @@ import java.util.function.Function;
 
 public class BoardOutputter {
 
+  private static final String TOP_BOUNDARY = " __";
+
   public static String createBoardOutput(List<Cell> cells) {
     BoardBounds boardBounds = new BoardBounds(cells);
     StringBuilder emptyBoard = emptyBoardOfSize(boardBounds.getWidth(), boardBounds.getHeight());
@@ -36,7 +38,7 @@ public class BoardOutputter {
   private static StringBuilder emptyBoardOfSize(int width, int height) {
     StringBuilder board = new StringBuilder();
 
-    board.append(StringUtils.repeat(" __", width));
+    board.append(StringUtils.repeat(TOP_BOUNDARY, width));
     board.append("\n");
 
     for (int i = 0; i < height; i++) {
