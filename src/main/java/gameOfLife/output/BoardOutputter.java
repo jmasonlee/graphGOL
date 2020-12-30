@@ -82,13 +82,13 @@ public class BoardOutputter {
       }
 
       Function<Cell, Integer> fetchYvalue = c->c.y;
-      upperYValue = getCellWithMaxDimension(cellsForBoard, fetchYvalue).y;
+      upperYValue = getCellWithMaxCoordinate(cellsForBoard, fetchYvalue).y;
       int lowerYValue = getCellWithLowestCoordinate(cellsForBoard, fetchYvalue).y;
       height = getDimension(lowerYValue, upperYValue);
 
       Function<Cell, Integer> fetchXvalue = c->c.x;
       leftmostXValue = getCellWithLowestCoordinate(cellsForBoard, fetchXvalue).x;
-      int rightmostXValue = getCellWithMaxDimension(cellsForBoard, fetchXvalue).x;
+      int rightmostXValue = getCellWithMaxCoordinate(cellsForBoard, fetchXvalue).x;
       width = getDimension(rightmostXValue, leftmostXValue);
     }
 
@@ -96,7 +96,7 @@ public class BoardOutputter {
       return Collections.min(cellsForBoard, Comparator.comparing(fetchCoordinate));
     }
 
-    private Cell getCellWithMaxDimension(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCoordinate) {
+    private Cell getCellWithMaxCoordinate(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCoordinate) {
       return Collections.max(cellsForBoard, Comparator.comparing(fetchCoordinate));
     }
 
