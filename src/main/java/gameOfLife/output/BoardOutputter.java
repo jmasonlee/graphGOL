@@ -13,6 +13,7 @@ public class BoardOutputter {
   private static final String TOP_BOUNDARY = " __";
   private static final String TOP_BOUNDARY_END = " \n";
   private static final String CELL = "|__";
+  private static final String ROW_END = "|\n";
 
   public static String createBoardOutput(List<Cell> cells) {
     BoardBounds boardBounds = new BoardBounds(cells);
@@ -45,7 +46,7 @@ public class BoardOutputter {
 
     for (int i = 0; i < height; i++) {
       board.append(StringUtils.repeat(CELL, width));
-      board.append("|\n");
+      board.append(ROW_END);
     }
 
     return board;
