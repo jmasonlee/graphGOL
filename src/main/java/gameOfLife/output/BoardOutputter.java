@@ -83,16 +83,16 @@ public class BoardOutputter {
 
       Function<Cell, Integer> fetchYvalue = c->c.y;
       upperYValue = getCellWithMaxDimension(cellsForBoard, fetchYvalue).y;
-      int lowerYValue = getCellWithMinDimension(cellsForBoard, fetchYvalue).y;
+      int lowerYValue = getCellWithLowestCoordinate(cellsForBoard, fetchYvalue).y;
       height = getDimension(lowerYValue, upperYValue);
 
       Function<Cell, Integer> fetchXvalue = c->c.x;
-      leftmostXValue = getCellWithMinDimension(cellsForBoard, fetchXvalue).x;
+      leftmostXValue = getCellWithLowestCoordinate(cellsForBoard, fetchXvalue).x;
       int rightmostXValue = getCellWithMaxDimension(cellsForBoard, fetchXvalue).x;
       width = getDimension(rightmostXValue, leftmostXValue);
     }
 
-    private Cell getCellWithMinDimension(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCellDimension) {
+    private Cell getCellWithLowestCoordinate(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCellDimension) {
       return Collections.min(cellsForBoard, Comparator.comparing(fetchCellDimension));
     }
 
