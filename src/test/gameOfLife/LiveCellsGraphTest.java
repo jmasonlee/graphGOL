@@ -15,34 +15,39 @@ public class LiveCellsGraphTest {
 
   @Test
   public void testCanGetCellsWithNoNeighbours() {
-    List<Cell> cellWithNoNeighbours = Arrays.asList(new Cell[] {new Cell(0, 0)});
+    int desiredNumberOfNeighbours = 0;
+    StringBuilder testOutput = buildGraphAndFilterOnNeighbourCount(desiredNumberOfNeighbours);
 
-    LiveCellsGraph graph = new LiveCellsGraph(cellWithNoNeighbours);
-
-    Approvals.verify(
-        cellWithNoNeighbours.toString() + " => " + graph.filterCellsByNeighbourCount(0));
+    Approvals.verify(testOutput);
   }
 
   @Test
   public void testCanGetCellsWithOneNeighbour() {
-    Cell centre = new Cell(0, 0);
-    List<Cell> allNeighbours = generateAllPossibleNeighboursForCell(centre);
     int desiredNumberOfNeighbours = 1;
-
-    List<List<Cell>> neighbourCombinations =
-        allCombinationsOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
-
-    StringBuilder testOutput =
-        filterOnNeighbourCountForAllNeighbourCombinations(
-            centre, desiredNumberOfNeighbours, neighbourCombinations);
+    StringBuilder testOutput = buildGraphAndFilterOnNeighbourCount(desiredNumberOfNeighbours);
 
     Approvals.verify(testOutput);
   }
 
   @Test
   public void testCanGetCellsWithTwoNeighbours() {
-    Cell centre = new Cell(0, 0);
     int desiredNumberOfNeighbours = 2;
+
+    StringBuilder testOutput = buildGraphAndFilterOnNeighbourCount(desiredNumberOfNeighbours);
+
+    Approvals.verify(testOutput);
+  }
+
+  @Test
+  public void testCanGetCellsWithThreeNeighbours() {
+    int desiredNumberOfNeighbours = 3;
+    StringBuilder testOutput = buildGraphAndFilterOnNeighbourCount(desiredNumberOfNeighbours);
+
+    Approvals.verify(testOutput);
+  }
+
+  private StringBuilder buildGraphAndFilterOnNeighbourCount(int desiredNumberOfNeighbours) {
+    Cell centre = new Cell(0, 0);
     List<Cell> allNeighbours = generateAllPossibleNeighboursForCell(centre);
 
     List<List<Cell>> neighbourCombinations =
@@ -51,8 +56,7 @@ public class LiveCellsGraphTest {
     StringBuilder testOutput =
         filterOnNeighbourCountForAllNeighbourCombinations(
             centre, desiredNumberOfNeighbours, neighbourCombinations);
-
-    Approvals.verify(testOutput);
+    return testOutput;
   }
 
   private List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
@@ -144,6 +148,7 @@ public class LiveCellsGraphTest {
     List<Cell> originalCells, List<Cell> filteredCells) {
     StringBuilder testOutput = new StringBuilder();
 
+    testOutput.append("\t");
     testOutput.append(originalCells);
     testOutput.append(" => ");
     testOutput.append(filteredCells);
