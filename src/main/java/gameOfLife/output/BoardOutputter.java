@@ -96,8 +96,8 @@ public class BoardOutputter {
       return Collections.min(cellsForBoard, Comparator.comparing(fetchCoordinate));
     }
 
-    private Cell getCellWithMaxDimension(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCellDimension) {
-      return Collections.max(cellsForBoard, Comparator.comparing(fetchCellDimension));
+    private Cell getCellWithMaxDimension(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCoordinate) {
+      return Collections.max(cellsForBoard, Comparator.comparing(fetchCoordinate));
     }
 
     private int getDimension(int lowestDimensionValue, int highestDimensionValue) {
