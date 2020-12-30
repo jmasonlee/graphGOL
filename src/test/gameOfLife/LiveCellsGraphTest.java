@@ -53,19 +53,16 @@ public class LiveCellsGraphTest {
     List<List<Cell>> neighbourCombinations =
         allCombinationsOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
 
-    StringBuilder testOutput =
-        filterOnNeighbourCountForAllNeighbourCombinations(
-            centre, desiredNumberOfNeighbours, neighbourCombinations);
-    return testOutput;
+    return filterOnNeighbourCountForAllNeighbourCombinations(
+        centre, desiredNumberOfNeighbours, neighbourCombinations);
   }
 
   private List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
     Integer[] neighbourRange = new Integer[] {-1, 0, 1};
-    List<Cell> allNeighbours = new ArrayList<>();
 
     Cell lowerLeftCell = new Cell(-1, -1);
     Cell upperRightCell = new Cell(1,1);
-    allNeighbours = CellCoverage.generateAllPossibleCellsBetweenTwoCells(lowerLeftCell,upperRightCell);
+    List<Cell> allNeighbours = CellCoverage.generateAllPossibleCellsBetweenTwoCells(lowerLeftCell,upperRightCell);
     allNeighbours.remove(cell);
 
     return allNeighbours;
@@ -122,11 +119,9 @@ public class LiveCellsGraphTest {
     StringBuilder testOutput = new StringBuilder();
 
     neighbourCombinations.forEach(
-        neighbourList -> {
-          testOutput.append(
-              filterCellsOnNeighbourCount(
-                  centre, neighbourList, desiredNumberOfNeighbours));
-        });
+        neighbourList -> testOutput.append(
+            filterCellsOnNeighbourCount(
+                centre, neighbourList, desiredNumberOfNeighbours)));
 
     return testOutput;
   }
@@ -148,7 +143,6 @@ public class LiveCellsGraphTest {
     List<Cell> originalCells, List<Cell> filteredCells) {
     StringBuilder testOutput = new StringBuilder();
 
-    testOutput.append("\t");
     testOutput.append(originalCells);
     testOutput.append(" => ");
     testOutput.append(filteredCells);
@@ -162,13 +156,5 @@ public class LiveCellsGraphTest {
     cells.add(centre);
     cells.addAll(neighbours);
     return cells;
-  }
-
-  private Cell calculateCentreBasedOnXandY(Integer x, Integer y) {
-    int initialX = 0;
-    int centreSeparator = 6;
-    int gridNumber = x * 3 + y;
-
-    return new Cell(initialX + (centreSeparator * gridNumber), 0);
   }
 }
