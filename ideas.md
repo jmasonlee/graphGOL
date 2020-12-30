@@ -13,3 +13,6 @@ COPARENT cells are not SELF or NEIGHBOUR cells and will only contain the cells c
 All other cells are DISCONNECTED.
 
 This is not fully or even well written up yet, and I don't think I've fully wrapped my brain arond it... but it's cool :-)
+
+### Coordinates
+Don't necessarily need to be stored WRT the board. They should be stored WRT other living cells... Or not stored?
