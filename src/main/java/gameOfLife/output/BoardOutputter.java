@@ -11,6 +11,7 @@ import java.util.function.Function;
 public class BoardOutputter {
 
   private static final String TOP_BOUNDARY = " __";
+  private static final String TOP_BOUNDARY_END = " \n";
 
   public static String createBoardOutput(List<Cell> cells) {
     BoardBounds boardBounds = new BoardBounds(cells);
@@ -39,7 +40,7 @@ public class BoardOutputter {
     StringBuilder board = new StringBuilder();
 
     board.append(StringUtils.repeat(TOP_BOUNDARY, width));
-    board.append("\n");
+    board.append(TOP_BOUNDARY_END);
 
     for (int i = 0; i < height; i++) {
       board.append(StringUtils.repeat("|__", width));
