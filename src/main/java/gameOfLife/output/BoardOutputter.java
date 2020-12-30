@@ -92,8 +92,8 @@ public class BoardOutputter {
       width = getDimension(rightmostXValue, leftmostXValue);
     }
 
-    private Cell getCellWithLowestCoordinate(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCellDimension) {
-      return Collections.min(cellsForBoard, Comparator.comparing(fetchCellDimension));
+    private Cell getCellWithLowestCoordinate(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCoordinate) {
+      return Collections.min(cellsForBoard, Comparator.comparing(fetchCoordinate));
     }
 
     private Cell getCellWithMaxDimension(List<Cell> cellsForBoard, Function<Cell, Integer> fetchCellDimension) {
