@@ -64,16 +64,6 @@ public class LiveCellsGraphTest {
     allNeighbours = CellCoverage.generateAllPossibleCellsBetweenTwoCells(lowerLeftCell,upperRightCell);
     allNeighbours.remove(cell);
 
-//    for (int x = 0; x < neighbourRange.length; x++) {
-//      for (int y = 0; y < neighbourRange.length; y++) {
-//        if (neighbourRange[x] == 0 && neighbourRange[y] == 0) {
-//          continue;
-//        }
-//
-//        allNeighbours.add(createNeighbour(cell, neighbourRange[x], neighbourRange[y]));
-//      }
-//    }
-
     return allNeighbours;
   }
 
