@@ -33,9 +33,9 @@ public class BoardOutputter {
     int adjustedX = Math.abs(boardBounds.getLeftmostXValue() - cell.x);
     int adjustedY = Math.abs(boardBounds.getUpperYValue() - cell.y);
 
-    int boardWidth = (3 * boardBounds.getWidth()) + 2;
+    int boardWidth = (CELL.length() * boardBounds.getWidth()) + ROW_END.length();
 
-    return boardWidth + (adjustedY * boardWidth) + (adjustedX * 3);
+    return boardWidth + (adjustedY * boardWidth) + (adjustedX * CELL.length());
   }
 
   private static StringBuilder emptyBoardOfSize(int width, int height) {
