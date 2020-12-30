@@ -4,46 +4,21 @@ import gameOfLife.TestUtils.CellCoverage;
 import gameOfLife.cell.Cell;
 import org.apache.commons.math3.util.CombinatoricsUtils;
 import org.approvaltests.Approvals;
+import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class LiveCellsGraphTest {
 
   @Test
-  public void testCanGetCellsWithNoNeighbours() {
-    int desiredNumberOfNeighbours = 0;
-    StringBuilder testOutput = buildGraphAndFilterOnNeighbourCount(desiredNumberOfNeighbours);
-
-    Approvals.verify(testOutput);
-  }
-
-  @Test
-  public void testCanGetCellsWithOneNeighbour() {
-    int desiredNumberOfNeighbours = 1;
-    StringBuilder testOutput = buildGraphAndFilterOnNeighbourCount(desiredNumberOfNeighbours);
-
-    Approvals.verify(testOutput);
-  }
-
-  @Test
-  public void testCanGetCellsWithTwoNeighbours() {
-    int desiredNumberOfNeighbours = 2;
-
-    StringBuilder testOutput = buildGraphAndFilterOnNeighbourCount(desiredNumberOfNeighbours);
-
-    Approvals.verify(testOutput);
-  }
-
-  @Test
-  public void testCanGetCellsWithThreeNeighbours() {
-    int desiredNumberOfNeighbours = 3;
-    StringBuilder testOutput = buildGraphAndFilterOnNeighbourCount(desiredNumberOfNeighbours);
-
-    Approvals.verify(testOutput);
+  public void testCanGetCellsWithDesiredNumberOfNeighbours() {
+    Integer[] desiredNumberOfNeighbours = IntStream.rangeClosed(0, 8).boxed().toArray(Integer[]::new);
+    CombinationApprovals.verifyAllCombinations(this::buildGraphAndFilterOnNeighbourCount, desiredNumberOfNeighbours);
   }
 
   private StringBuilder buildGraphAndFilterOnNeighbourCount(int desiredNumberOfNeighbours) {
@@ -143,6 +118,7 @@ public class LiveCellsGraphTest {
     List<Cell> originalCells, List<Cell> filteredCells) {
     StringBuilder testOutput = new StringBuilder();
 
+    testOutput.append(("\t"));
     testOutput.append(originalCells);
     testOutput.append(" => ");
     testOutput.append(filteredCells);
