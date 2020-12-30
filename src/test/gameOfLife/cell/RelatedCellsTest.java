@@ -20,7 +20,7 @@ public class RelatedCellsTest {
   private StringBuilder fetchCategorizationOfAllRelationshipTypes(Integer xValue, Integer yValue) {
     Cell centreCell = new Cell(0, 0);
     StringBuilder testOutput = new StringBuilder();
-    Cell lowerLeftCell = new Cell(xValue*-1, yValue*-1);
+    Cell lowerLeftCell = new Cell( -xValue, -yValue);
     Cell upperRightCell = new Cell(xValue, yValue);
 
     List<Cell> fullCellRelationshipTestSet =
