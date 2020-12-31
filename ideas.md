@@ -16,3 +16,9 @@ This is not fully or even well written up yet, and I don't think I've fully wrap
 
 ### Coordinates
 Don't necessarily need to be stored WRT the board. They should be stored WRT other living cells... Or not stored?
+
+### Approvals
+ - make your tests more accessible (Language/Ability are no longer blockers to writing a good test)
+ - If you are parsing your tests instead of reading them, you're doing it wrong
+ - When building new functionality using TDD with approvals, your test file shouldn't be so long you can't read it. (Not the same for legacy code)
+
