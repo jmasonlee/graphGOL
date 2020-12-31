@@ -14,6 +14,7 @@ public class BoardOutputter {
   private static final String TOP_BOUNDARY_END = " \n";
   private static final String CELL = "|__";
   private static final String ROW_END = "|\n";
+  private static final int SHIFT = 1;
 
   public static String createBoardOutput(List<Cell> cells) {
     BoardBounds boardBounds = new BoardBounds(cells);
@@ -35,7 +36,7 @@ public class BoardOutputter {
 
     int boardWidth = (CELL.length() * boardBounds.getWidth()) + ROW_END.length();
 
-    return boardWidth + (adjustedY * boardWidth) + (adjustedX * CELL.length());
+    return (boardWidth + SHIFT) + (adjustedY * boardWidth) + (adjustedX * CELL.length());
   }
 
   private static StringBuilder emptyBoardOfSize(int width, int height) {
