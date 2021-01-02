@@ -1,7 +1,7 @@
 I'm taking time to order my thoughts, so my in-progress notes are here... You are welcome to look, just keep in mind that anything here isn't ready for feedback
 
 
-## Why?
+## What did I learn?
 ## The Algorithm
 ### The data structure
 ### Determining which cells are born

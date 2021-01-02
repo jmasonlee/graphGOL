@@ -23,3 +23,9 @@ The edges on my graph are the type of relationship that exists between two nodes
 - __NEIGHBOUR__: In the visual representation of the Game of Life, this is a cell in the Moore Neighbourhood immediately surrounding the 'SELF' cell. These cells influence whether the 'SELF' cell survives to the next turn.
 - __COPARENT__: A cell that can work in conjunction with the self cell to create new life. These cells can either also be NEIGHBOURS, or they can be part of the group of cells immediately surrounding the neighbours.
 - __DISCONNECTED__: A cell that has no impact on the SELF cell at all. It's too far away.
+
+## Why?
+
+There are many better graph-based implementations of the Game of Life. [This one](https://demonstrations.wolfram.com/VisualizingConwaysGameOfLife/) and [this one](https://en.wikipedia.org/wiki/Hashlife) are pretty cool examples. So why did I want to do it this way? What did I want to learn?
+
+Ever since the second coderetreat I'd hosted a year ago, implementing the game of life with a graph-based data structure has been bugging me. Since this has been a two year-long brain worm, I decided it would be worth actually coding it out. So I did. Just because I wanted to.
