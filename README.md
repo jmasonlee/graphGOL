@@ -28,4 +28,6 @@ The edges on my graph are the type of relationship that exists between two nodes
 
 There are many better graph-based implementations of the Game of Life. [This one](https://demonstrations.wolfram.com/VisualizingConwaysGameOfLife/) and [this one](https://en.wikipedia.org/wiki/Hashlife) are pretty cool examples. So why did I want to do it this way? What did I want to learn?
 
-Ever since the second coderetreat I'd hosted a year ago, implementing the game of life with a graph-based data structure has been bugging me. Since this has been a two year-long brain worm, I decided it would be worth actually coding it out. So I did. Just because I wanted to.
+Ever since the second coderetreat I'd hosted a year ago, implementing the game of life by imagining storing the living cells in a graph has been bugging me. Since this has been a two year-long brain worm, I decided it would be worth actually coding it out. So I did. Just because I wanted to.
+
+I am writing this from a learning perspective where I am intentionally trying to do things "right" and take it slow. Because I am taking my time, and not pressuring myself to do anything but learn and solve the problem, this became my project to "just code". It's something that reminds me why I love doing what I do.
