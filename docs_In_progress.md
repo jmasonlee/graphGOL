@@ -1,7 +1,6 @@
 I'm taking time to order my thoughts, so my in-progress notes are here... You are welcome to look, just keep in mind that anything here isn't ready for feedback
 
-# A Relationship Based Representation of the Game of Life
-###  What is a graph?
+
 ## Why?
 ## The Algorithm
 ### The data structure
