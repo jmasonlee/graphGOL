@@ -57,7 +57,14 @@ public class BoardOutputter {
     List<String > board = new ArrayList<>();
 
     board.add("   ");
-    board.add(String.join(" ",xCoords));
+    List<String> formattedCoords = new ArrayList<>();
+    formattedCoords.add(xCoords.get(0));
+
+    for (int i = 1; i < xCoords.size(); i++) {
+      formattedCoords.add(" "+xCoords.get(i));
+    }
+    
+    board.addAll(formattedCoords);
     board.add(TOP_BOUNDARY_END);
 
     return board;
