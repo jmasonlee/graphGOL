@@ -5,7 +5,9 @@ This is an implementation of the Game of Life where living cells and their relat
 ###  What is a graph?
 A graph is an abstract data-type meant to represent a group of things and their relationships with each other. Each "Thing" in a graph is referred to as a "node" or "vertex" and the relationships between the nodes of a graph are referred to as "edges". In general, when they are drawn, vertices are represented as circles connected by lines (which represent the edges). 
 
-In the graph representation below, the the nodes are the circled integers 0,1,2 and 3. The edges are the lines in between the nodes. Edges may be assigned a value or not. If an edge is labeled with a value, we describe that value as the edge's weight. Although the sample graph uses numbers, nodes and edges can be represented by anything. They may be booleans, strings, or even objects! 
+In the graph representation below, the the nodes are the circled integers 0,1,2 and 3. The edges are the lines in between the nodes. 
+
+Edges may be assigned a value or not. If an edge is labeled with a value, we describe that value as the edge's weight. An edge's weight provides information about the relationship that exists between the two nodes it joins. This information could be the distance between two points, or the type of connection. Although the sample graph uses numbers, nodes and edges can be represented by anything. They may be booleans, strings, or even objects! 
 
 ![A picture of a graph with 4 nodes. The nodes are labelled 0, 1, 2, 3. Nodes 0 and 2 are connected by an edge labelled 1. Nodes 3 and 1 are connected by an edge labelled 5. Nodes 2 and 3 and nodes 2 and 1 are connected by an edge without a label](assets/images/sample_graph.png)
 
