@@ -54,13 +54,13 @@ public class BoardOutputter {
   }
 
   private static StringBuilder createTopRow(List<String> xCoords) {
-    StringBuilder board = new StringBuilder();
+    List<String > board = new ArrayList<>();
 
-    board.append("   ");
-    board.append(String.join(" ",xCoords));
-    board.append(TOP_BOUNDARY_END);
+    board.add("   ");
+    board.add(String.join(" ",xCoords));
+    board.add(TOP_BOUNDARY_END);
 
-    return board;
+    return new StringBuilder(String.join("", board));
   }
 
   private static StringBuilder createEmptyCells(BoardBounds boardBounds, List<String> yCoords) {
