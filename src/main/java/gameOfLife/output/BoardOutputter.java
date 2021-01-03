@@ -59,10 +59,10 @@ public class BoardOutputter {
     return board;
   }
 
-  private static List<String> createYCoordinates(int startAt, int dimensionSize) {
-    Integer endAt = startAt - dimensionSize + 1;
+  private static List<String> createYCoordinates(int upperYValue, int dimensionSize) {
+    Integer startAt = upperYValue - dimensionSize + 1;
 
-    List<String> coordinateNumbers = createCoordinates(startAt, endAt);
+    List<String> coordinateNumbers = createCoordinates(startAt, upperYValue);
 
     Collections.reverse(coordinateNumbers);
 
@@ -70,7 +70,7 @@ public class BoardOutputter {
   }
 
   private static List<String> createCoordinates(int startAt, int endAt) {
-    return IntStream.rangeClosed(endAt, startAt).boxed()
+    return IntStream.rangeClosed(startAt, endAt).boxed()
       .map(coord -> coord < 0 ? coord.toString() : " " + coord.toString())
       .collect(Collectors.toList());
   }
