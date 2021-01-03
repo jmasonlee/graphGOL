@@ -20,16 +20,17 @@ public class BoardOutputter {
 
   public static String createBoardOutput(List<Cell> cells) {
     BoardBounds boardBounds = new BoardBounds(cells);
-    StringBuilder emptyBoard = new StringBuilder(String.join("", emptyBoardOfSize(boardBounds)));
+    List<String> emptyBoard = emptyBoardOfSize(boardBounds);
     return populateBoardWithCells(emptyBoard, cells, boardBounds);
   }
 
-  private static String populateBoardWithCells(StringBuilder board, List<Cell> cells, BoardBounds boardBounds) {
+  private static String populateBoardWithCells(List<String> board, List<Cell> cells, BoardBounds boardBounds) {
+    StringBuilder temp = new StringBuilder(String.join("", board));
     cells.forEach(c -> {
       int positionInBoard = getCellPositionInBoard(c, boardBounds);
-      board.setCharAt(positionInBoard, 'X');
+      temp.setCharAt(positionInBoard, 'X');
     });
-    return board.toString();
+    return temp.toString();
   }
 
   private static int getCellPositionInBoard(Cell cell, BoardBounds boardBounds) {
