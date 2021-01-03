@@ -20,7 +20,7 @@ public class BoardOutputter {
 
   public static String createBoardOutput(List<Cell> cells) {
     BoardBounds boardBounds = new BoardBounds(cells);
-    StringBuilder emptyBoard = emptyBoardOfSize(boardBounds);
+    StringBuilder emptyBoard = new StringBuilder(String.join("", emptyBoardOfSize(boardBounds)));
     return populateBoardWithCells(emptyBoard, cells, boardBounds);
   }
 
@@ -41,7 +41,7 @@ public class BoardOutputter {
     return (boardWidth + SHIFT) + (adjustedY * boardWidth) + (adjustedX * CELL.length());
   }
 
-  private static StringBuilder emptyBoardOfSize(BoardBounds boardBounds) {
+  private static List<String> emptyBoardOfSize(BoardBounds boardBounds) {
     List<String> board = new ArrayList<>();
     List<String> yCoords = createYCoordinates(boardBounds.upperYValue, boardBounds.height);
     List<String> xCoords = createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
@@ -49,7 +49,7 @@ public class BoardOutputter {
     board.addAll(createHeaderRow(xCoords));
     board.addAll(createEmptyBoard(boardBounds, yCoords));
 
-    return new StringBuilder(String.join("",board));
+    return board;
   }
 
   private static List<String> createHeaderRow(List<String> xCoords) {
