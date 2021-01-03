@@ -31,3 +31,11 @@ There are many better graph-based implementations of the Game of Life. [This one
 Ever since the second coderetreat I'd hosted a year ago, implementing the game of life by imagining storing the living cells in a graph has been bugging me. Since this has been a two year-long brain worm, I decided it would be worth actually coding it out. So I did. Just because I wanted to.
 
 I am writing this from a learning perspective where I am intentionally trying to do things "right" and take it slow. Because I am taking my time, and not pressuring myself to do anything but learn and solve the problem, this became my project to "just code". It's something that reminds me why I love doing what I do.
+
+## What did I learn?
+
+There's really no point in doing a learning project unless I can record my learnings somewhere I can check back on them. During this project, I learned quite a bit about the Game of Life algorithm. I also started writing my tests with a new tool, [Approval Tests](https://github.com/approvals/approvaltests.java). I'm writing up my learnings in this repo so I can check back on them later.
+
+Here is where I'm storing that information:
+- [Approvals](learnings/Approvals.md)
+- [Game of Life Algorithm](learnings/GameOfLifeAlgorithm.md)
