@@ -25,11 +25,12 @@ public class BoardOutputter {
   }
 
   private static String populateBoardWithCells(List<String> oldBoard, List<Cell> cells, BoardBounds boardBounds) {
-    StringBuilder temp = new StringBuilder(String.join("", oldBoard));
+    List<String> boardWithCells = oldBoard;
     cells.forEach(c -> {
       int positionInBoard = getCellPositionInBoard(c, boardBounds);
-      temp.setCharAt(positionInBoard, 'X');
+      boardWithCells.set(positionInBoard, "|X_");
     });
+    StringBuilder temp = new StringBuilder(String.join("", oldBoard));
     return temp.toString();
   }
 
@@ -37,9 +38,9 @@ public class BoardOutputter {
     int adjustedX = Math.abs(boardBounds.getLeftmostXValue() - cell.x);
     int adjustedY = Math.abs(boardBounds.getUpperYValue() - cell.y);
 
-    int boardWidth = 2 + (CELL.length() * boardBounds.getWidth()) + ROW_END.length();
+    int boardWidth = 2 + boardBounds.getWidth();
 
-    return (boardWidth + SHIFT) + (adjustedY * boardWidth) + (adjustedX * CELL.length());
+    return boardWidth + (adjustedY * boardWidth) + (adjustedX + 1);
   }
 
   private static List<String> emptyBoardOfSize(BoardBounds boardBounds) {
