@@ -42,14 +42,14 @@ public class BoardOutputter {
   }
 
   private static StringBuilder emptyBoardOfSize(BoardBounds boardBounds) {
-    StringBuilder board = new StringBuilder();
+    List<String> board = new ArrayList<>();
     List<String> yCoords = createYCoordinates(boardBounds.upperYValue, boardBounds.height);
     List<String> xCoords = createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
 
-    board.append(String.join("", createHeaderRow(xCoords)));
-    board.append(String.join("", createEmptyBoard(boardBounds,yCoords)));
+    board.addAll(createHeaderRow(xCoords));
+    board.addAll(createEmptyBoard(boardBounds, yCoords));
 
-    return board;
+    return new StringBuilder(String.join("",board));
   }
 
   private static List<String> createHeaderRow(List<String> xCoords) {
