@@ -47,20 +47,20 @@ public class BoardOutputter {
     List<String> yCoords = createYCoordinates(boardBounds.upperYValue, boardBounds.height);
     List<String> xCoords = createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
 
-    board.append(createTopRow(xCoords));
+    board.append(String.join("", createTopRow(xCoords)));
     board.append(createEmptyCells(boardBounds,yCoords));
 
     return board;
   }
 
-  private static StringBuilder createTopRow(List<String> xCoords) {
+  private static List<String> createTopRow(List<String> xCoords) {
     List<String > board = new ArrayList<>();
 
     board.add("   ");
     board.add(String.join(" ",xCoords));
     board.add(TOP_BOUNDARY_END);
 
-    return new StringBuilder(String.join("", board));
+    return board;
   }
 
   private static StringBuilder createEmptyCells(BoardBounds boardBounds, List<String> yCoords) {
