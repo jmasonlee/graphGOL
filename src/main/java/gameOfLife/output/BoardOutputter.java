@@ -44,7 +44,7 @@ public class BoardOutputter {
 
   private static StringBuilder emptyBoardOfSize(BoardBounds boardBounds) {
     StringBuilder board = new StringBuilder();
-    List<String> yCoords = createCoordinates(boardBounds.upperYValue, boardBounds.height);
+    List<String> yCoords = createYCoordinates(boardBounds.upperYValue, boardBounds.height);
 
     board.append("  ");
     board.append(StringUtils.repeat(TOP_BOUNDARY, boardBounds.width));
@@ -59,15 +59,20 @@ public class BoardOutputter {
     return board;
   }
 
-  private static List<String> createCoordinates(int startAt, int dimensionSize) {
+  private static List<String> createYCoordinates(int startAt, int dimensionSize) {
     Integer endAt = startAt - dimensionSize + 1;
-    List<String> coordinateNumbers = IntStream.rangeClosed(endAt, startAt).boxed()
-      .map(coord -> coord < 0 ? coord.toString() : " " + coord.toString())
-      .collect(Collectors.toList());
+
+    List<String> coordinateNumbers = createCoordinates(startAt, endAt);
 
     Collections.reverse(coordinateNumbers);
 
     return coordinateNumbers;
+  }
+
+  private static List<String> createCoordinates(int startAt, int endAt) {
+    return IntStream.rangeClosed(endAt, startAt).boxed()
+      .map(coord -> coord < 0 ? coord.toString() : " " + coord.toString())
+      .collect(Collectors.toList());
   }
 
   public static class BoardBounds {
