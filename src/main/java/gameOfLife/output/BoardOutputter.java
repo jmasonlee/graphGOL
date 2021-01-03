@@ -55,22 +55,24 @@ public class BoardOutputter {
 
   private static StringBuilder createTopRow(List<String> xCoords) {
     StringBuilder board = new StringBuilder();
+
     board.append("   ");
     board.append(String.join(" ",xCoords));
     board.append(TOP_BOUNDARY_END);
+
     return board;
   }
 
   private static StringBuilder createEmptyCells(BoardBounds boardBounds, List<String> yCoords) {
-    StringBuilder board = new StringBuilder();
+    List<String> board = new ArrayList<>();
 
     for (int i = 0; i < boardBounds.height; i++) {
-      board.append(yCoords.get(i));
-      board.append(StringUtils.repeat(CELL, boardBounds.width));
-      board.append(ROW_END);
+      board.add(yCoords.get(i));
+      board.add(StringUtils.repeat(CELL, boardBounds.width));
+      board.add(ROW_END);
     }
 
-    return board;
+    return new StringBuilder(String.join("", board));
   }
 
   private static List<String> createXCoordinates(int leftmostXValue, int width) {
