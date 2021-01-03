@@ -57,8 +57,7 @@ public class BoardOutputter {
     List<String > board = new ArrayList<>();
 
     board.add("   ");
-    List<String> formattedCoords = formatIndividualColumnHeaders(xCoords);
-    board.addAll(formattedCoords);
+    board.addAll(formatIndividualColumnHeaders(xCoords));
     board.add(TOP_BOUNDARY_END);
 
     return board;
