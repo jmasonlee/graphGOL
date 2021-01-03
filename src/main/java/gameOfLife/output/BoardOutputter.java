@@ -51,6 +51,14 @@ public class BoardOutputter {
     board.append(String.join(" ",xCoords));
     board.append(TOP_BOUNDARY_END);
 
+    board.append(createEmptyCells(boardBounds,yCoords));
+
+    return board;
+  }
+
+  private static StringBuilder createEmptyCells(BoardBounds boardBounds, List<String> yCoords) {
+    StringBuilder board = new StringBuilder();
+
     for (int i = 0; i < boardBounds.height; i++) {
       board.append(yCoords.get(i));
       board.append(StringUtils.repeat(CELL, boardBounds.width));
@@ -58,6 +66,7 @@ public class BoardOutputter {
     }
 
     return board;
+  }
 
   private static List<String> createXCoordinates(int leftmostXValue, int width) {
     int endAt = leftmostXValue + width -1;
