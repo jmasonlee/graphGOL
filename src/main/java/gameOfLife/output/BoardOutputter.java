@@ -24,8 +24,8 @@ public class BoardOutputter {
     return populateBoardWithCells(emptyBoard, cells, boardBounds);
   }
 
-  private static String populateBoardWithCells(List<String> board, List<Cell> cells, BoardBounds boardBounds) {
-    StringBuilder temp = new StringBuilder(String.join("", board));
+  private static String populateBoardWithCells(List<String> oldBoard, List<Cell> cells, BoardBounds boardBounds) {
+    StringBuilder temp = new StringBuilder(String.join("", oldBoard));
     cells.forEach(c -> {
       int positionInBoard = getCellPositionInBoard(c, boardBounds);
       temp.setCharAt(positionInBoard, 'X');
