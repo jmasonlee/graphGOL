@@ -79,7 +79,7 @@ public class BoardOutputter {
 
     for (int i = 0; i < boardBounds.height; i++) {
       board.add(yCoords.get(i));
-      board.add(StringUtils.repeat(CELL, boardBounds.width));
+      board.addAll(Collections.nCopies(boardBounds.width, CELL));
       board.add(ROW_END);
     }
 
