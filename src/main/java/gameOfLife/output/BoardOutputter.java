@@ -1,7 +1,6 @@
 package gameOfLife.output;
 
 import gameOfLife.cell.Cell;
-import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,13 +46,13 @@ public class BoardOutputter {
     List<String> yCoords = createYCoordinates(boardBounds.upperYValue, boardBounds.height);
     List<String> xCoords = createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
 
-    board.append(String.join("", createTopRow(xCoords)));
+    board.append(String.join("", createHeaderRow(xCoords)));
     board.append(createEmptyCells(boardBounds,yCoords));
 
     return board;
   }
 
-  private static List<String> createTopRow(List<String> xCoords) {
+  private static List<String> createHeaderRow(List<String> xCoords) {
     List<String > board = new ArrayList<>();
 
     board.add("   ");
