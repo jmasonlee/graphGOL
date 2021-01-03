@@ -45,9 +45,10 @@ public class BoardOutputter {
   private static StringBuilder emptyBoardOfSize(BoardBounds boardBounds) {
     StringBuilder board = new StringBuilder();
     List<String> yCoords = createYCoordinates(boardBounds.upperYValue, boardBounds.height);
+    List<String> xCoords = createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
 
-    board.append("  ");
-    board.append(StringUtils.repeat(TOP_BOUNDARY, boardBounds.width));
+    board.append("   ");
+    board.append(String.join(" ",xCoords));
     board.append(TOP_BOUNDARY_END);
 
     for (int i = 0; i < boardBounds.height; i++) {
@@ -57,10 +58,14 @@ public class BoardOutputter {
     }
 
     return board;
+
+  private static List<String> createXCoordinates(int leftmostXValue, int width) {
+    int endAt = leftmostXValue + width -1;
+    return createCoordinates(leftmostXValue, endAt);
   }
 
   private static List<String> createYCoordinates(int upperYValue, int dimensionSize) {
-    Integer startAt = upperYValue - dimensionSize + 1;
+    int startAt = upperYValue - dimensionSize + 1;
 
     List<String> coordinateNumbers = createCoordinates(startAt, upperYValue);
 
