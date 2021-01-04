@@ -49,7 +49,7 @@ public class BoardOutputter {
     List<String> xCoords = createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
 
     board.addAll(createHeaderRow(xCoords));
-    board.addAll(createEmptyBoard(boardBounds, yCoords));
+    board.addAll(createEmptyRows(boardBounds, yCoords));
 
     return board;
   }
@@ -75,7 +75,7 @@ public class BoardOutputter {
     return formattedCoords;
   }
 
-  private static List<String> createEmptyBoard(BoardBounds boardBounds, List<String> yCoords) {
+  private static List<String> createEmptyRows(BoardBounds boardBounds, List<String> yCoords) {
     List<String> board = new ArrayList<>();
 
     for (int i = 0; i < boardBounds.height; i++) {
