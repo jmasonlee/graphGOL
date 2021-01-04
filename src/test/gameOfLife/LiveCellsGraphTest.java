@@ -1,15 +1,12 @@
 package gameOfLife;
 
 import gameOfLife.TestUtils.CellCoverage;
+import gameOfLife.TestUtils.NeighbourGenerator;
 import gameOfLife.cell.Cell;
-import org.apache.commons.math3.util.CombinatoricsUtils;
-import org.approvaltests.Approvals;
 import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -26,7 +23,7 @@ public class LiveCellsGraphTest {
     List<Cell> allNeighbours = generateAllPossibleNeighboursForCell(centre);
 
     List<List<Cell>> neighbourCombinations =
-        allCombinationsOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
+        NeighbourGenerator.allCombinationsOfNeighbours(this, allNeighbours, desiredNumberOfNeighbours);
 
     return filterOnNeighbourCountForAllNeighbourCombinations(
         centre, desiredNumberOfNeighbours, neighbourCombinations);
@@ -48,45 +45,6 @@ public class LiveCellsGraphTest {
     int neighbourY = centre.y + relativeY;
 
     return new Cell(neighbourX, neighbourY);
-  }
-
-  private List<List<Cell>> allCombinationsOfNeighbours(
-    List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
-
-    Iterator<int[]> neighbourIterator =
-      createCombinationsIterator(allNeighbours, desiredNumberOfNeighbours);
-
-    return iterateOverAllPossibleCombinations(allNeighbours, neighbourIterator);
-  }
-
-  private Iterator<int[]> createCombinationsIterator(
-    List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
-    return CombinatoricsUtils.combinationsIterator(allNeighbours.size(), desiredNumberOfNeighbours);
-  }
-
-  private List<List<Cell>> iterateOverAllPossibleCombinations(
-    List<Cell> allNeighbours, Iterator<int[]> neighbourIterator) {
-    List<List<Cell>> neighbourCombinations = new ArrayList<>();
-
-    while (neighbourIterator.hasNext()) {
-      int[] neighbourIndices = neighbourIterator.next();
-
-      List<Cell> neighbours = matchIndicesToNeighbours(allNeighbours, neighbourIndices);
-
-      neighbourCombinations.add(neighbours);
-    }
-
-    return neighbourCombinations;
-  }
-
-  private List<Cell> matchIndicesToNeighbours(List<Cell> allNeighbours, int[] neighbourIndices) {
-    List<Cell> neighbours = new ArrayList<>();
-
-    for (int index : neighbourIndices) {
-      neighbours.add(allNeighbours.get(index));
-    }
-
-    return neighbours;
   }
 
   private StringBuilder filterOnNeighbourCountForAllNeighbourCombinations(
