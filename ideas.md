@@ -21,4 +21,11 @@ Don't necessarily need to be stored WRT the board. They should be stored WRT oth
  - make your tests more accessible (Language/Ability are no longer blockers to writing a good test)
  - If you are parsing your tests instead of reading them, you're doing it wrong
  - When building new functionality using TDD with approvals, your test file shouldn't be so long you can't read it. (Not the same for legacy code)
+ https://www.youtube.com/watch?v=dJl5FLOp5Hw&t=1479s
+ - I like how Emily uses a separate sketch to keep track of her final desired state. Allows you to modify the approved file a little and save it when it gets better, even if it isn't all the way there.
+ - Random unordered data (Set) doesn't fit nicely with Approvals.
+ - BDD starts with user-facing scenarios that can 
+ - Emily will drop down to unit tests if needed, Adrian thinks the finer-grained logic could have been fleshed out better with asserts
+ - BDD with approvals provides short feedback loops.
+ - Incremental approvals give the effect of being able to take small steps while keeping a larger test to implement.
 
