@@ -29,7 +29,7 @@ public class LiveCellsGraphTest {
         centre, desiredNumberOfNeighbours, neighbourCombinations);
   }
 
-  private List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
+  private static List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
     Integer[] neighbourRange = new Integer[] {-1, 0, 1};
 
     Cell lowerLeftCell = new Cell(-1, -1);
