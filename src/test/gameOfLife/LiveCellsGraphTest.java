@@ -1,6 +1,5 @@
 package gameOfLife;
 
-import gameOfLife.TestUtils.CellCoverage;
 import gameOfLife.TestUtils.NeighbourGenerator;
 import gameOfLife.cell.Cell;
 import org.approvaltests.combinations.CombinationApprovals;
@@ -20,24 +19,13 @@ public class LiveCellsGraphTest {
 
   private StringBuilder buildGraphAndFilterOnNeighbourCount(int desiredNumberOfNeighbours) {
     Cell centre = new Cell(0, 0);
-    List<Cell> allNeighbours = generateAllPossibleNeighboursForCell(centre);
+    List<Cell> allNeighbours = NeighbourGenerator.generateAllPossibleNeighboursForCell(centre);
 
     List<List<Cell>> neighbourCombinations =
         NeighbourGenerator.allCombinationsOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
 
     return filterOnNeighbourCountForAllNeighbourCombinations(
         centre, desiredNumberOfNeighbours, neighbourCombinations);
-  }
-
-  private static List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
-    Integer[] neighbourRange = new Integer[] {-1, 0, 1};
-
-    Cell lowerLeftCell = new Cell(-1, -1);
-    Cell upperRightCell = new Cell(1,1);
-    List<Cell> allNeighbours = CellCoverage.generateAllPossibleCellsBetweenTwoCells(lowerLeftCell,upperRightCell);
-    allNeighbours.remove(cell);
-
-    return allNeighbours;
   }
 
   private Cell createNeighbour(Cell centre, int relativeX, int relativeY) {

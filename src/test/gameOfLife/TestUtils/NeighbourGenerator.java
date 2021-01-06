@@ -46,4 +46,13 @@ public class NeighbourGenerator {
     List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
     return CombinatoricsUtils.combinationsIterator(allNeighbours.size(), desiredNumberOfNeighbours);
   }
+
+  public static List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
+    Cell lowerLeftCell = new Cell(-1, -1);
+    Cell upperRightCell = new Cell(1,1);
+    List<Cell> allNeighbours = CellCoverage.generateAllPossibleCellsBetweenTwoCells(lowerLeftCell,upperRightCell);
+    allNeighbours.remove(cell);
+
+    return allNeighbours;
+  }
 }
