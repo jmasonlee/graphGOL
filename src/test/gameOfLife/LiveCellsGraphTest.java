@@ -23,7 +23,7 @@ public class LiveCellsGraphTest {
     List<Cell> allNeighbours = generateAllPossibleNeighboursForCell(centre);
 
     List<List<Cell>> neighbourCombinations =
-        NeighbourGenerator.allCombinationsOfNeighbours(this, allNeighbours, desiredNumberOfNeighbours);
+        NeighbourGenerator.allCombinationsOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
 
     return filterOnNeighbourCountForAllNeighbourCombinations(
         centre, desiredNumberOfNeighbours, neighbourCombinations);

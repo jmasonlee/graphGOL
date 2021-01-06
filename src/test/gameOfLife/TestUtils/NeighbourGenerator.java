@@ -9,8 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class NeighbourGenerator {
-  public static List<List<Cell>> allCombinationsOfNeighbours(LiveCellsGraphTest liveCellsGraphTest,
-                                                             List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
+  public static List<List<Cell>> allCombinationsOfNeighbours(List<Cell> allNeighbours, int desiredNumberOfNeighbours) {
 
     Iterator<int[]> neighbourIterator =
       createCombinationsIterator(allNeighbours, desiredNumberOfNeighbours);
