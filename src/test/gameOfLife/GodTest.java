@@ -1,6 +1,8 @@
 package gameOfLife;
 
 import gameOfLife.cell.Cell;
+import gameOfLife.output.BoardOutputter;
+import org.approvaltests.Approvals;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -14,6 +16,25 @@ public class GodTest {
   public void testDoesNotReturnIsolatedCells() {
     LiveCellsGraph liveCellsGraph = new LiveCellsGraph(Arrays.asList(new Cell[]{new Cell(0,1)}));
     assertEquals(new ArrayList<>(), God.livingCellsOnNextTurn(liveCellsGraph));
+  }
+
+  @Test
+  public void returnsCellsWithEnoughNeighbours(){
+    List<Cell> cellWithTwoNeighbours = Arrays.asList(
+      new Cell[]{
+        new Cell(0,1),
+        new Cell(0,0),
+        new Cell(0,2)
+      });
+
+    StringBuilder toVerify = new StringBuilder(BoardOutputter.createBoardOutput(cellWithTwoNeighbours));
+    toVerify.append("\n\n");
+
+    gameOfLife.LiveCellsGraph liveCellsGraph = new gameOfLife.LiveCellsGraph(cellWithTwoNeighbours);
+
+    toVerify.append(liveCellsGraph.getCells());
+
+    Approvals.verify(toVerify);
   }
 
   @Test
