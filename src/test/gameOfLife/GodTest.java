@@ -1,5 +1,6 @@
 package gameOfLife;
 
+import gameOfLife.TestUtils.NeighbourGenerator;
 import gameOfLife.cell.Cell;
 import gameOfLife.output.BoardOutputter;
 import org.approvaltests.Approvals;
@@ -36,18 +37,5 @@ public class GodTest {
     toVerify.append("\n");
 
     Approvals.verify(toVerify);
-  }
-
-  @Test
-  public void testReturnsCellsWith2Neighbours(){
-      List<Cell> cellWithTwoNeighbours = Arrays.asList(
-          new Cell[]{
-              new Cell(0,1),
-              new Cell(0,0),
-              new Cell(0,2)
-          });
-
-      gameOfLife.LiveCellsGraph liveCellsGraph = new gameOfLife.LiveCellsGraph(cellWithTwoNeighbours);
-      assertTrue(God.livingCellsOnNextTurn(liveCellsGraph).contains(cellWithTwoNeighbours.get(0)));
   }
 }
