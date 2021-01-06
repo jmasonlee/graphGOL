@@ -1,7 +1,5 @@
 package gameOfLife;
 
-import gameOfLife.Foo;
-import gameOfLife.LiveCellsGraph;
 import gameOfLife.cell.Cell;
 import org.junit.Test;
 
@@ -11,11 +9,11 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class FooTest {
+public class GodTest {
   @Test
   public void testDoesNotReturnIsolatedCells() {
     LiveCellsGraph liveCellsGraph = new LiveCellsGraph(Arrays.asList(new Cell[]{new Cell(0,1)}));
-    assertEquals(new ArrayList<>(), Foo.livingCellsOnNextTurn(liveCellsGraph));
+    assertEquals(new ArrayList<>(), God.livingCellsOnNextTurn(liveCellsGraph));
   }
 
   @Test
@@ -28,6 +26,6 @@ public class FooTest {
           });
 
       gameOfLife.LiveCellsGraph liveCellsGraph = new gameOfLife.LiveCellsGraph(cellWithTwoNeighbours);
-      assertTrue(gameOfLife.Foo.livingCellsOnNextTurn(liveCellsGraph).contains(cellWithTwoNeighbours.get(0)));
+      assertTrue(God.livingCellsOnNextTurn(liveCellsGraph).contains(cellWithTwoNeighbours.get(0)));
   }
 }
