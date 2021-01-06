@@ -28,13 +28,6 @@ public class LiveCellsGraphTest {
         centre, desiredNumberOfNeighbours, neighbourCombinations);
   }
 
-  private Cell createNeighbour(Cell centre, int relativeX, int relativeY) {
-    int neighbourX = centre.x + relativeX;
-    int neighbourY = centre.y + relativeY;
-
-    return new Cell(neighbourX, neighbourY);
-  }
-
   private StringBuilder filterOnNeighbourCountForAllNeighbourCombinations(
       Cell centre, int desiredNumberOfNeighbours, List<List<Cell>> neighbourCombinations) {
     StringBuilder testOutput = new StringBuilder();
