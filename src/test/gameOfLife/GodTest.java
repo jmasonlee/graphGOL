@@ -32,7 +32,8 @@ public class GodTest {
 
     gameOfLife.LiveCellsGraph liveCellsGraph = new gameOfLife.LiveCellsGraph(cellWithTwoNeighbours);
 
-    toVerify.append(liveCellsGraph.getCells());
+    toVerify.append(BoardOutputter.createBoardOutput(God.livingCellsOnNextTurn(liveCellsGraph)));
+    toVerify.append("\n");
 
     Approvals.verify(toVerify);
   }
