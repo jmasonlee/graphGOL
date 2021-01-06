@@ -21,6 +21,8 @@ Don't necessarily need to be stored WRT the board. They should be stored WRT oth
  - make your tests more accessible (Language/Ability are no longer blockers to writing a good test)
  - If you are parsing your tests instead of reading them, you're doing it wrong
  - When building new functionality using TDD with approvals, your test file shouldn't be so long you can't read it. (Not the same for legacy code)
+ - Instead of thinking in terms of expanding the single test you've written, think in terms of expanding around the functionality of the method under test.
+   - Example "God" class shouldn't need to test that all combinations of two cells are filtered, because that is already covered under the "LiveCellsGraphTest" It's sufficient to simply checkthat two cells are covered and then write a new assert for 3 cells to be absorbed into the approval.
  https://www.youtube.com/watch?v=dJl5FLOp5Hw&t=1479s
  - I like how Emily uses a separate sketch to keep track of her final desired state. Allows you to modify the approved file a little and save it when it gets better, even if it isn't all the way there.
  - Random unordered data (Set) doesn't fit nicely with Approvals.
