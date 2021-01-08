@@ -22,9 +22,12 @@ public class GodTest {
   @Test
   public void returnsCellsWithEnoughNeighbours(){
     List<List<Cell>> cellsAndNeighbours = new ArrayList<>();
-    List<Cell> allPossibleNeighbours = NeighbourGenerator.generateAllPossibleNeighboursForCell(new Cell(0,0));
+
+    List<Cell> centres = createRegularlySpacedCentres(9);
+
+    List<Cell> allPossibleNeighbours = NeighbourGenerator.generateAllPossibleNeighboursForCell(centres.get(0));
     List<Cell> cellWithTwoNeighbours = NeighbourGenerator.allCombinationsOfNeighbours(allPossibleNeighbours, 2).get(0);
-    cellWithTwoNeighbours.add(new Cell(0,0));
+    cellWithTwoNeighbours.add(centres.get(0));
 
     cellsAndNeighbours.add(cellWithTwoNeighbours);
 
@@ -40,5 +43,16 @@ public class GodTest {
     });
 
     Approvals.verify(toVerify);
+  }
+
+  private List<Cell> createRegularlySpacedCentres(int numberOfCentres) {
+    List<Cell> centres = new ArrayList<>();
+    int spacer = 7;
+
+    for (int i = 0; i < numberOfCentres; i++) {
+      centres.add(new Cell(spacer*i, 0));
+    }
+
+    return centres;
   }
 }
