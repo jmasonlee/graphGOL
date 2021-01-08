@@ -22,12 +22,10 @@ public class GodTest {
   @Test
   public void returnsCellsWithEnoughNeighbours(){
     List<List<Cell>> cellsAndNeighbours = new ArrayList<>();
-    List<Cell> cellWithTwoNeighbours = Arrays.asList(
-      new Cell[]{
-        new Cell(0,1),
-        new Cell(0,0),
-        new Cell(0,2)
-      });
+    List<Cell> allPossibleNeighbours = NeighbourGenerator.generateAllPossibleNeighboursForCell(new Cell(0,0));
+    List<Cell> cellWithTwoNeighbours = NeighbourGenerator.allCombinationsOfNeighbours(allPossibleNeighbours, 2).get(0);
+    cellWithTwoNeighbours.add(new Cell(0,0));
+
     cellsAndNeighbours.add(cellWithTwoNeighbours);
 
     StringBuilder toVerify = new StringBuilder();
