@@ -21,20 +21,25 @@ public class GodTest {
 
   @Test
   public void returnsCellsWithEnoughNeighbours(){
+    List<List<Cell>> cellsAndNeighbours = new ArrayList<>();
     List<Cell> cellWithTwoNeighbours = Arrays.asList(
       new Cell[]{
         new Cell(0,1),
         new Cell(0,0),
         new Cell(0,2)
       });
+    cellsAndNeighbours.add(cellWithTwoNeighbours);
 
-    StringBuilder toVerify = new StringBuilder(BoardOutputter.createBoardOutput(cellWithTwoNeighbours));
-    toVerify.append("\n\n");
+    StringBuilder toVerify = new StringBuilder();
+    cellsAndNeighbours.forEach(cellGroup -> {
+      toVerify.append(BoardOutputter.createBoardOutput(cellGroup));
+      toVerify.append("\n\n");
 
-    gameOfLife.LiveCellsGraph liveCellsGraph = new gameOfLife.LiveCellsGraph(cellWithTwoNeighbours);
+      gameOfLife.LiveCellsGraph liveCellsGraph = new gameOfLife.LiveCellsGraph(cellWithTwoNeighbours);
 
-    toVerify.append(BoardOutputter.createBoardOutput(God.livingCellsOnNextTurn(liveCellsGraph)));
-    toVerify.append("\n");
+      toVerify.append(BoardOutputter.createBoardOutput(God.livingCellsOnNextTurn(liveCellsGraph)));
+      toVerify.append("\n");
+    });
 
     Approvals.verify(toVerify);
   }
