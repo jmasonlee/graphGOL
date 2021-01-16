@@ -50,6 +50,13 @@ public class NeighbourGenerator {
   public static List<Cell> generateAllPossibleNeighboursForCell(Cell cell) {
     Cell lowerLeftCell = new Cell(-1, -1);
     Cell upperRightCell = new Cell(1,1);
+
+    lowerLeftCell.x = cell.x + lowerLeftCell.x;
+    lowerLeftCell.y = cell.y + lowerLeftCell.y;
+
+    upperRightCell.x = cell.x + upperRightCell.x;
+    upperRightCell.y = cell.y + upperRightCell.y;
+
     List<Cell> allNeighbours = CellCoverage.generateAllPossibleCellsBetweenTwoCells(lowerLeftCell,upperRightCell);
     allNeighbours.remove(cell);
 

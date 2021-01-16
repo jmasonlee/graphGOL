@@ -8,35 +8,43 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class GodTest {
   @Test
   public void testDoesNotReturnIsolatedCells() {
-    LiveCellsGraph liveCellsGraph = new LiveCellsGraph(Arrays.asList(new Cell[]{new Cell(0,1)}));
+    LiveCellsGraph liveCellsGraph = new LiveCellsGraph(Arrays.asList(new Cell[]{new Cell(0, 1)}));
     assertEquals(new ArrayList<>(), God.livingCellsOnNextTurn(liveCellsGraph));
   }
 
   @Test
-  public void returnsCellsWithEnoughNeighbours(){
+  public void returnsCellsWithEnoughNeighbours() {
     List<List<Cell>> cellsAndNeighbours = new ArrayList<>();
 
     List<Cell> centres = createRegularlySpacedCentres(9);
 
-    List<Cell> allPossibleNeighbours = NeighbourGenerator.generateAllPossibleNeighboursForCell(centres.get(0));
-    List<Cell> cellWithTwoNeighbours = NeighbourGenerator.allCombinationsOfNeighbours(allPossibleNeighbours, 2).get(0);
-    cellWithTwoNeighbours.add(centres.get(0));
+    for (int i = 0; i < centres.size(); i++) {
+      List<Cell> allPossibleNeighbours = NeighbourGenerator.generateAllPossibleNeighboursForCell(centres.get(i));
+      List<Cell> cellWithTwoNeighbours = NeighbourGenerator.allCombinationsOfNeighbours(allPossibleNeighbours, i).get(0);
+      cellWithTwoNeighbours.add(centres.get(i));
 
-    cellsAndNeighbours.add(cellWithTwoNeighbours);
+      cellsAndNeighbours.add(cellWithTwoNeighbours);
+    }
+
+    gameOfLife.LiveCellsGraph liveCellsGraph = new gameOfLife.LiveCellsGraph(
+        cellsAndNeighbours
+            .stream()
+            .flatMap(Collection::stream)
+            .collect(Collectors.toList()));
 
     StringBuilder toVerify = new StringBuilder();
     cellsAndNeighbours.forEach(cellGroup -> {
       toVerify.append(BoardOutputter.createBoardOutput(cellGroup));
       toVerify.append("\n\n");
-
-      gameOfLife.LiveCellsGraph liveCellsGraph = new gameOfLife.LiveCellsGraph(cellWithTwoNeighbours);
 
       toVerify.append(BoardOutputter.createBoardOutput(God.livingCellsOnNextTurn(liveCellsGraph)));
       toVerify.append("\n");
@@ -50,7 +58,7 @@ public class GodTest {
     int spacer = 7;
 
     for (int i = 0; i < numberOfCentres; i++) {
-      centres.add(new Cell(spacer*i, 0));
+      centres.add(new Cell(spacer * i, 0));
     }
 
     return centres;
