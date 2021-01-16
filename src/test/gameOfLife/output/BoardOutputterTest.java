@@ -20,6 +20,11 @@ public class BoardOutputterTest {
   }
 
   @Test
+  public void testBoardIsPrintedCoherentlyWithLargerNumbers() {
+    Approvals.verify(createBoardWithOneCell(-100, -120));
+  }
+
+  @Test
   public void testEmptyBoard() {
     Approvals.verify(BoardOutputter.createBoardOutput(new ArrayList<>()));
   }
