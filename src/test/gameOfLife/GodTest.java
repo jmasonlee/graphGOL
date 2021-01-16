@@ -42,20 +42,18 @@ public class GodTest {
             .collect(Collectors.toList()));
 
     StringBuilder toVerify = new StringBuilder();
-    cellsAndNeighbours.forEach(cellGroup -> {
-      toVerify.append(BoardOutputter.createBoardOutput(cellGroup));
-      toVerify.append("\n\n");
+    toVerify.append(BoardOutputter.createBoardOutput(liveCellsGraph.getCells()));
+    toVerify.append("\n\n");
 
-      toVerify.append(BoardOutputter.createBoardOutput(God.livingCellsOnNextTurn(liveCellsGraph)));
-      toVerify.append("\n");
-    });
+    toVerify.append(BoardOutputter.createBoardOutput(God.livingCellsOnNextTurn(liveCellsGraph)));
+    toVerify.append("\n");
 
     Approvals.verify(toVerify);
   }
 
   private List<Cell> createRegularlySpacedCentres(int numberOfCentres) {
     List<Cell> centres = new ArrayList<>();
-    int spacer = 7;
+    int spacer = 5;
 
     for (int i = 0; i < numberOfCentres; i++) {
       centres.add(new Cell(spacer * i, 0));
