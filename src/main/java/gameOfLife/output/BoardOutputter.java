@@ -11,12 +11,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BoardOutputter {
-
-  private static final String TOP_BOUNDARY = " __";
+  
   private static final String TOP_BOUNDARY_END = " \n";
   private static final String CELL = "|__";
   private static final String ROW_END = "|\n";
-  private static final int SHIFT = 3;
 
   public static String createBoardOutput(List<Cell> cells) {
     BoardBounds boardBounds = new BoardBounds(cells);
