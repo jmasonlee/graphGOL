@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class BoardOutputter {
-  
+
   private static final String TOP_BOUNDARY_END = " \n";
   private static final String CELL = "|__";
   private static final String ROW_END = "|\n";
@@ -46,16 +46,30 @@ public class BoardOutputter {
     List<String> yCoords = createYCoordinates(boardBounds.upperYValue, boardBounds.height);
     List<String> xCoords = createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
 
-    board.addAll(createHeaderRow(xCoords));
+    Integer widestY = getWidestValueForY(yCoords);
+
+    board.addAll(createHeaderRow(xCoords, widestY));
     board.addAll(createEmptyRows(boardBounds, yCoords));
 
     return board;
   }
 
-  private static List<String> createHeaderRow(List<String> xCoords) {
+  private static Integer getWidestValueForY(List<String> yCoords) {
+    Integer widest = yCoords.get(0).length();
+
+    for(String coordinate : yCoords) {
+      if (coordinate.length() > widest){
+        widest = coordinate.length();
+      }
+    }
+
+    return widest;
+  }
+
+  private static List<String> createHeaderRow(List<String> xCoords, Integer widestY) {
     List<String > board = new ArrayList<>();
 
-    board.add("   ");
+    board.add(String.join("", Collections.nCopies(widestY, " ")));
     board.addAll(formatIndividualColumnHeaders(xCoords));
     board.add(TOP_BOUNDARY_END);
 
