@@ -69,7 +69,7 @@ public class BoardOutputter {
   private static List<String> createHeaderRow(List<String> xCoords, Integer widestY) {
     List<String > board = new ArrayList<>();
 
-    board.add(String.join("", Collections.nCopies(widestY, " ")));
+    board.add(" " + String.join("", Collections.nCopies(widestY, " ")));
     board.addAll(formatIndividualColumnHeaders(xCoords));
     board.add(TOP_BOUNDARY_END);
 
