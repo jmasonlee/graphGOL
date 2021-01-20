@@ -43,13 +43,13 @@ public class BoardOutputter {
 
   private static List<String> emptyBoardOfSize(BoardBounds boardBounds) {
     List<String> board = new ArrayList<>();
-    List<String> yCoords = createYCoordinates(boardBounds.upperYValue, boardBounds.height);
+    Coordinates yCoords = createYCoordinates(boardBounds.upperYValue, boardBounds.height);
     List<String> xCoords = createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
 
-    Integer widestY = getWidestValueForY(yCoords);
+    Integer widestY = getWidestValueForY(yCoords.coordinates);
 
     board.addAll(createHeaderRow(xCoords, widestY));
-    board.addAll(createEmptyRows(boardBounds, yCoords));
+    board.addAll(createEmptyRows(boardBounds, yCoords.coordinates));
 
     return board;
   }
@@ -104,14 +104,17 @@ public class BoardOutputter {
     return createCoordinates(leftmostXValue, endAt);
   }
 
-  private static List<String> createYCoordinates(int upperYValue, int dimensionSize) {
+  private static Coordinates createYCoordinates(int upperYValue, int dimensionSize) {
     int startAt = upperYValue - dimensionSize + 1;
 
     List<String> coordinateNumbers = createCoordinates(startAt, upperYValue);
 
     Collections.reverse(coordinateNumbers);
 
-    return coordinateNumbers;
+    Coordinates coordinates = new Coordinates();
+    coordinates.coordinates = coordinateNumbers;
+
+    return coordinates;
   }
 
   private static List<String> createCoordinates(int startAt, int endAt) {
