@@ -52,18 +52,6 @@ public class BoardOutputter {
     return board;
   }
 
-  private static Integer getWidestValueForY(List<String> yCoords) {
-    Integer widest = yCoords.get(0).length();
-
-    for(String coordinate : yCoords) {
-      if (coordinate.length() > widest){
-        widest = coordinate.length();
-      }
-    }
-
-    return widest;
-  }
-
   private static List<String> createHeaderRow(List<String> xCoords, Integer widestY) {
     List<String > board = new ArrayList<>();
 
@@ -109,9 +97,7 @@ public class BoardOutputter {
 
     Collections.reverse(coordinateNumbers);
 
-    Coordinates coordinates = new Coordinates();
-    coordinates.coordinates = coordinateNumbers;
-    coordinates.widestCoordinateString = getWidestValueForY(coordinates.coordinates);
+    Coordinates coordinates = new Coordinates(coordinateNumbers);
 
     return coordinates;
   }
