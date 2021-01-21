@@ -8,10 +8,10 @@ public class Coordinates {
 
   public Coordinates(List<String> coordinates) {
     this.coordinates = coordinates;
-    this.widestCoordinateString = getWidestValueForY();
+    this.widestCoordinateString = getLargestNumberOfCharsInCoordinate();
   }
 
-  private Integer getWidestValueForY() {
+  private Integer getLargestNumberOfCharsInCoordinate() {
     Integer widest = coordinates.get(0).length();
 
     for(String coordinate : coordinates) {
