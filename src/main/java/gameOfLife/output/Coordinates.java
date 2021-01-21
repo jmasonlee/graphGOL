@@ -1,5 +1,6 @@
 package gameOfLife.output;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -16,6 +17,8 @@ public class Coordinates {
   }
 
   private Integer getLargestNumberOfCharsInCoordinate() {
-    return Collections.max(yCoordinates, Comparator.comparing(String::length)).length();
+    List<String> allCoordinateStrings = new ArrayList<>(xCoordinates);
+    allCoordinateStrings.addAll(yCoordinates);
+    return Collections.max(allCoordinateStrings, Comparator.comparing(String::length)).length();
   }
 }
