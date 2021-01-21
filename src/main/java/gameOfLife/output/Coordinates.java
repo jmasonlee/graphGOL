@@ -14,8 +14,6 @@ public class Coordinates {
   }
 
   private Integer getLargestNumberOfCharsInCoordinate() {
-    Integer widest = Collections.max(coordinates, Comparator.comparing(String::length)).length();
-
-    return widest;
+    return Collections.max(coordinates, Comparator.comparing(String::length)).length();
   }
 }
