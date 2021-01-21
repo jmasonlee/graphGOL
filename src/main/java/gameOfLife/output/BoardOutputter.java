@@ -46,9 +46,7 @@ public class BoardOutputter {
     Coordinates yCoords = createYCoordinates(boardBounds.upperYValue, boardBounds.height);
     List<String> xCoords = createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
 
-    Integer widestY = getWidestValueForY(yCoords.coordinates);
-
-    board.addAll(createHeaderRow(xCoords, widestY));
+    board.addAll(createHeaderRow(xCoords, yCoords.widestCoordinateString));
     board.addAll(createEmptyRows(boardBounds, yCoords.coordinates));
 
     return board;
@@ -113,6 +111,7 @@ public class BoardOutputter {
 
     Coordinates coordinates = new Coordinates();
     coordinates.coordinates = coordinateNumbers;
+    coordinates.widestCoordinateString = getWidestValueForY(coordinates.coordinates);
 
     return coordinates;
   }
