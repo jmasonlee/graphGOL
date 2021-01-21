@@ -1,5 +1,7 @@
 package gameOfLife.output;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Coordinates {
@@ -14,11 +16,7 @@ public class Coordinates {
   private Integer getLargestNumberOfCharsInCoordinate() {
     Integer widest = coordinates.get(0).length();
 
-    for(String coordinate : coordinates) {
-      if (coordinate.length() > widest){
-        widest = coordinate.length();
-      }
-    }
+    widest = Collections.max(coordinates, Comparator.comparing(String::length)).length();
 
     return widest;
   }
