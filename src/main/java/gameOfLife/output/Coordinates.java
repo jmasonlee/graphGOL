@@ -8,7 +8,7 @@ import java.util.List;
 public class Coordinates {
   List<String> xCoordinates;
   List<String> yCoordinates;
-  Integer widestCoordinateString;
+  int widestCoordinateString;
 
   public Coordinates(List<String> xCoordinates, List<String> yCoordinates) {
     this.xCoordinates = xCoordinates;
@@ -16,7 +16,7 @@ public class Coordinates {
     this.widestCoordinateString = getLargestNumberOfCharsInCoordinate();
   }
 
-  private Integer getLargestNumberOfCharsInCoordinate() {
+  private int getLargestNumberOfCharsInCoordinate() {
     List<String> allCoordinateStrings = new ArrayList<>(xCoordinates);
     allCoordinateStrings.addAll(yCoordinates);
     return Collections.max(allCoordinateStrings, Comparator.comparing(String::length)).length();
