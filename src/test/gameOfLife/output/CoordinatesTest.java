@@ -1,19 +1,21 @@
 package gameOfLife.output;
 
+import org.approvaltests.Approvals;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CoordinatesTest {
 
   @Test
   public void testWillCalculateTheNumberOfCharsInTheLongestCoordinateValue() {
-    List<String> xCoordinates = Arrays.asList(new String[]{"1", "7", "-5674027"});
-    List<String> yCoordinates = Arrays.asList(new String[]{"-1", "7", "-5"});
-    int maxCharWidth = new Coordinates(xCoordinates, yCoordinates).widestCoordinateString;
-    assertEquals(8, maxCharWidth);
+    List<String> xCoordinates =
+        IntStream.rangeClosed(-106, -95).boxed().map(i -> i.toString()).collect(Collectors.toList());
+    List<String> yCoordinates =
+        IntStream.rangeClosed(12, 22).boxed().map(i -> i.toString()).collect(Collectors.toList());
+
+    Approvals.verify(new Coordinates(xCoordinates, yCoordinates).toString());
   }
 }

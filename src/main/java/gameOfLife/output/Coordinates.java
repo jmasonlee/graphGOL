@@ -21,4 +21,13 @@ public class Coordinates {
     allCoordinateStrings.addAll(yCoordinates);
     return Collections.max(allCoordinateStrings, Comparator.comparing(String::length)).length();
   }
+
+  @Override
+  public String toString() {
+    return "Coordinates{" +
+      "xCoordinates=" + xCoordinates +
+      ", yCoordinates=" + yCoordinates +
+      ", widestCoordinateString=" + widestCoordinateString +
+      '}';
+  }
 }
