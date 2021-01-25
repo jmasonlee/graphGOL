@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 public class CoordinatesTest {
 
   @Test
-  public void testWillCalculateTheNumberOfCharsInTheLongestCoordinateValue() {
+  public void testWillCreateCoordinateObject() {
     List<String> xCoordinates =
         IntStream.rangeClosed(-106, -95).boxed().map(i -> i.toString()).collect(Collectors.toList());
     List<String> yCoordinates =
