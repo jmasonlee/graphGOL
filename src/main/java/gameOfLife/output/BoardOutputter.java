@@ -7,8 +7,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class BoardOutputter {
 
@@ -43,8 +41,8 @@ public class BoardOutputter {
 
   private static List<String> emptyBoardOfSize(BoardBounds boardBounds) {
     List<String> board = new ArrayList<>();
-    List<String> yCoords = createYCoordinates(boardBounds.upperYValue, boardBounds.height);
-    List<String> xCoords = createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
+    List<String> yCoords = Coordinates.createYCoordinates(boardBounds.upperYValue, boardBounds.height);
+    List<String> xCoords = Coordinates.createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
 
     Coordinates coordinates = new Coordinates(xCoords, yCoords);
 
@@ -85,27 +83,6 @@ public class BoardOutputter {
     }
 
     return board;
-  }
-
-  private static List<String> createXCoordinates(int leftmostXValue, int width) {
-    int endAt = leftmostXValue + width -1;
-    return createCoordinates(leftmostXValue, endAt);
-  }
-
-  private static List<String> createYCoordinates(int upperYValue, int dimensionSize) {
-    int startAt = upperYValue - dimensionSize + 1;
-
-    List<String> coordinateNumbers = createCoordinates(startAt, upperYValue);
-
-    Collections.reverse(coordinateNumbers);
-
-    return coordinateNumbers;
-  }
-
-  private static List<String> createCoordinates(int startAt, int endAt) {
-    return IntStream.rangeClosed(startAt, endAt).boxed()
-      .map(coord -> coord < 0 || 9 < coord ? coord.toString() : " " + coord.toString())
-      .collect(Collectors.toList());
   }
 
   public static class BoardBounds {
