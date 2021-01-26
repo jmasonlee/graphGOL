@@ -44,7 +44,7 @@ public class BoardOutputter {
     List<String> yCoords = Coordinates.createYCoordinates(boardBounds.upperYValue, boardBounds.height);
     List<String> xCoords = Coordinates.createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
 
-    Coordinates coordinates = new Coordinates(xCoords, yCoords);
+    Coordinates coordinates = new Coordinates(boardBounds);
 
     board.addAll(createHeaderRow(coordinates.xCoordinates, coordinates.widestCoordinateString));
     board.addAll(createEmptyRows(boardBounds, coordinates.yCoordinates));

@@ -12,9 +12,9 @@ public class Coordinates {
   List<String> yCoordinates;
   int widestCoordinateString;
 
-  public Coordinates(List<String> xCoordinates, List<String> yCoordinates) {
-    this.xCoordinates = xCoordinates;
-    this.yCoordinates = yCoordinates;
+  public Coordinates(BoardOutputter.BoardBounds boardBounds) {
+    this.xCoordinates = createXCoordinates(boardBounds.getLeftmostXValue(), boardBounds.getWidth());
+    this.yCoordinates = createYCoordinates(boardBounds.getUpperYValue(), boardBounds.getHeight());
     this.widestCoordinateString = getLargestNumberOfCharsInCoordinate();
   }
 
