@@ -18,12 +18,12 @@ public class Coordinates {
     this.widestCoordinateString = getLargestNumberOfCharsInCoordinate();
   }
 
-  static List<String> createXCoordinates(int leftmostXValue, int width) {
+  private static List<String> createXCoordinates(int leftmostXValue, int width) {
     int endAt = leftmostXValue + width -1;
     return createCoordinates(leftmostXValue, endAt);
   }
 
-  static List<String> createYCoordinates(int upperYValue, int dimensionSize) {
+  private static List<String> createYCoordinates(int upperYValue, int dimensionSize) {
     int startAt = upperYValue - dimensionSize + 1;
 
     List<String> coordinateNumbers = createCoordinates(startAt, upperYValue);

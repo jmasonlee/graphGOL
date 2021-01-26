@@ -41,8 +41,6 @@ public class BoardOutputter {
 
   private static List<String> emptyBoardOfSize(BoardBounds boardBounds) {
     List<String> board = new ArrayList<>();
-    List<String> yCoords = Coordinates.createYCoordinates(boardBounds.upperYValue, boardBounds.height);
-    List<String> xCoords = Coordinates.createXCoordinates(boardBounds.leftmostXValue, boardBounds.width);
 
     Coordinates coordinates = new Coordinates(boardBounds);
 
