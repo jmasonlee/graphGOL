@@ -74,9 +74,9 @@ public class BoardOutputter {
   private static List<String> createEmptyRows(BoardBounds boardBounds, List<String> yCoords) {
     List<String> board = new ArrayList<>();
 
-    for (int i = 0; i < boardBounds.height; i++) {
+    for (int i = 0; i < boardBounds.getHeight(); i++) {
       board.add(yCoords.get(i));
-      board.addAll(Collections.nCopies(boardBounds.width, CELL));
+      board.addAll(Collections.nCopies(boardBounds.getWidth(), CELL));
       board.add(ROW_END);
     }
 
