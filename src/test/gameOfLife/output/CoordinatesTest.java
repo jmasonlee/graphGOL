@@ -6,8 +6,6 @@ import org.approvaltests.Approvals;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class CoordinatesTest {
 
@@ -20,7 +18,7 @@ public class CoordinatesTest {
 
     List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(new Cell(-106, 12), new Cell(-95, 22));
 
-    BoardOutputter.BoardBounds boardBounds = new BoardOutputter.BoardBounds(cells);
+    BoardBounds boardBounds = new BoardBounds(cells);
 
     Approvals.verify(new Coordinates(boardBounds).toString());
   }
