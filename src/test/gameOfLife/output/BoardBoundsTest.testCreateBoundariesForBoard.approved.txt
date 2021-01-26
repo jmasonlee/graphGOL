@@ -1,0 +1,6 @@
+BoardBounds{
+ upperYValue=6
+ leftmostXValue=-23
+ height=5
+ width=13
+}

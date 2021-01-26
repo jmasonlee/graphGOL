@@ -68,4 +68,13 @@ public class BoardBounds {
     return Math.abs(highestDimensionValue - lowestDimensionValue) + 1;
   }
 
+  @Override
+  public String toString() {
+    return "BoardBounds{\n" +
+      " upperYValue=" + upperYValue +
+      "\n leftmostXValue=" + leftmostXValue +
+      "\n height=" + height +
+      "\n width=" + width +
+      "\n}";
+  }
 }
