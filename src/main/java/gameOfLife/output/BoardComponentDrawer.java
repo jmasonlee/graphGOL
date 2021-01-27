@@ -30,7 +30,7 @@ public class BoardComponentDrawer {
     return board;
   }
 
-  static List<String> formatIndividualColumnHeaders(List<String> xCoords) {
+  private static List<String> formatIndividualColumnHeaders(List<String> xCoords) {
     List<String> formattedCoords = new ArrayList<String>();
     formattedCoords.add(xCoords.get(0));
 
