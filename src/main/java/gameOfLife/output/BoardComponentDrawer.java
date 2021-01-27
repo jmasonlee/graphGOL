@@ -46,7 +46,7 @@ public class BoardComponentDrawer {
 
     for (int i = 0; i < coordinates.yCoordinates.size(); i++) {
       board.add(coordinates.yCoordinates.get(i));
-      board.addAll(Collections.nCopies(boardBounds.getWidth(), CELL));
+      board.addAll(Collections.nCopies(coordinates.xCoordinates.size(), CELL));
       board.add(ROW_END);
     }
 
