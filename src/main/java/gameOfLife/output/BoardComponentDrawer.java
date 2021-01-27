@@ -3,6 +3,7 @@ package gameOfLife.output;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BoardComponentDrawer {
   static final String TOP_BOUNDARY_END = " \n";
@@ -34,10 +35,10 @@ public class BoardComponentDrawer {
     List<String> formattedCoords = new ArrayList<String>();
     formattedCoords.add(xCoords.get(0));
 
-    List<String> strings = xCoords.subList(1, xCoords.size());
+    List<String> strings = xCoords.stream().skip(1).map(c -> " " + c).collect(Collectors.toList());
 
     for (String coord : strings) {
-      formattedCoords.add(" " + coord);
+      formattedCoords.add(coord);
     }
 
     return formattedCoords;
