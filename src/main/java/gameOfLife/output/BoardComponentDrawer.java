@@ -34,9 +34,9 @@ public class BoardComponentDrawer {
     List<String> formattedCoords = new ArrayList<String>();
     formattedCoords.add(xCoords.get(0));
 
-      for (String coord : xCoords.subList(1,xCoords.size())) {
-        formattedCoords.add(" " + coord);
-      }
+    for (String coord : xCoords.subList(1, xCoords.size())) {
+      formattedCoords.add(" " + coord);
+    }
 
     return formattedCoords;
   }
@@ -45,11 +45,12 @@ public class BoardComponentDrawer {
     List<String> board = new ArrayList<>();
     int boardWidth = coordinates.xCoordinates.size();
 
-    coordinates.yCoordinates.forEach(yCoordinate -> {
-      board.add(yCoordinate);
-      board.addAll(Collections.nCopies(boardWidth, EMPTY_CELL));
-      board.add(ROW_END);
-    });
+    coordinates.yCoordinates.forEach(
+        yCoordinate -> {
+          board.add(yCoordinate);
+          board.addAll(Collections.nCopies(boardWidth, EMPTY_CELL));
+          board.add(ROW_END);
+        });
 
     return board;
   }
