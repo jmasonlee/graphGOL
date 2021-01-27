@@ -34,12 +34,7 @@ public class BoardComponentDrawer {
   private static List<String> formatIndividualColumnHeaders(List<String> xCoords) {
     List<String> formattedCoords = new ArrayList<String>();
     formattedCoords.add(xCoords.get(0));
-
-    List<String> strings = xCoords.stream().skip(1).map(c -> " " + c).collect(Collectors.toList());
-
-    for (String coord : strings) {
-      formattedCoords.add(coord);
-    }
+    formattedCoords.addAll(xCoords.stream().skip(1).map(c -> " " + c).collect(Collectors.toList()));
 
     return formattedCoords;
   }
