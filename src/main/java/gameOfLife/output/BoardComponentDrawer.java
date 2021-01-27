@@ -41,7 +41,7 @@ public class BoardComponentDrawer {
     return formattedCoords;
   }
 
-  static List<String> createEmptyRowComponents(BoardBounds boardBounds, List<String> yCoords) {
+  private static List<String> createEmptyRowComponents(BoardBounds boardBounds, List<String> yCoords) {
     List<String> board = new ArrayList<String>();
 
     for (int i = 0; i < boardBounds.getHeight(); i++) {
