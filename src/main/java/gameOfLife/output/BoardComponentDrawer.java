@@ -42,7 +42,7 @@ public class BoardComponentDrawer {
   }
 
   private static List<String> createEmptyRowComponents(Coordinates coordinates) {
-    List<String> board = new ArrayList<String>();
+    List<String> board = new ArrayList<>();
     int boardWidth = coordinates.xCoordinates.size();
 
     coordinates.yCoordinates.forEach(yCoordinate -> {
