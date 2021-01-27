@@ -43,10 +43,11 @@ public class BoardComponentDrawer {
 
   private static List<String> createEmptyRowComponents(Coordinates coordinates) {
     List<String> board = new ArrayList<String>();
+    int boardWidth = coordinates.xCoordinates.size();
 
     for (int i = 0; i < coordinates.yCoordinates.size(); i++) {
       board.add(coordinates.yCoordinates.get(i));
-      board.addAll(Collections.nCopies(coordinates.xCoordinates.size(), CELL));
+      board.addAll(Collections.nCopies(boardWidth, CELL));
       board.add(ROW_END);
     }
 
