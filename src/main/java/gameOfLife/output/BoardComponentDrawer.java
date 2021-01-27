@@ -45,11 +45,11 @@ public class BoardComponentDrawer {
     List<String> board = new ArrayList<String>();
     int boardWidth = coordinates.xCoordinates.size();
 
-    for (int i = 0; i < coordinates.yCoordinates.size(); i++) {
-      board.add(coordinates.yCoordinates.get(i));
+    coordinates.yCoordinates.forEach(yCoordinate -> {
+      board.add(yCoordinate);
       board.addAll(Collections.nCopies(boardWidth, CELL));
       board.add(ROW_END);
-    }
+    });
 
     return board;
   }
