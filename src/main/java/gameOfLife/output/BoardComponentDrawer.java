@@ -20,7 +20,7 @@ public class BoardComponentDrawer {
     return board;
   }
 
-  static List<String> createHeaderRowComponents(List<String> xCoords, Integer widestY) {
+  private static List<String> createHeaderRowComponents(List<String> xCoords, Integer widestY) {
     List<String> board = new ArrayList<String>();
 
     board.add(" " + String.join("", Collections.nCopies(widestY, " ")));
