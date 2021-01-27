@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class BoardDrawer {
+public class BoardComponentDrawer {
   static final String TOP_BOUNDARY_END = " \n";
   static final String CELL = "|__";
   static final String ROW_END = "|\n";

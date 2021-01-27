@@ -8,7 +8,7 @@ public class BoardOutputter {
 
   public static String createBoardOutput(List<Cell> cells) {
     BoardBounds boardBounds = new BoardBounds(cells);
-    List<String> emptyBoard = BoardDrawer.emptyBoardOfSize(boardBounds);
+    List<String> emptyBoard = BoardComponentDrawer.emptyBoardOfSize(boardBounds);
     return String.join("", populateBoardWithCells(emptyBoard, cells, boardBounds));
   }
 
