@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BoardComponentDrawer {
   static final String TOP_BOUNDARY_END = " \n";
-  static final String CELL = "|__";
+  static final String EMPTY_CELL = "|__";
   static final String ROW_END = "|\n";
 
   static List<String> emptyBoardOfSize(BoardBounds boardBounds) {
@@ -47,7 +47,7 @@ public class BoardComponentDrawer {
 
     coordinates.yCoordinates.forEach(yCoordinate -> {
       board.add(yCoordinate);
-      board.addAll(Collections.nCopies(boardWidth, CELL));
+      board.addAll(Collections.nCopies(boardWidth, EMPTY_CELL));
       board.add(ROW_END);
     });
 
