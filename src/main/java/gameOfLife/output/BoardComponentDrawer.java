@@ -44,7 +44,7 @@ public class BoardComponentDrawer {
   private static List<String> createEmptyRowComponents(BoardBounds boardBounds, List<String> yCoords) {
     List<String> board = new ArrayList<String>();
 
-    for (int i = 0; i < boardBounds.getHeight(); i++) {
+    for (int i = 0; i < yCoords.size(); i++) {
       board.add(yCoords.get(i));
       board.addAll(Collections.nCopies(boardBounds.getWidth(), CELL));
       board.add(ROW_END);
