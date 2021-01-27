@@ -34,7 +34,9 @@ public class BoardComponentDrawer {
     List<String> formattedCoords = new ArrayList<String>();
     formattedCoords.add(xCoords.get(0));
 
-    for (String coord : xCoords.subList(1, xCoords.size())) {
+    List<String> strings = xCoords.subList(1, xCoords.size());
+
+    for (String coord : strings) {
       formattedCoords.add(" " + coord);
     }
 
