@@ -15,7 +15,7 @@ public class BoardComponentDrawer {
     Coordinates coordinates = new Coordinates(boardBounds);
 
     board.addAll(createHeaderRowWithCoordinates(coordinates));
-    board.addAll(createEmptyRowComponents(boardBounds, coordinates.yCoordinates));
+    board.addAll(createEmptyRowComponents(boardBounds, coordinates));
 
     return board;
   }
@@ -41,11 +41,11 @@ public class BoardComponentDrawer {
     return formattedCoords;
   }
 
-  private static List<String> createEmptyRowComponents(BoardBounds boardBounds, List<String> yCoords) {
+  private static List<String> createEmptyRowComponents(BoardBounds boardBounds, Coordinates coordinates) {
     List<String> board = new ArrayList<String>();
 
-    for (int i = 0; i < yCoords.size(); i++) {
-      board.add(yCoords.get(i));
+    for (int i = 0; i < coordinates.yCoordinates.size(); i++) {
+      board.add(coordinates.yCoordinates.get(i));
       board.addAll(Collections.nCopies(boardBounds.getWidth(), CELL));
       board.add(ROW_END);
     }
