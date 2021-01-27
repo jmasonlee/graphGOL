@@ -14,13 +14,13 @@ public class BoardComponentDrawer {
 
     Coordinates coordinates = new Coordinates(boardBounds);
 
-    board.addAll(createHeaderRow(coordinates.xCoordinates, coordinates.widestCoordinateString));
+    board.addAll(createHeaderRowComponents(coordinates.xCoordinates, coordinates.widestCoordinateString));
     board.addAll(createEmptyRows(boardBounds, coordinates.yCoordinates));
 
     return board;
   }
 
-  static List<String> createHeaderRow(List<String> xCoords, Integer widestY) {
+  static List<String> createHeaderRowComponents(List<String> xCoords, Integer widestY) {
     List<String> board = new ArrayList<String>();
 
     board.add(" " + String.join("", Collections.nCopies(widestY, " ")));
