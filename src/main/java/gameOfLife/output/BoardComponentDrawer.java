@@ -25,13 +25,13 @@ public class BoardComponentDrawer {
     List<String> board = new ArrayList<String>();
 
     board.add(" " + String.join("", Collections.nCopies(coordinates.widestCoordinateString, " ")));
-    board.addAll(formatIndividualColumnHeaders(coordinates.xCoordinates));
+    board.addAll(addSpacingToColumnHeaders(coordinates.xCoordinates));
     board.add(TOP_BOUNDARY_END);
 
     return board;
   }
 
-  private static List<String> formatIndividualColumnHeaders(List<String> xCoords) {
+  private static List<String> addSpacingToColumnHeaders(List<String> xCoords) {
     List<String> formattedCoords = new ArrayList<String>();
     formattedCoords.add(xCoords.get(0));
     formattedCoords.addAll(xCoords.stream().skip(1).map(c -> " " + c).collect(Collectors.toList()));
