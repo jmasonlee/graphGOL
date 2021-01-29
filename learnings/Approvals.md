@@ -10,14 +10,16 @@ With assertion-based testing, tests need to be well-named in order to document y
 
 ```
 // A test in jest
-describe(`The thing`, () => {
-    it(`should do the thing when no arguments are provided`, () => {
-        expect(thing.doThing()).toEqual('done')
+describe(`Cell equality`, () => {
+    it(`should be true with two objects of identical coordinates`, () => {
+        expect(isEqual(cell1, cell2)).toBeTrue
     })
 })
 ```
 
-When you read the above, you know immediately, in plain English, what is required of the thing. Similarly, in Junit, many different naming conentions exist, in order to clearly communicate what each assertion is meant to check. An example of this is the `Should_ExpectedBehavior_WhenStateUnderTest` naming convention, which creates tests named similarly to the above jest convention:
+When you read the above, you know immediately, in plain English, what is required for two cells to be equal. 
+
+Similarly, in Junit, many different naming conventions exist, in order to clearly communicate what each assertion is meant to check. An example of this is the `Should_ExpectedBehavior_WhenStateUnderTest` naming convention, which creates tests named similarly to the above jest convention:
 
 ```
 # A JUnit4 test
@@ -31,7 +33,14 @@ public void Should_BeEqualToAnotherCell_WithIdenticalCoordinates(){
 }
 ```
 
-### Parseability
+The end result in either language is a set of tests whose names _should_ be a list of required behaviours for the class. It _should_ be fairly quick and easy to read a test suite and understand what is expected of a class, and it _should_ be easy to understand which behaviours aren't working as expected when a test fails. Of course, this isn't always true and different code smells can prevent tests from documenting correctly, if at all.
+
+TODOs that came out of writing this section:
+- [ ] Ensure all assertion tests in the code are using the above convention
+- [ ] Read through approvals to make sure each test is English
+- [ ] Figure out if it's possible to label approved cases more intelligently... or is it valuable?
+
+### Parseability / Ease of Use
 This is the coolest part of using Approvals as a testing library, and the one I'm most excited about. This is also why my BoardOutputter is so over-engineered.
 
 
