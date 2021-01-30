@@ -24,10 +24,7 @@ public class BoardComponentDrawer {
   }
 
   private static List<String> addSpacingToColumnHeaders(List<String> xCoords) {
-    List<String> formattedCoords = new ArrayList<String>();
-    formattedCoords.addAll(xCoords.stream().map(c -> SPACE + c).collect(Collectors.toList()));
-
-    return formattedCoords;
+    return xCoords.stream().map(c -> SPACE + c).collect(Collectors.toList());
   }
 
   static List<String> drawEmptyRow(Coordinates coordinates) {
