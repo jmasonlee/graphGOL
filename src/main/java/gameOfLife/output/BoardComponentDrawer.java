@@ -16,7 +16,7 @@ public class BoardComponentDrawer {
   static List<String> drawHeaderRow(Coordinates coordinates) {
     List<String> board = new ArrayList<String>();
 
-    board.add(SPACE + String.join("", Collections.nCopies(coordinates.widestCoordinateString, SPACE)));
+    board.add(String.join("", Collections.nCopies(coordinates.widestCoordinateString, SPACE)));
     board.addAll(addSpacingToColumnHeaders(coordinates.xCoordinates));
     board.add(TOP_BOUNDARY_END);
 
@@ -25,8 +25,7 @@ public class BoardComponentDrawer {
 
   private static List<String> addSpacingToColumnHeaders(List<String> xCoords) {
     List<String> formattedCoords = new ArrayList<String>();
-    formattedCoords.add(xCoords.get(0));
-    formattedCoords.addAll(xCoords.stream().skip(1).map(c -> SPACE + c).collect(Collectors.toList()));
+    formattedCoords.addAll(xCoords.stream().map(c -> SPACE + c).collect(Collectors.toList()));
 
     return formattedCoords;
   }
