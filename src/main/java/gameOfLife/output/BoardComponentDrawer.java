@@ -15,13 +15,13 @@ public class BoardComponentDrawer {
 
     Coordinates coordinates = new Coordinates(boardBounds);
 
-    board.addAll(createHeaderRowWithCoordinates(coordinates));
+    board.addAll(drawHeaderRow(coordinates));
     board.addAll(createEmptyRowComponents(coordinates));
 
     return board;
   }
 
-  private static List<String> createHeaderRowWithCoordinates(Coordinates coordinates) {
+  static List<String> drawHeaderRow(Coordinates coordinates) {
     List<String> board = new ArrayList<String>();
 
     board.add(" " + String.join("", Collections.nCopies(coordinates.widestCoordinateString, " ")));
