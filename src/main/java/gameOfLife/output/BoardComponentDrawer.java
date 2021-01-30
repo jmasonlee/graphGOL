@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 
 public class BoardComponentDrawer {
 
-  private static final String LIVE_CELL = "|X_";
-
   static List<String> drawHeaderRow(Coordinates coordinates) {
     List<String> board = new ArrayList<String>();
 
@@ -43,7 +41,7 @@ public class BoardComponentDrawer {
     List<String> boardWithCells = oldBoard;
     cells.forEach(c -> {
       int positionInBoard = getCellPositionInBoard(c, boardBounds);
-      boardWithCells.set(positionInBoard, LIVE_CELL);
+      boardWithCells.set(positionInBoard, BoardSquare.LIVE_CELL.getValue());
     });
 
     return boardWithCells;
