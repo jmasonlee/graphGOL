@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BoardComponentDrawer {
-  private static final String SPACE = " ";
+
   private static final String LIVE_CELL = "|X_";
 
   static List<String> drawHeaderRow(Coordinates coordinates) {
     List<String> board = new ArrayList<String>();
 
-    board.add(String.join("", Collections.nCopies(coordinates.widestCoordinateString, SPACE)));
+    board.add(String.join("", Collections.nCopies(coordinates.widestCoordinateString, BoardSquare.SPACE.getValue())));
     board.addAll(addSpacingToColumnHeaders(coordinates.xCoordinates));
     board.add(BoardSquare.TOP_BOUNDARY_END.getValue());
 
@@ -22,7 +22,7 @@ public class BoardComponentDrawer {
   }
 
   private static List<String> addSpacingToColumnHeaders(List<String> headers) {
-    return headers.stream().map(c -> SPACE + c).collect(Collectors.toList());
+    return headers.stream().map(c -> BoardSquare.SPACE.getValue() + c).collect(Collectors.toList());
   }
 
   static List<String> drawEmptyRow(Coordinates coordinates) {
