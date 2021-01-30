@@ -55,7 +55,7 @@ public class BoardComponentDrawer {
     return board;
   }
 
-  static List<String> populateBoardWithCells(List<String> oldBoard, List<Cell> cells, BoardBounds boardBounds) {
+  static List<String> drawLiveCellsOnBoard(List<String> oldBoard, List<Cell> cells, BoardBounds boardBounds) {
     List<String> boardWithCells = oldBoard;
     cells.forEach(c -> {
       int positionInBoard = getCellPositionInBoard(c, boardBounds);
