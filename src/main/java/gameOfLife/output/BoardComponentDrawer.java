@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BoardComponentDrawer {
-  static final String TOP_BOUNDARY_END = " \n";
   static final String EMPTY_CELL = "|__";
   static final String ROW_END = "|\n";
   private static final String SPACE = " ";
@@ -19,7 +18,7 @@ public class BoardComponentDrawer {
 
     board.add(String.join("", Collections.nCopies(coordinates.widestCoordinateString, SPACE)));
     board.addAll(addSpacingToColumnHeaders(coordinates.xCoordinates));
-    board.add(TOP_BOUNDARY_END);
+    board.add(BoardSquare.TOP_BOUNDARY_END.getValue());
 
     return board;
   }
