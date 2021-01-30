@@ -11,11 +11,12 @@ public class BoardComponentDrawer {
   static final String TOP_BOUNDARY_END = " \n";
   static final String EMPTY_CELL = "|__";
   static final String ROW_END = "|\n";
+  private static final String SPACE = " ";
 
   static List<String> drawHeaderRow(Coordinates coordinates) {
     List<String> board = new ArrayList<String>();
 
-    board.add(" " + String.join("", Collections.nCopies(coordinates.widestCoordinateString, " ")));
+    board.add(SPACE + String.join("", Collections.nCopies(coordinates.widestCoordinateString, SPACE)));
     board.addAll(addSpacingToColumnHeaders(coordinates.xCoordinates));
     board.add(TOP_BOUNDARY_END);
 
@@ -25,7 +26,7 @@ public class BoardComponentDrawer {
   private static List<String> addSpacingToColumnHeaders(List<String> xCoords) {
     List<String> formattedCoords = new ArrayList<String>();
     formattedCoords.add(xCoords.get(0));
-    formattedCoords.addAll(xCoords.stream().skip(1).map(c -> " " + c).collect(Collectors.toList()));
+    formattedCoords.addAll(xCoords.stream().skip(1).map(c -> SPACE + c).collect(Collectors.toList()));
 
     return formattedCoords;
   }
