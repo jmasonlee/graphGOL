@@ -23,8 +23,8 @@ public class BoardComponentDrawer {
     return board;
   }
 
-  private static List<String> addSpacingToColumnHeaders(List<String> xCoords) {
-    return xCoords.stream().map(c -> SPACE + c).collect(Collectors.toList());
+  private static List<String> addSpacingToColumnHeaders(List<String> headers) {
+    return headers.stream().map(c -> SPACE + c).collect(Collectors.toList());
   }
 
   static List<String> drawEmptyRow(Coordinates coordinates) {
