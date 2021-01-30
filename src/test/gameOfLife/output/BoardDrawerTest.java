@@ -12,6 +12,6 @@ public class BoardDrawerTest {
   public void testWillDrawBoard() {
     List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(new Cell(2, 4), new Cell(5,9));
     BoardBounds boardBounds = new BoardBounds(cells);
-    Approvals.verify(BoardComponentDrawer.emptyBoardOfSize(boardBounds));
+    Approvals.verify(BoardOutputter.emptyBoardOfSize(boardBounds));
   }
 }

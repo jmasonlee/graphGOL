@@ -12,17 +12,6 @@ public class BoardComponentDrawer {
   static final String EMPTY_CELL = "|__";
   static final String ROW_END = "|\n";
 
-  static List<String> emptyBoardOfSize(BoardBounds boardBounds) {
-    List<String> board = new ArrayList<String>();
-
-    Coordinates coordinates = new Coordinates(boardBounds);
-
-    board.addAll(drawHeaderRow(coordinates));
-    board.addAll(drawEmptyRow(coordinates));
-
-    return board;
-  }
-
   static List<String> drawHeaderRow(Coordinates coordinates) {
     List<String> board = new ArrayList<String>();
 
