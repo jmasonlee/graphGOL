@@ -12,6 +12,7 @@ public class BoardComponentDrawer {
   static final String EMPTY_CELL = "|__";
   static final String ROW_END = "|\n";
   private static final String SPACE = " ";
+  private static final String LIVE_CELL = "|X_";
 
   static List<String> drawHeaderRow(Coordinates coordinates) {
     List<String> board = new ArrayList<String>();
@@ -45,7 +46,7 @@ public class BoardComponentDrawer {
     List<String> boardWithCells = oldBoard;
     cells.forEach(c -> {
       int positionInBoard = getCellPositionInBoard(c, boardBounds);
-      boardWithCells.set(positionInBoard, "|X_");
+      boardWithCells.set(positionInBoard, LIVE_CELL);
     });
 
     return boardWithCells;
