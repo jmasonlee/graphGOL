@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BoardComponentDrawer {
-  static final String EMPTY_CELL = "|__";
   static final String ROW_END = "|\n";
   private static final String SPACE = " ";
   private static final String LIVE_CELL = "|X_";
@@ -34,7 +33,7 @@ public class BoardComponentDrawer {
     coordinates.yCoordinates.forEach(
         yCoordinate -> {
           board.add(yCoordinate);
-          board.addAll(Collections.nCopies(boardWidth, EMPTY_CELL));
+          board.addAll(Collections.nCopies(boardWidth, BoardSquare.EMPTY_CELL.getValue()));
           board.add(ROW_END);
         });
 
