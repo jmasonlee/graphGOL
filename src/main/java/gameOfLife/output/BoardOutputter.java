@@ -10,7 +10,7 @@ public class BoardOutputter {
   public static String createBoardOutput(List<Cell> cells) {
     BoardBounds boardBounds = new BoardBounds(cells);
     List<String> emptyBoard = emptyBoardOfSize(boardBounds);
-    return String.join("", BoardComponentDrawer.drawLiveCellsOnBoard(emptyBoard, cells, boardBounds));
+    return String.join("", BoardDrawer.drawLiveCellsOnBoard(emptyBoard, cells, boardBounds));
   }
 
   static List<String> emptyBoardOfSize(BoardBounds boardBounds) {
@@ -18,8 +18,8 @@ public class BoardOutputter {
 
     Coordinates coordinates = new Coordinates(boardBounds);
 
-    board.addAll(BoardComponentDrawer.drawHeaderRow(coordinates));
-    board.addAll(BoardComponentDrawer.drawEmptyRow(coordinates));
+    board.addAll(BoardDrawer.drawHeaderRow(coordinates));
+    board.addAll(BoardDrawer.drawEmptyRow(coordinates));
 
     return board;
   }
