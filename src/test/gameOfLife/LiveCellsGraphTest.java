@@ -14,18 +14,26 @@ public class LiveCellsGraphTest {
   @Test
   public void testCanGetCellsWithDesiredNumberOfNeighbours() {
     Integer[] desiredNumberOfNeighbours = IntStream.rangeClosed(0, 8).boxed().toArray(Integer[]::new);
-    CombinationApprovals.verifyAllCombinations(this::buildGraphAndFilterOnNeighbourCount, desiredNumberOfNeighbours);
+
+    CombinationApprovals.verifyAllCombinations(this::filterOnNeighbourCountForAllNeighbourLayouts, desiredNumberOfNeighbours);
   }
 
-  private StringBuilder buildGraphAndFilterOnNeighbourCount(int desiredNumberOfNeighbours) {
+  private StringBuilder filterOnNeighbourCountForAllNeighbourLayouts(int desiredNumberOfNeighbours) {
+    StringBuilder testOutput = new StringBuilder();
+    testOutput.append("\n Select cells with ");
+    testOutput.append(desiredNumberOfNeighbours);
+    testOutput.append(" neighbours\n");
+
     Cell centre = new Cell(0, 0);
     List<Cell> allNeighbours = NeighbourGenerator.generateAllPossibleNeighboursForCell(centre);
 
     List<List<Cell>> neighbourCombinations =
         NeighbourGenerator.allCombinationsOfNeighbours(allNeighbours, desiredNumberOfNeighbours);
 
-    return filterOnNeighbourCountForAllNeighbourCombinations(
-        centre, desiredNumberOfNeighbours, neighbourCombinations);
+    testOutput.append(filterOnNeighbourCountForAllNeighbourCombinations(
+        centre, desiredNumberOfNeighbours, neighbourCombinations));
+
+    return testOutput;
   }
 
   private StringBuilder filterOnNeighbourCountForAllNeighbourCombinations(
