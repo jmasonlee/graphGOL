@@ -33,12 +33,22 @@ public void Should_BeEqualToAnotherCell_WithIdenticalCoordinates(){
 }
 ```
 
-The end result in either language is a set of tests whose names _should_ be a list of required behaviours for the class. It _should_ be fairly quick and easy to read a test suite and understand what is expected of a class, and it _should_ be easy to understand which behaviours aren't working as expected when a test fails. Of course, this isn't always true and different code smells can prevent tests from documenting correctly, if at all.
+The end result in either language is a set of tests whose names _should_ be a list of required behaviours for the class. It _should_ be fairly quick and easy to read a test suite and understand what is expected of a class, and it _should_ be easy to understand which behaviours aren't working as expected when a test fails. Of course, this isn't always true and is usually impacted by cultural, time or management constraints.
+
+Being able to keep this documentation close to your code, and in a place where it changes if the behaviour under test changes is an extremely valuable benefit of unit testing. I know it can be achieved with assertion-based tests, but can it be done with approvals? I want to find a pattern that will let me do this.
+
+My first thought was that, if it was possible, the tests should be written in a way that the input variables provided in each case under test need to be clearly described, and labeled in the approvals file. 
+
+This resulted in me starting to build a fairly intricate and complex StringBuilder... but I'm not actually sure if it provided the value I'm looking for. Yes, it's now easier to read the approvals file, but for whom? My guess is mainly English speakers. You also now need to try to understand the English printed with the approved file. The English bloats the file, adding a lot of bulk that is essentially hard-coded and not valuable unless you have a failing test. This is especially annoying if you are using the fact that you can test complete coverage of all cases with Approvals - in this case, your file could be thousands of tests. A line or two of extra bloat would increase the size of the file you're testing multiple times for something which is only ever mainly read by a machine.
+
+One of the reasons parameterized testing is as valuable as it is, is that it lets test-writers specify a whole bunch of different inputs and provide them to a test function as parameters. This format of testing is also more legible than writing a single assertion test for each behaviour being checked. My next attempt will look at applying some ideas from parameterized testing to my approvals to see if they can be made more legible that way.
 
 TODOs that came out of writing this section:
 - [ ] Ensure all assertion tests in the code are using the above convention
 - [ ] Read through approvals to make sure each test is English
 - [ ] Figure out if it's possible to label approved cases more intelligently... or is it valuable?
+- [ ] Examine legibility of parameterized tests
+- [ ] Write a covering test for the header row
 
 ### Parseability / Ease of Use
 This is the coolest part of using Approvals as a testing library, and the one I'm most excited about. This is also why my BoardOutputter is so over-engineered.
