@@ -46,9 +46,10 @@ One of the reasons parameterized testing is as valuable as it is, is that it let
 TODOs that came out of writing this section:
 - [ ] Ensure all assertion tests in the code are using the above convention
 - [ ] Read through approvals to make sure each test is English
-- [ ] Figure out if it's possible to label approved cases more intelligently... or is it valuable?
+- [ ] Figure out if it's possible to label approved cases more intelligently... or is it valuable? <-- Working on this one
 - [ ] Examine legibility of parameterized tests
 - [ ] Write a covering test for the header row
+- [ ] Edit the paragraph on why my first approach was wrong
 
 ### Parseability / Ease of Use
 This is the coolest part of using Approvals as a testing library, and the one I'm most excited about. This is also why my BoardOutputter is so over-engineered.
