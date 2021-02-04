@@ -1,7 +1,7 @@
 # Approvals
 ## Assertions vs. Approvals?
 ### Tests as Documentation
-Although they rarely describe _why_ a piece of code behaves the way it does, I firmly believe that a passing suite of unit tests is one of the quickest ways to document _what_ a piece of code is meant to do, for two reasons:
+Although they [rarely describe _why_ a piece of code behaves the way it does](https://www.youtube.com/watch?v=Gms8GijwO9Q), I firmly believe that a passing suite of unit tests is one of the quickest ways to document _what_ a piece of code is meant to do, for two reasons:
 
 1. Unit tests are generally kept close to the code they are working with, which makes them easy to find.
 2. Requiring a passing suite of unit tests on each successful build ensures the tests are always updated with the current expected behaviour of your unit.
