@@ -10,7 +10,9 @@ import java.util.List;
 public class BoardDrawerTest {
   @Test
   public void testWillDrawHeaderRow() {
-    List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(new Cell(2, 4), new Cell(5,9));
+
+    Cell shortPositiveCoordinates1 = new Cell(2, 4);
+    List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(shortPositiveCoordinates1, new Cell(5,9));
     BoardBounds boardBounds = new BoardBounds(cells);
     Coordinates coordinates = new Coordinates(boardBounds);
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
