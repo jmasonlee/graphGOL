@@ -13,6 +13,7 @@ public class BoardDrawerTest {
 
     Cell shortPositiveCoordinates1 = new Cell(2, 4);
     Cell shortPositiveCoordinates2 = new Cell(5, 9);
+
     List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(shortPositiveCoordinates1, shortPositiveCoordinates2);
     BoardBounds boardBounds = new BoardBounds(cells);
     Coordinates coordinates = new Coordinates(boardBounds);
@@ -21,9 +22,9 @@ public class BoardDrawerTest {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append("Input:");
     stringBuilder.append("\n\tLowest X:");
-    stringBuilder.append(2);
+    stringBuilder.append(shortPositiveCoordinates1.x);
     stringBuilder.append("\n\tHighest X:");
-    stringBuilder.append(4);
+    stringBuilder.append(shortPositiveCoordinates2.x);
     stringBuilder.append("\n\tLength of longest Coordinate:");
     stringBuilder.append(coordinates.widestCoordinateString);
     stringBuilder.append("\nOutput:");
