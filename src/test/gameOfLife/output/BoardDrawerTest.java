@@ -12,7 +12,8 @@ public class BoardDrawerTest {
   public void testWillDrawHeaderRow() {
 
     Cell shortPositiveCoordinates1 = new Cell(2, 4);
-    List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(shortPositiveCoordinates1, new Cell(5,9));
+    Cell shortPositiveCoordinates2 = new Cell(5, 9);
+    List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(shortPositiveCoordinates1, shortPositiveCoordinates2);
     BoardBounds boardBounds = new BoardBounds(cells);
     Coordinates coordinates = new Coordinates(boardBounds);
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
