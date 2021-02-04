@@ -14,6 +14,19 @@ public class BoardDrawerTest {
     BoardBounds boardBounds = new BoardBounds(cells);
     Coordinates coordinates = new Coordinates(boardBounds);
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
-    Approvals.verify(headerRow);
+
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("Input:");
+    stringBuilder.append("\n\tLowest X:");
+    stringBuilder.append(2);
+    stringBuilder.append("\n\tHighest X:");
+    stringBuilder.append(4);
+    stringBuilder.append("\n\tLength of longest Coordinate:");
+    stringBuilder.append(coordinates.widestCoordinateString);
+    stringBuilder.append("\nOutput:");
+    stringBuilder.append("\n\tHeader row:");
+    stringBuilder.append(headerRow.toString());
+
+    Approvals.verify(stringBuilder);
   }
 }

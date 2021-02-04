@@ -1,2 +1,7 @@
-[  ,   2,   3,   4,   5,   6,  
+Input:
+	Lowest X:2
+	Highest X:4
+	Length of longest Coordinate:2
+Output:
+	Header row:[  ,   2,   3,   4,   5,   6,  
 ]
