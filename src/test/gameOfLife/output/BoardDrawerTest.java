@@ -20,11 +20,16 @@ public class BoardDrawerTest {
 
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
 
+    StringBuilder stringBuilder = createStoryBoard(coordinates, headerRow);
+
+    Approvals.verify(stringBuilder);
+  }
+
+  private StringBuilder createStoryBoard(Coordinates coordinates, List<String> headerRow) {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(coordinates);
     stringBuilder.append("\n==CREATE HEADER==\n");
     stringBuilder.append(headerRow.toString());
-
-    Approvals.verify(stringBuilder);
+    return stringBuilder;
   }
 }
