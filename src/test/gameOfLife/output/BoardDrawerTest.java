@@ -22,8 +22,7 @@ public class BoardDrawerTest {
 
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
 
-    StringBuilder stringBuilder = createStoryBoard(coordinates, headerRow);
-    return stringBuilder;
+    return createStoryBoard(coordinates, headerRow);
   }
 
   private Coordinates createCoordinates(Cell shortPositiveCoordinates1, Cell shortPositiveCoordinates2) {
