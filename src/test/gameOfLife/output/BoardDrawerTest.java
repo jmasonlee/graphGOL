@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BoardDrawerTest {
   @Test
-  public void testWillDrawHeaderRow() {
+  public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
 
     Cell shortPositiveCoordinates1 = new Cell(2, 4);
     Cell shortPositiveCoordinates2 = new Cell(5, 9);
