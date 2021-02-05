@@ -29,8 +29,7 @@ public class BoardDrawerTest {
   private Coordinates createCoordinates(Cell shortPositiveCoordinates1, Cell shortPositiveCoordinates2) {
     List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(shortPositiveCoordinates1, shortPositiveCoordinates2);
     BoardBounds boardBounds = new BoardBounds(cells);
-    Coordinates coordinates = new Coordinates(boardBounds);
-    return coordinates;
+    return new Coordinates(boardBounds);
   }
 
   private StringBuilder createStoryBoard(Coordinates coordinates, List<String> headerRow) {
