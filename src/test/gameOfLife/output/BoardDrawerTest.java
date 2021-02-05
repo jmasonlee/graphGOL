@@ -14,13 +14,18 @@ public class BoardDrawerTest {
     Cell shortPositiveCoordinates1 = new Cell(2, 4);
     Cell shortPositiveCoordinates2 = new Cell(5, 9);
 
+    StringBuilder stringBuilder = testDrawingHeaderRow(shortPositiveCoordinates1, shortPositiveCoordinates2);
+
+    Approvals.verify(stringBuilder);
+  }
+
+  private StringBuilder testDrawingHeaderRow(Cell shortPositiveCoordinates1, Cell shortPositiveCoordinates2) {
     Coordinates coordinates = createCoordinates(shortPositiveCoordinates1, shortPositiveCoordinates2);
 
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
 
     StringBuilder stringBuilder = createStoryBoard(coordinates, headerRow);
-
-    Approvals.verify(stringBuilder);
+    return stringBuilder;
   }
 
   private Coordinates createCoordinates(Cell shortPositiveCoordinates1, Cell shortPositiveCoordinates2) {
