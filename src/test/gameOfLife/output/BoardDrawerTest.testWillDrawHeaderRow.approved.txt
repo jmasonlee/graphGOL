@@ -1,7 +1,4 @@
-Input:
-	Lowest X:2
-	Highest X:4
-	Length of longest Coordinate:2
-Output:
-	Header row:[  ,   2,   3,   4,   5,   6,  
+Coordinates{xCoordinates=[ 2,  3,  4,  5,  6], yCoordinates=[ 9,  8,  7,  6,  5,  4], widestCoordinateString=2}
+==CREATE HEADER==
+[  ,   2,   3,   4,   5,   6,  
 ]
