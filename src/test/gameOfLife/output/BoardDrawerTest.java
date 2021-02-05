@@ -14,10 +14,10 @@ public class BoardDrawerTest {
     Cell shortPositiveCoordinates1 = new Cell(2, 4);
     Cell shortPositiveCoordinates2 = new Cell(5, 9);
 
-    Approvals.verify(testDrawingHeaderRow(shortPositiveCoordinates1, shortPositiveCoordinates2));
+    Approvals.verify(storyboardDrawingHeaderRow(shortPositiveCoordinates1, shortPositiveCoordinates2));
   }
 
-  private StringBuilder testDrawingHeaderRow(Cell shortPositiveCoordinates1, Cell shortPositiveCoordinates2) {
+  private StringBuilder storyboardDrawingHeaderRow(Cell shortPositiveCoordinates1, Cell shortPositiveCoordinates2) {
     Coordinates coordinates = createCoordinates(shortPositiveCoordinates1, shortPositiveCoordinates2);
 
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
