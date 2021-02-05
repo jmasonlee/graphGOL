@@ -35,9 +35,17 @@ public void Should_BeEqualToAnotherCell_WithIdenticalCoordinates(){
 
 The end result in either language is a set of tests whose names _should_ be a list of required behaviours for the class. It _should_ be fairly quick and easy to read a test suite and understand what is expected of a class, and it _should_ be easy to understand which behaviours aren't working as expected when a test fails. Of course, this isn't always true and is usually impacted by cultural, time or management constraints.
 
-Being able to keep this documentation close to your code, and in a place where it changes if the behaviour under test changes is an extremely valuable benefit of unit testing. I know it can be achieved with assertion-based tests, but can it be done with approvals? I want to find a pattern that will let me do this.
+###Tests as Documentation with Approvals
+A suite of well-written unit tests keeps documentation close to your code, in a place where it changes if the code does. Assertion-based tests enable this documentation through many clearly named test methods, but one of the benefits of approvals is that you can succinctly write a single, fully covering, test case. Can a single test name give you the documentation you need?
 
-My first thought was that, if it was possible, the tests should be written in a way that the input variables provided in each case under test need to be clearly described, and labeled in the approvals file. 
+This made me question why that documentation would be needed, and when it was valuable to me. I've used tests in the past to:
+- understand what a class or function is meant to do, before I start changing things.
+- identify exactly which behaviour is failing, and why it is a failure
+- gain awareness of unexpected edge-cases that may indicate I have an incomplete understanding of the domain.
+
+
+
+My first thought was that documentation would be covered by the approvals file, mainly because of point #2. if it was possible, the tests should be written in a way that the input variables provided in each case under test need to be clearly described, and labeled in the approvals file. 
 
 This resulted in me starting to build [a fairly intricate and complex StringBuilder](https://github.com/jmasonlee/graphGOL/commit/07c33a2662ef9d38979e1f627309d57127fe93e0#diff-50614f5e42a3b3a703eb669b2a60817e033a5c92b29a47fb56e71a567e3255b2)... but I'm not actually sure if it provided the value I'm looking for. Yes, it's now easier to read the approvals file, but for whom? My guess is mainly English speakers. You also now need to try to understand the English printed with the approved file. The English bloats the file, adding a lot of bulk that is essentially hard-coded and not valuable unless you have a failing test. This is especially annoying if you are using the fact that you can test complete coverage of all cases with Approvals - in this case, your file could be thousands of tests. A line or two of extra bloat would increase the size of the file you're testing multiple times for something which is only ever mainly read by a machine.
 
