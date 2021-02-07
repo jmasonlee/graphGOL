@@ -19,10 +19,10 @@ public class BoardDrawerTest {
     //Square size grows regardless of if longest coordinate is an x or y value
     int[] axisModifier = new int[]{0, 1};
 
-    Cell shortPositiveCoordinates1 = new Cell(2, 4);
+    Cell lowerLeft = new Cell(2, 4);
     Cell shortPositiveCoordinates2 = new Cell(5, 9);
 
-    Approvals.verify(storyboardDrawingHeaderRow(shortPositiveCoordinates1, shortPositiveCoordinates2));
+    Approvals.verify(storyboardDrawingHeaderRow(lowerLeft, shortPositiveCoordinates2));
   }
 
   //The board does not shrink past 5
