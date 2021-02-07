@@ -13,7 +13,9 @@ public class BoardDrawerTest {
     //We account for sign
     int[] signModifier = new int[]{-1, 1};
     //As the numbers increase in length, the square size expands.
-    //Squares don't shrink less than 2
+      //Square size starts at 3, regardless of coordinate length
+      //Square starts to grow after coordinate length > 3
+      //Square size grows regardless of if longest coordinate is an x or y value
 
     Cell shortPositiveCoordinates1 = new Cell(2, 4);
     Cell shortPositiveCoordinates2 = new Cell(5, 9);
