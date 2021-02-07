@@ -11,7 +11,6 @@ public class BoardDrawerTest {
   @Test
   public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
     //We account for a negative sign
-    //The board does not shrink past 5
     //As the numbers increase in length, the square size expands.
     //Squares don't shrink less than 2
 
@@ -21,6 +20,7 @@ public class BoardDrawerTest {
     Approvals.verify(storyboardDrawingHeaderRow(shortPositiveCoordinates1, shortPositiveCoordinates2));
   }
 
+  //The board does not shrink past 5
   private StringBuilder storyboardDrawingHeaderRow(Cell shortPositiveCoordinates1, Cell shortPositiveCoordinates2) {
     Coordinates coordinates = createCoordinates(shortPositiveCoordinates1, shortPositiveCoordinates2);
 
