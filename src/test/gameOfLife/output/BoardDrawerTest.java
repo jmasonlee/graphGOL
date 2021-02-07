@@ -10,6 +10,10 @@ import java.util.List;
 public class BoardDrawerTest {
   @Test
   public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
+    //We account for a negative sign
+    //The board does not shrink past 5
+    //As the numbers increase in length, the square size expands.
+    //Squares don't shrink less than 2
 
     Cell shortPositiveCoordinates1 = new Cell(2, 4);
     Cell shortPositiveCoordinates2 = new Cell(5, 9);
