@@ -17,6 +17,7 @@ public class BoardDrawerTest {
       //Square starts to grow after coordinate length > 3
     int[] coordLengthModifiers = new int[]{1, 10, 100, 1000};
     //Square size grows regardless of if longest coordinate is an x or y value
+    int[] axisModifier = new int[]{0, 1};
 
     Cell shortPositiveCoordinates1 = new Cell(2, 4);
     Cell shortPositiveCoordinates2 = new Cell(5, 9);
