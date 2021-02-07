@@ -15,6 +15,7 @@ public class BoardDrawerTest {
     //As the numbers increase in length, the square size expands.
       //Square size starts at 3, regardless of coordinate length
       //Square starts to grow after coordinate length > 3
+    int[] coordLengthModifiers = new int[]{1, 10, 100, 1000};
     //Square size grows regardless of if longest coordinate is an x or y value
 
     Cell shortPositiveCoordinates1 = new Cell(2, 4);
