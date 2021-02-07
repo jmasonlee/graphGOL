@@ -11,7 +11,7 @@ public class BoardDrawerTest {
   @Test
   public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
     //We account for sign
-
+    int[] signModifier = new int[]{-1, 1};
     //As the numbers increase in length, the square size expands.
     //Squares don't shrink less than 2
 
