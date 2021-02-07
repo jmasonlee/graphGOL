@@ -20,9 +20,9 @@ public class BoardDrawerTest {
     int[] axisModifier = new int[]{0, 1};
 
     Cell lowerLeft = new Cell(2, 4);
-    Cell shortPositiveCoordinates2 = new Cell(5, 9);
+    Cell upperRight = new Cell(5, 9);
 
-    Approvals.verify(storyboardDrawingHeaderRow(lowerLeft, shortPositiveCoordinates2));
+    Approvals.verify(storyboardDrawingHeaderRow(lowerLeft, upperRight));
   }
 
   //The board does not shrink past 5
