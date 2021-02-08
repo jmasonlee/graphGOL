@@ -21,7 +21,15 @@ public class BoardDrawerTest {
     //As the numbers increase in length, the square size expands.
       //Square size starts at 3, regardless of coordinate length
       //Square starts to grow after coordinate length > 3
-    int[] coordLengthModifiers = new int[]{0, 10, 100, 1000};
+    Map<String, Integer> coordLengthModifiers = Stream.of(new Object[][]{
+        {"one digit", 0},
+        {"two digits", 10},
+        {"three digits", 100},
+        {"four digits", 1000}
+    }).collect(Collectors.toMap(
+         d -> (String) d[0],
+         d -> (Integer) d[1]));
+
     //Square size grows regardless of if longest coordinate is an x or y value
     int[] axisModifier = new int[]{0, 1};
 
