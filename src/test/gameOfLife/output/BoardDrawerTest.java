@@ -5,17 +5,23 @@ import gameOfLife.cell.Cell;
 import org.approvaltests.Approvals;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BoardDrawerTest {
   @Test
   public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
     //We account for sign
-    int[] signModifier = new int[]{-1, 1};
+    Map<String, Integer> signModifiers = Stream.of(new Object[][]{
+        {"positive", 1}, {"negative", -1}
+    }).collect(Collectors.toMap(sm -> (String)sm[0], sm -> (Integer)sm[1]));
     //As the numbers increase in length, the square size expands.
       //Square size starts at 3, regardless of coordinate length
       //Square starts to grow after coordinate length > 3
-    int[] coordLengthModifiers = new int[]{1, 10, 100, 1000};
+    int[] coordLengthModifiers = new int[]{0, 10, 100, 1000};
     //Square size grows regardless of if longest coordinate is an x or y value
     int[] axisModifier = new int[]{0, 1};
 
