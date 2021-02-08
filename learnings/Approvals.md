@@ -42,14 +42,15 @@ This made me question why that documentation would be needed, and when it was va
 - understand what a class or function is meant to do, before I start changing things.
 - identify exactly which behaviour is failing, and why it is a failure
 - gain awareness of unexpected edge-cases that may indicate I have an incomplete understanding of the domain.
-
-
+- give me a sense of why a particular test input or output value is important, especially if it's not immediately obvious
 
 My first thought was that documentation would be covered by the approvals file, mainly because of point #2. if it was possible, the tests should be written in a way that the input variables provided in each case under test need to be clearly described, and labeled in the approvals file. 
 
 This resulted in me starting to build [a fairly intricate and complex StringBuilder](https://github.com/jmasonlee/graphGOL/commit/07c33a2662ef9d38979e1f627309d57127fe93e0#diff-50614f5e42a3b3a703eb669b2a60817e033a5c92b29a47fb56e71a567e3255b2)... but I'm not actually sure if it provided the value I'm looking for. Yes, it's now easier to read the approvals file, but for whom? My guess is mainly English speakers. You also now need to try to understand the English printed with the approved file. The English bloats the file, adding a lot of bulk that is essentially hard-coded and not valuable unless you have a failing test. This is especially annoying if you are using the fact that you can test complete coverage of all cases with Approvals - in this case, your file could be thousands of tests. A line or two of extra bloat would increase the size of the file you're testing multiple times for something which is only ever mainly read by a machine.
 
-One of the reasons parameterized testing is as valuable as it is, is that it lets test-writers specify a whole bunch of different inputs and provide them to a test function as parameters. This format of testing is also more legible than writing a single assertion test for each behaviour being checked. My next attempt will look at applying some ideas from parameterized testing to my approvals to see if they can be made more legible that way.
+- Values provided to a test without any context are confusing and can lead to invalid assumptions about the significance of the value.
+- assumptions ... waste time or cause confusion at a minimum, at worst, they cause bugs
+- Approvals don't provide a way to easily specify the significance of a test parameter. Depending on if you use CombinationApprovals, verify, or verifyAll, you may also need to add specification another way.
 
 TODOs that came out of writing this section:
 - [ ] Ensure all assertion tests in the code are using the above convention
