@@ -42,13 +42,13 @@ public class BoardDrawerTest {
 
   @Test
   public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
+    Approvals.verify(storyboardDrawingHeaderRow());
+  }
+
+  private StringBuilder storyboardDrawingHeaderRow() {
     Cell lowerLeft = new Cell(2, 4);
     Cell upperRight = new Cell(5, 9);
 
-    Approvals.verify(storyboardDrawingHeaderRow(lowerLeft, upperRight));
-  }
-
-  private StringBuilder storyboardDrawingHeaderRow(Cell lowerLeft, Cell upperRight) {
     Coordinates coordinates = createCoordinates(lowerLeft, upperRight);
 
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
