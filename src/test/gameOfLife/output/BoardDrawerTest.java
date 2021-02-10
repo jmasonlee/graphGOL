@@ -20,8 +20,8 @@ public class BoardDrawerTest {
   @Before
   public void setUp() throws Exception {
     axisModifiers = Stream.of(new Object[][]{
-        {"applied to X", 0 },
-        {"applied to Y", 1 }
+        {"applied to X", 0},
+        {"applied to Y", 1}
     }).collect(Collectors.toMap(
         d -> (String) d[0],
         d -> (Integer) d[1]));
@@ -32,19 +32,16 @@ public class BoardDrawerTest {
         {"three digits", 100},
         {"four digits", 1000}
     }).collect(Collectors.toMap(
-         d -> (String) d[0],
-         d -> (Integer) d[1]));
+        d -> (String) d[0],
+        d -> (Integer) d[1]));
 
     signModifiers = Stream.of(new Object[][]{
         {"positive", 1}, {"negative", -1}
-    }).collect(Collectors.toMap(sm -> (String)sm[0], sm -> (Integer)sm[1]));
+    }).collect(Collectors.toMap(sm -> (String) sm[0], sm -> (Integer) sm[1]));
   }
 
   @Test
   public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
-    //We account for sign
-
-
     Cell lowerLeft = new Cell(2, 4);
     Cell upperRight = new Cell(5, 9);
 
