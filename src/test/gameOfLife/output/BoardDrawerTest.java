@@ -18,7 +18,7 @@ public class BoardDrawerTest {
   private Map<String, Integer> signModifiers;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     axisModifiers = Stream.of(new Object[][]{
         {"applied to X", 0},
         {"applied to Y", 1}
