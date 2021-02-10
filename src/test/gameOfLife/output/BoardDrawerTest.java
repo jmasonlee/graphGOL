@@ -6,7 +6,6 @@ import org.approvaltests.Approvals;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,17 +13,19 @@ import java.util.stream.Stream;
 
 public class BoardDrawerTest {
 
-  private Map<String, Integer> axisModifier;
+  private Map<String, Integer> axisModifiers;
   private Map<String, Integer> coordLengthModifiers;
+  private Map<String, Integer> signModifiers;
 
   @Before
   public void setUp() throws Exception {
-    axisModifier = Stream.of(new Object[][]{
-        {"Longer X", 0 },
-        {"Longer Y", 1 }
+    axisModifiers = Stream.of(new Object[][]{
+        {"applied to X", 0 },
+        {"applied to Y", 1 }
     }).collect(Collectors.toMap(
         d -> (String) d[0],
         d -> (Integer) d[1]));
+
     coordLengthModifiers = Stream.of(new Object[][]{
         {"one digit", 0},
         {"two digits", 10},
@@ -33,14 +34,15 @@ public class BoardDrawerTest {
     }).collect(Collectors.toMap(
          d -> (String) d[0],
          d -> (Integer) d[1]));
+
+    signModifiers = Stream.of(new Object[][]{
+        {"positive", 1}, {"negative", -1}
+    }).collect(Collectors.toMap(sm -> (String)sm[0], sm -> (Integer)sm[1]));
   }
 
   @Test
   public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
     //We account for sign
-    Map<String, Integer> signModifiers = Stream.of(new Object[][]{
-        {"positive", 1}, {"negative", -1}
-    }).collect(Collectors.toMap(sm -> (String)sm[0], sm -> (Integer)sm[1]));
 
 
     Cell lowerLeft = new Cell(2, 4);
