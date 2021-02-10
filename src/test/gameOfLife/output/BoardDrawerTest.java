@@ -48,7 +48,6 @@ public class BoardDrawerTest {
     Approvals.verify(storyboardDrawingHeaderRow(lowerLeft, upperRight));
   }
 
-  //The board does not shrink past 5
   private StringBuilder storyboardDrawingHeaderRow(Cell lowerLeft, Cell upperRight) {
     Coordinates coordinates = createCoordinates(lowerLeft, upperRight);
 
