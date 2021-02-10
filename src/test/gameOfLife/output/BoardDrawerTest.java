@@ -42,10 +42,10 @@ public class BoardDrawerTest {
 
   @Test
   public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
-    Approvals.verify(storyboardDrawingHeaderRow());
+    Approvals.verify(storyboardDrawingHeaderRow("positive", "one digit", "applied to X"));
   }
 
-  private StringBuilder storyboardDrawingHeaderRow() {
+  private StringBuilder storyboardDrawingHeaderRow(String signModifier, String coordLengthModifier, String axisModifier) {
     Cell lowerLeft = new Cell(2, 4);
     Cell upperRight = new Cell(5, 9);
 
