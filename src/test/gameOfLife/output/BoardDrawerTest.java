@@ -31,7 +31,12 @@ public class BoardDrawerTest {
          d -> (Integer) d[1]));
 
     //Square size grows regardless of if longest coordinate is an x or y value
-    int[] axisModifier = new int[]{0, 1};
+    Map<String, Integer> axisModifier = Stream.of(new Object[][]{
+        {"Longer X", 0 },
+        {"Longer Y", 1 }
+    }).collect(Collectors.toMap(
+        d -> (String) d[0],
+        d -> (Integer) d[1]));
 
     Cell lowerLeft = new Cell(2, 4);
     Cell upperRight = new Cell(5, 9);
