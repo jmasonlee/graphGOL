@@ -49,8 +49,8 @@ public class BoardDrawerTest {
   }
 
   //The board does not shrink past 5
-  private StringBuilder storyboardDrawingHeaderRow(Cell shortPositiveCoordinates1, Cell shortPositiveCoordinates2) {
-    Coordinates coordinates = createCoordinates(shortPositiveCoordinates1, shortPositiveCoordinates2);
+  private StringBuilder storyboardDrawingHeaderRow(Cell lowerLeft, Cell upperRight) {
+    Coordinates coordinates = createCoordinates(lowerLeft, upperRight);
 
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
 
