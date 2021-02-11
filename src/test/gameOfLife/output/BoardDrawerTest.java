@@ -46,8 +46,13 @@ public class BoardDrawerTest {
   }
 
   private StringBuilder storyboardDrawingHeaderRow(String signModifier, String coordLengthModifier, String axisModifier) {
+    Integer[][] baseCellCoordinates = new Integer[][]{new Integer[]{2,4}, new Integer[]{5,9}};
+
     Cell lowerLeft = new Cell(2, 4);
+    lowerLeft.x = (lowerLeft.x * signModifiers.get(signModifier));
+
     Cell upperRight = new Cell(5, 9);
+    upperRight.x = (upperRight.x * signModifiers.get(signModifier));
 
     Coordinates coordinates = createCoordinates(lowerLeft, upperRight);
 
