@@ -49,16 +49,26 @@ public class BoardDrawerTest {
     Integer[][] baseCellCoordinates = new Integer[][]{new Integer[]{2,4}, new Integer[]{5,9}};
 
     Cell lowerLeft = new Cell(2, 4);
-    lowerLeft.x = (lowerLeft.x * signModifiers.get(signModifier));
-
     Cell upperRight = new Cell(5, 9);
-    upperRight.x = (upperRight.x * signModifiers.get(signModifier));
+
+    if(axisModifiers.get(axisModifier).equals(axisModifiers.get("applied to X")))
+    {
+      upperRight.x = applyModifiers(signModifier, coordLengthModifier, upperRight.x);
+      lowerLeft.x = applyModifiers(signModifier, coordLengthModifier, lowerLeft.x);
+    } else if (axisModifiers.get(axisModifier).equals(axisModifiers.get("applied to Y"))){
+      upperRight.y = applyModifiers(signModifier, coordLengthModifier, upperRight.y);
+      lowerLeft.y = applyModifiers(signModifier, coordLengthModifier, lowerLeft.y);
+    }
 
     Coordinates coordinates = createCoordinates(lowerLeft, upperRight);
 
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
 
     return createStoryBoard(coordinates, headerRow);
+  }
+
+  private int applyModifiers(String signModifier, String coordLengthModifier, int coord) {
+    return (coord + coordLengthModifiers.get(coordLengthModifier)) * signModifiers.get(signModifier);
   }
 
   private Coordinates createCoordinates(Cell shortPositiveCoordinates1, Cell shortPositiveCoordinates2) {
