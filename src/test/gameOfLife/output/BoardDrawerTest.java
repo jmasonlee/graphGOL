@@ -43,20 +43,24 @@ public class BoardDrawerTest {
   }
 
   private StringBuilder storyboardDrawingHeaderRow(String signModifierKey, String coordLengthModifierKey, String axisModifier) {
-    Cell lowerLeft = new Cell(2, 4);
-    Cell upperRight = new Cell(5, 9);
 
-    int signModifier = signModifiers.get(signModifierKey);
-    int coordLengthModifier = coordLengthModifiers.get(coordLengthModifierKey);
-
-    axisModifiers.get(axisModifier).call(signModifier, coordLengthModifier, upperRight);
-    axisModifiers.get(axisModifier).call(signModifier, coordLengthModifier, lowerLeft);
-
-    Coordinates coordinates = createCoordinates(lowerLeft, upperRight);
+    Coordinates coordinates = getCoordinates(signModifierKey, coordLengthModifierKey, axisModifier);
 
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
 
     return createStoryBoard(coordinates, headerRow);
+  }
+
+  private Coordinates getCoordinates(String signModifierKey, String coordLengthModifierKey, String axisModifier) {
+    Cell[] baseCoordinates = new Cell[]{new Cell(2, 4), new Cell(5, 9)};
+
+    int signModifier = signModifiers.get(signModifierKey);
+    int coordLengthModifier = coordLengthModifiers.get(coordLengthModifierKey);
+
+    for (Cell baseCoordinate : baseCoordinates) {
+      axisModifiers.get(axisModifier).call(signModifier, coordLengthModifier, baseCoordinate);
+    }
+    return createCoordinates(baseCoordinates[0], baseCoordinates[1]);
   }
 
   private Cell applyModifiersToXCoord(int signModifier, int coordLengthModifier, Cell cell) {
