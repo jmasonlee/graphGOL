@@ -32,9 +32,9 @@ public class BoardDrawerTest {
     coordLengthModifiers.put("three digits", 100);
     coordLengthModifiers.put("four digits", 1000);
 
-    signModifiers = Stream.of(new Object[][]{
-        {"positive", 1}, {"negative", -1}
-    }).collect(Collectors.toMap(sm -> (String) sm[0], sm -> (Integer) sm[1]));
+    signModifiers = new HashMap<>();
+    signModifiers.put("positive", 1);
+    signModifiers.put("negative", -1);
   }
 
   @Test
