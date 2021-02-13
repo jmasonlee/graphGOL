@@ -55,7 +55,7 @@ public class BoardDrawerTest {
     if(axisModifiers.get(axisModifier).equals(axisModifiers.get("applied to X")))
     {
       upperRight = applyModifiersToXCoord(signModifier, coordLengthModifier, upperRight);
-      lowerLeft.x = applyModifiers(signModifier, coordLengthModifier, lowerLeft.x);
+      lowerLeft = applyModifiersToXCoord(signModifier, coordLengthModifier, lowerLeft);
     } else if (axisModifiers.get(axisModifier).equals(axisModifiers.get("applied to Y"))){
       upperRight.y = applyModifiers(signModifier, coordLengthModifier, upperRight.y);
       lowerLeft.y = applyModifiers(signModifier, coordLengthModifier, lowerLeft.y);
