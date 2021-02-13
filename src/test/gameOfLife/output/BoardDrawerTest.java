@@ -54,7 +54,7 @@ public class BoardDrawerTest {
 
     if(axisModifiers.get(axisModifier).equals(axisModifiers.get("applied to X")))
     {
-      upperRight.x = applyModifiers(signModifier, coordLengthModifier, upperRight.x);
+      upperRight = applyModifiersToXCoord(signModifier, coordLengthModifier, upperRight);
       lowerLeft.x = applyModifiers(signModifier, coordLengthModifier, lowerLeft.x);
     } else if (axisModifiers.get(axisModifier).equals(axisModifiers.get("applied to Y"))){
       upperRight.y = applyModifiers(signModifier, coordLengthModifier, upperRight.y);
@@ -66,6 +66,11 @@ public class BoardDrawerTest {
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
 
     return createStoryBoard(coordinates, headerRow);
+  }
+
+  private Cell applyModifiersToXCoord(int signModifier, int coordLengthModifier, Cell cell) {
+    cell.x = applyModifiers(signModifier, coordLengthModifier, cell.x);
+    return cell;
   }
 
   private int applyModifiers(int signModifier, int coordLengthModifier, int coord) {
