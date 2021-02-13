@@ -3,6 +3,7 @@ package gameOfLife.output;
 import gameOfLife.TestUtils.CellCoverage;
 import gameOfLife.cell.Cell;
 import org.approvaltests.Approvals;
+import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Before;
 import org.junit.Test;
 import org.lambda.functions.Function3;
@@ -34,12 +35,15 @@ public class BoardDrawerTest {
 
     signModifiers = new HashMap<>();
     signModifiers.put("positive", 1);
-    signModifiers.put("negative", -1);
+    //signModifiers.put("negative", -1);
   }
 
   @Test
   public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
-    Approvals.verify(storyboardDrawingHeaderRow("positive", "one digit", "applied to X"));
+    CombinationApprovals.verifyAllCombinations(this::storyboardDrawingHeaderRow,
+      signModifiers.keySet().toArray(new String[0]),
+      coordLengthModifiers.keySet().toArray(new String[0]),
+      axisModifiers.keySet().toArray(new String[0]));
   }
 
   private StringBuilder storyboardDrawingHeaderRow(String signModifierKey, String coordLengthModifierKey, String axisModifier) {
