@@ -5,26 +5,26 @@ import gameOfLife.cell.Cell;
 import org.approvaltests.Approvals;
 import org.junit.Before;
 import org.junit.Test;
+import org.lambda.functions.Function3;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class BoardDrawerTest {
 
-  private Map<String, Integer> axisModifiers;
+  private Map<String, Function3<Integer, Integer, Cell, Cell>> axisModifiers;
   private Map<String, Integer> coordLengthModifiers;
   private Map<String, Integer> signModifiers;
 
   @Before
   public void setUp() {
-    axisModifiers = Stream.of(new Object[][]{
-        {"applied to X", 0},
-        {"applied to Y", 1}
-    }).collect(Collectors.toMap(
-        d -> (String) d[0],
-        d -> (Integer) d[1]));
+    axisModifiers = new HashMap<>();
+    axisModifiers.put("applied to X", this::applyModifiersToXCoord);
+    axisModifiers.put("applied to Y", this::applyModifiersToYCoord);
 
     coordLengthModifiers = Stream.of(new Object[][]{
         {"one digit", 0},
@@ -52,14 +52,8 @@ public class BoardDrawerTest {
     int signModifier = signModifiers.get(signModifierKey);
     int coordLengthModifier = coordLengthModifiers.get(coordLengthModifierKey);
 
-    if(axisModifiers.get(axisModifier).equals(axisModifiers.get("applied to X")))
-    {
-      upperRight = applyModifiersToXCoord(signModifier, coordLengthModifier, upperRight);
-      lowerLeft = applyModifiersToXCoord(signModifier, coordLengthModifier, lowerLeft);
-    } else if (axisModifiers.get(axisModifier).equals(axisModifiers.get("applied to Y"))){
-      upperRight = applyModifiersToYCoord(signModifier, coordLengthModifier, upperRight);
-      lowerLeft = applyModifiersToYCoord(signModifier, coordLengthModifier, lowerLeft);
-    }
+    axisModifiers.get(axisModifier).call(signModifier, coordLengthModifier, upperRight);
+    axisModifiers.get(axisModifier).call(signModifier, coordLengthModifier, lowerLeft);
 
     Coordinates coordinates = createCoordinates(lowerLeft, upperRight);
 
