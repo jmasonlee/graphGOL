@@ -26,14 +26,11 @@ public class BoardDrawerTest {
     axisModifiers.put("applied to X", this::applyModifiersToXCoord);
     axisModifiers.put("applied to Y", this::applyModifiersToYCoord);
 
-    coordLengthModifiers = Stream.of(new Object[][]{
-        {"one digit", 0},
-        {"two digits", 10},
-        {"three digits", 100},
-        {"four digits", 1000}
-    }).collect(Collectors.toMap(
-        d -> (String) d[0],
-        d -> (Integer) d[1]));
+    coordLengthModifiers = new HashMap<>();
+    coordLengthModifiers.put("one digit", 0);
+    coordLengthModifiers.put("two digits", 10);
+    coordLengthModifiers.put("three digits", 100);
+    coordLengthModifiers.put("four digits", 1000);
 
     signModifiers = Stream.of(new Object[][]{
         {"positive", 1}, {"negative", -1}
