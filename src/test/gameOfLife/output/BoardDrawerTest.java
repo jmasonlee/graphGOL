@@ -57,8 +57,8 @@ public class BoardDrawerTest {
       upperRight = applyModifiersToXCoord(signModifier, coordLengthModifier, upperRight);
       lowerLeft = applyModifiersToXCoord(signModifier, coordLengthModifier, lowerLeft);
     } else if (axisModifiers.get(axisModifier).equals(axisModifiers.get("applied to Y"))){
-      upperRight.y = applyModifiers(signModifier, coordLengthModifier, upperRight.y);
-      lowerLeft.y = applyModifiers(signModifier, coordLengthModifier, lowerLeft.y);
+      upperRight = applyModifiersToYCoord(signModifier, coordLengthModifier, upperRight);
+      lowerLeft = applyModifiersToYCoord(signModifier, coordLengthModifier, lowerLeft);
     }
 
     Coordinates coordinates = createCoordinates(lowerLeft, upperRight);
@@ -70,6 +70,11 @@ public class BoardDrawerTest {
 
   private Cell applyModifiersToXCoord(int signModifier, int coordLengthModifier, Cell cell) {
     cell.x = applyModifiers(signModifier, coordLengthModifier, cell.x);
+    return cell;
+  }
+
+  private Cell applyModifiersToYCoord(int signModifier, int coordLengthModifier, Cell cell) {
+    cell.y = applyModifiers(signModifier, coordLengthModifier, cell.y);
     return cell;
   }
 
