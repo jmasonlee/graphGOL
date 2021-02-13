@@ -45,9 +45,11 @@ public class BoardDrawerTest {
     Approvals.verify(storyboardDrawingHeaderRow("positive", "one digit", "applied to X"));
   }
 
-  private StringBuilder storyboardDrawingHeaderRow(String signModifier, String coordLengthModifier, String axisModifier) {
+  private StringBuilder storyboardDrawingHeaderRow(String signModifierKey, String coordLengthModifier, String axisModifier) {
     Cell lowerLeft = new Cell(2, 4);
     Cell upperRight = new Cell(5, 9);
+
+    int signModifier = signModifiers.get(signModifierKey);
 
     if(axisModifiers.get(axisModifier).equals(axisModifiers.get("applied to X")))
     {
@@ -65,8 +67,8 @@ public class BoardDrawerTest {
     return createStoryBoard(coordinates, headerRow);
   }
 
-  private int applyModifiers(String signModifier, String coordLengthModifier, int coord) {
-    return (coord + coordLengthModifiers.get(coordLengthModifier)) * signModifiers.get(signModifier);
+  private int applyModifiers(int signModifier, String coordLengthModifier, int coord) {
+    return (coord + coordLengthModifiers.get(coordLengthModifier)) * signModifier;
   }
 
   private Coordinates createCoordinates(Cell shortPositiveCoordinates1, Cell shortPositiveCoordinates2) {
