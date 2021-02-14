@@ -2,7 +2,6 @@ package gameOfLife.output;
 
 import gameOfLife.TestUtils.CellCoverage;
 import gameOfLife.cell.Cell;
-import org.approvaltests.Approvals;
 import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,9 +10,6 @@ import org.lambda.functions.Function3;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class BoardDrawerTest {
 
