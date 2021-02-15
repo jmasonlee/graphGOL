@@ -51,6 +51,18 @@ This resulted in me starting to build [a fairly intricate and complex StringBuil
 - Values provided to a test without any context are confusing and can lead to invalid assumptions about the significance of the value.
 - assumptions ... waste time or cause confusion at a minimum, at worst, they cause bugs
 - Approvals don't provide a way to easily specify the significance of a test parameter. Depending on if you use CombinationApprovals, verify, or verifyAll, you may also need to add specification another way.
+- I built a custom solution that lets me pit things where I want them. I have a hashmap of keys and values, the values are the test params, the keys are strings signifying the importance of those params. I gather the keys from each test param hashmap, and pass them into the CombinationApprovals.verify method, then once I'm in the test method, I fetch the actual value from the corresponding map so I can run the test.
+- In my first attempt, I created modifiers that I could apply to a set of cells with base coordinates. This allowed me to test all combinations of significant variations. (i.e. Coordinate values with different numbers of digits being on the X axis vs. the Y axis.). I struggle with MVP and this is not extensible.
+- Not easy to apply to different methods of approval verifications either. Only useful for CombinationApprovals.
+- First attempt at custom solution is icky. 
+  - Difficult to read supporting code,
+  - using a map with a Function3 as a second param couples the testing of modifiers to the testing of other modifiers
+  - Not extensible. what happens if I need to switch things up and test cases requring multiple Functions?
+  - Requires the test data to have some significance that can be applied to some base value.... Did I make this more complicated than it needs to be? Do we really need modifiers every time? Could I have simply passed in an array of Cells and assigned significance to that? Time for a simpler test!!!!
+  - I defs overcomplicated things btw
+- Custom solution could be awesome.
+  - I like the output a lot, because it lets me understand the significance of the different conditions under test. Without assigning a string, I would have gotten the bare modifier.
+  - Lets me see the entire solution in one file.
 
 TODOs that came out of writing this section:
 - [ ] Ensure all assertion tests in the code are using the above convention
