@@ -21,7 +21,7 @@ public class BoardDrawerTest {
   public void setUp() {
     axisModifiers = new HashMap<>();
     axisModifiers.put("applied to X", this::applyModifiersToXCoord);
-    axisModifiers.put("applied to Y", this::applyModifiersToYCoord);
+    axisModifiers.put("applied to Y", (signModifier, coordLengthModifier, cell) -> applyModifiersToYCoord(coordLengthModifier, cell));
 
     coordLengthModifiers = new HashMap<>();
     coordLengthModifiers.put("one digit", 0);
@@ -68,7 +68,7 @@ public class BoardDrawerTest {
     return cell;
   }
 
-  private Cell applyModifiersToYCoord(int signModifier, int coordLengthModifier, Cell cell) {
+  private Cell applyModifiersToYCoord(int coordLengthModifier, Cell cell) {
     cell.y = applyModifiers(coordLengthModifier, cell.y);
     return cell;
   }
