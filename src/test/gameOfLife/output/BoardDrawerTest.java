@@ -19,7 +19,7 @@ public class BoardDrawerTest {
   @Before
   public void setUp() {
     axisModifiers = new HashMap<>();
-    axisModifiers.put("applied to X", (coordLengthModifier1, cell1) -> applyModifiersToXCoord(coordLengthModifier1, cell1));
+    axisModifiers.put("applied to X", this::applyModifiersToXCoord);
     axisModifiers.put("applied to Y", this::applyModifiersToYCoord);
 
     coordLengthModifiers = new HashMap<>();
