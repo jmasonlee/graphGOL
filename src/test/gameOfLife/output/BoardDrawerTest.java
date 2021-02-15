@@ -74,7 +74,7 @@ public class BoardDrawerTest {
   }
 
   private int applyModifiers(int signModifier, int coordLengthModifier, int coord) {
-    return (coord + coordLengthModifier) * signModifier;
+    return (coord + coordLengthModifier);
   }
 
   private Coordinates createCoordinates(Cell shortPositiveCoordinates1, Cell shortPositiveCoordinates2) {
