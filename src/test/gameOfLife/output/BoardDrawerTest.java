@@ -6,7 +6,6 @@ import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Before;
 import org.junit.Test;
 import org.lambda.functions.Function2;
-import org.lambda.functions.Function3;
 
 import java.util.HashMap;
 import java.util.List;
@@ -45,17 +44,16 @@ public class BoardDrawerTest {
 
   private StringBuilder storyboardDrawingHeaderRow(String signModifierKey, String coordLengthModifierKey, String axisModifier) {
 
-    Coordinates coordinates = getCoordinates(signModifierKey, coordLengthModifierKey, axisModifier);
+    Coordinates coordinates = getCoordinates(coordLengthModifierKey, axisModifier);
 
     List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
 
     return createStoryBoard(coordinates, headerRow);
   }
 
-  private Coordinates getCoordinates(String signModifierKey, String coordLengthModifierKey, String axisModifier) {
+  private Coordinates getCoordinates(String coordLengthModifierKey, String axisModifier) {
     Cell[] baseCoordinates = new Cell[]{new Cell(2, 4), new Cell(5, 9)};
 
-    int signModifier = signModifiers.get(signModifierKey);
     int coordLengthModifier = coordLengthModifiers.get(coordLengthModifierKey);
 
     for (Cell baseCoordinate : baseCoordinates) {
