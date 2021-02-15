@@ -36,13 +36,13 @@ public class BoardDrawerTest {
 
   @Test
   public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
-    CombinationApprovals.verifyAllCombinations(this::storyboardDrawingHeaderRow,
+    CombinationApprovals.verifyAllCombinations((signModifierKey, coordLengthModifierKey, axisModifier) -> storyboardDrawingHeaderRow(coordLengthModifierKey, axisModifier),
       signModifiers.keySet().toArray(new String[0]),
       coordLengthModifiers.keySet().toArray(new String[0]),
       axisModifiers.keySet().toArray(new String[0]));
   }
 
-  private StringBuilder storyboardDrawingHeaderRow(String signModifierKey, String coordLengthModifierKey, String axisModifier) {
+  private StringBuilder storyboardDrawingHeaderRow(String coordLengthModifierKey, String axisModifier) {
 
     Coordinates coordinates = getCoordinates(coordLengthModifierKey, axisModifier);
 
