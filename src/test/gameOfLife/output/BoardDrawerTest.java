@@ -5,6 +5,7 @@ import gameOfLife.cell.Cell;
 import org.approvaltests.combinations.CombinationApprovals;
 import org.junit.Before;
 import org.junit.Test;
+import org.lambda.functions.Function2;
 import org.lambda.functions.Function3;
 
 import java.util.HashMap;
@@ -13,15 +14,15 @@ import java.util.Map;
 
 public class BoardDrawerTest {
 
-  private Map<String, Function3<Integer, Integer, Cell, Cell>> axisModifiers;
+  private Map<String, Function2<Integer, Cell, Cell>> axisModifiers;
   private Map<String, Integer> coordLengthModifiers;
   private Map<String, Integer> signModifiers;
 
   @Before
   public void setUp() {
     axisModifiers = new HashMap<>();
-    axisModifiers.put("applied to X", this::applyModifiersToXCoord);
-    axisModifiers.put("applied to Y", (signModifier, coordLengthModifier, cell) -> applyModifiersToYCoord(coordLengthModifier, cell));
+    axisModifiers.put("applied to X", (coordLengthModifier1, cell1) -> applyModifiersToXCoord(coordLengthModifier1, cell1));
+    axisModifiers.put("applied to Y", (coordLengthModifier, cell) -> applyModifiersToYCoord(coordLengthModifier, cell));
 
     coordLengthModifiers = new HashMap<>();
     coordLengthModifiers.put("one digit", 0);
@@ -58,12 +59,12 @@ public class BoardDrawerTest {
     int coordLengthModifier = coordLengthModifiers.get(coordLengthModifierKey);
 
     for (Cell baseCoordinate : baseCoordinates) {
-      axisModifiers.get(axisModifier).call(signModifier, coordLengthModifier, baseCoordinate);
+      axisModifiers.get(axisModifier).call(coordLengthModifier, baseCoordinate);
     }
     return createCoordinates(baseCoordinates[0], baseCoordinates[1]);
   }
 
-  private Cell applyModifiersToXCoord(int signModifier, int coordLengthModifier, Cell cell) {
+  private Cell applyModifiersToXCoord(int coordLengthModifier, Cell cell) {
     cell.x = applyModifiers(coordLengthModifier, cell.x);
     return cell;
   }
