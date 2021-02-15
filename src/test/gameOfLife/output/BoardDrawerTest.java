@@ -15,7 +15,6 @@ public class BoardDrawerTest {
 
   private Map<String, Function2<Integer, Cell, Cell>> axisModifiers;
   private Map<String, Integer> coordLengthModifiers;
-  private Map<String, Integer> signModifiers;
 
   @Before
   public void setUp() {
@@ -28,10 +27,6 @@ public class BoardDrawerTest {
     coordLengthModifiers.put("two digits", 10);
     coordLengthModifiers.put("three digits", 100);
     coordLengthModifiers.put("four digits", 1000);
-
-    signModifiers = new HashMap<>();
-    signModifiers.put("positive", 1);
-    //signModifiers.put("negative", -1);
   }
 
   @Test
