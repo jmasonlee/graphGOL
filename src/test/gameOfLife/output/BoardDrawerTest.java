@@ -31,7 +31,7 @@ public class BoardDrawerTest {
 
   @Test
   public void testWillAdjustHeaderRowColumnSizeToMatchLongestCoordinates() {
-    CombinationApprovals.verifyAllCombinations((coordLengthModifierKey, axisModifier) -> storyboardDrawingHeaderRow(coordLengthModifierKey, axisModifier),
+    CombinationApprovals.verifyAllCombinations(this::storyboardDrawingHeaderRow,
       coordLengthModifiers.keySet().toArray(new String[0]),
       axisModifiers.keySet().toArray(new String[0]));
   }
