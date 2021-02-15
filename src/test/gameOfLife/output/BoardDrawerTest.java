@@ -64,16 +64,16 @@ public class BoardDrawerTest {
   }
 
   private Cell applyModifiersToXCoord(int signModifier, int coordLengthModifier, Cell cell) {
-    cell.x = applyModifiers(signModifier, coordLengthModifier, cell.x);
+    cell.x = applyModifiers(coordLengthModifier, cell.x);
     return cell;
   }
 
   private Cell applyModifiersToYCoord(int signModifier, int coordLengthModifier, Cell cell) {
-    cell.y = applyModifiers(signModifier, coordLengthModifier, cell.y);
+    cell.y = applyModifiers(coordLengthModifier, cell.y);
     return cell;
   }
 
-  private int applyModifiers(int signModifier, int coordLengthModifier, int coord) {
+  private int applyModifiers(int coordLengthModifier, int coord) {
     return (coord + coordLengthModifier);
   }
 
