@@ -23,20 +23,6 @@ public class BoardDrawer {
     return headers.stream().map(c -> BoardSquare.SPACE.getValue() + c).collect(Collectors.toList());
   }
 
-  static List<String> drawEmptyRow(Coordinates coordinates) {
-    List<String> board = new ArrayList<>();
-    int boardWidth = coordinates.xCoordinates.size();
-
-    coordinates.yCoordinates.forEach(
-        yCoordinate -> {
-          board.add(yCoordinate);
-          board.addAll(Collections.nCopies(boardWidth, BoardSquare.EMPTY_CELL.getValue()));
-          board.add(BoardSquare.ROW_END.getValue());
-        });
-
-    return board;
-  }
-
   static List<String> drawLiveCellsOnBoard(List<String> oldBoard, List<Cell> cells, BoardBounds boardBounds) {
     List<String> boardWithCells = oldBoard;
     cells.forEach(c -> {
