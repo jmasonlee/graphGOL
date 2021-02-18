@@ -24,13 +24,12 @@ public class BoardDrawer {
   }
 
   static List<String> drawLiveCellsOnBoard(List<String> oldBoard, List<Cell> cells, BoardBounds boardBounds) {
-    List<String> boardWithCells = oldBoard;
     cells.forEach(c -> {
       int positionInBoard = getCellPositionInBoard(c, boardBounds);
-      boardWithCells.set(positionInBoard, BoardSquare.LIVE_CELL.getValue());
+      oldBoard.set(positionInBoard, BoardSquare.LIVE_CELL.getValue());
     });
 
-    return boardWithCells;
+    return oldBoard;
   }
 
   private static int getCellPositionInBoard(Cell cell, BoardBounds boardBounds) {
