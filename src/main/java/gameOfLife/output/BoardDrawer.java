@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class BoardDrawer {
 
   static List<String> drawHeaderRow(Coordinates coordinates) {
-    List<String> board = new ArrayList<String>();
+    List<String> board = new ArrayList<>();
 
     board.add(String.join("", Collections.nCopies(coordinates.widestCoordinateString, BoardSquare.SPACE.getValue())));
     board.addAll(addSpacingToColumnHeaders(coordinates.xCoordinates));
