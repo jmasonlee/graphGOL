@@ -1,32 +1,64 @@
-[one digit, applied to X] => Coordinates{xCoordinates=[ 2,  3,  4,  5,  6], yCoordinates=[ 9,  8,  7,  6,  5,  4], widestCoordinateString=2}
+[one digit, applied to X] => Coordinates{
+ xCoordinates=[ 2,  3,  4,  5,  6],
+ yCoordinates=[ 9,  8,  7,  6,  5,  4],
+ widestCoordinateString=2
+}
 ==CREATE HEADER==
 [  ,   2,   3,   4,   5,   6,  
 ] 
-[one digit, applied to Y] => Coordinates{xCoordinates=[ 2,  3,  4,  5,  6], yCoordinates=[ 9,  8,  7,  6,  5,  4], widestCoordinateString=2}
+[one digit, applied to Y] => Coordinates{
+ xCoordinates=[ 2,  3,  4,  5,  6],
+ yCoordinates=[ 9,  8,  7,  6,  5,  4],
+ widestCoordinateString=2
+}
 ==CREATE HEADER==
 [  ,   2,   3,   4,   5,   6,  
 ] 
-[two digits, applied to X] => Coordinates{xCoordinates=[12, 13, 14, 15, 16], yCoordinates=[ 9,  8,  7,  6,  5,  4], widestCoordinateString=2}
+[two digits, applied to X] => Coordinates{
+ xCoordinates=[12, 13, 14, 15, 16],
+ yCoordinates=[ 9,  8,  7,  6,  5,  4],
+ widestCoordinateString=2
+}
 ==CREATE HEADER==
 [  ,  12,  13,  14,  15,  16,  
 ] 
-[two digits, applied to Y] => Coordinates{xCoordinates=[ 2,  3,  4,  5,  6], yCoordinates=[19, 18, 17, 16, 15, 14], widestCoordinateString=2}
+[two digits, applied to Y] => Coordinates{
+ xCoordinates=[ 2,  3,  4,  5,  6],
+ yCoordinates=[19, 18, 17, 16, 15, 14],
+ widestCoordinateString=2
+}
 ==CREATE HEADER==
 [  ,   2,   3,   4,   5,   6,  
 ] 
-[four digits, applied to X] => Coordinates{xCoordinates=[1002, 1003, 1004, 1005, 1006], yCoordinates=[ 9,  8,  7,  6,  5,  4], widestCoordinateString=4}
+[four digits, applied to X] => Coordinates{
+ xCoordinates=[1002, 1003, 1004, 1005, 1006],
+ yCoordinates=[ 9,  8,  7,  6,  5,  4],
+ widestCoordinateString=4
+}
 ==CREATE HEADER==
 [    ,  1002,  1003,  1004,  1005,  1006,  
 ] 
-[four digits, applied to Y] => Coordinates{xCoordinates=[ 2,  3,  4,  5,  6], yCoordinates=[1009, 1008, 1007, 1006, 1005, 1004], widestCoordinateString=4}
+[four digits, applied to Y] => Coordinates{
+ xCoordinates=[ 2,  3,  4,  5,  6],
+ yCoordinates=[1009, 1008, 1007, 1006, 1005, 1004],
+ widestCoordinateString=4
+}
 ==CREATE HEADER==
 [    ,   2,   3,   4,   5,   6,  
 ] 
-[three digits, applied to X] => Coordinates{xCoordinates=[102, 103, 104, 105, 106], yCoordinates=[ 9,  8,  7,  6,  5,  4], widestCoordinateString=3}
+[three digits, applied to X] => Coordinates{
+ xCoordinates=[102, 103, 104, 105, 106],
+ yCoordinates=[ 9,  8,  7,  6,  5,  4],
+ widestCoordinateString=3
+}
 ==CREATE HEADER==
 [   ,  102,  103,  104,  105,  106,  
 ] 
-[three digits, applied to Y] => Coordinates{xCoordinates=[ 2,  3,  4,  5,  6], yCoordinates=[109, 108, 107, 106, 105, 104], widestCoordinateString=3}
+[three digits, applied to Y] => Coordinates{
+ xCoordinates=[ 2,  3,  4,  5,  6],
+ yCoordinates=[109, 108, 107, 106, 105, 104],
+ widestCoordinateString=3
+}
 ==CREATE HEADER==
 [   ,   2,   3,   4,   5,   6,  
 ] 

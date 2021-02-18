@@ -1,1 +1,5 @@
-Coordinates{xCoordinates=[-106, -105, -104, -103, -102, -101, -100, -99, -98, -97, -96, -95], yCoordinates=[22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12], widestCoordinateString=4}
+Coordinates{
+ xCoordinates=[-106, -105, -104, -103, -102, -101, -100, -99, -98, -97, -96, -95],
+ yCoordinates=[22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12],
+ widestCoordinateString=4
+}

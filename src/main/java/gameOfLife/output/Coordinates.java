@@ -48,9 +48,9 @@ public class Coordinates {
   @Override
   public String toString() {
     return "Coordinates{" +
-      "xCoordinates=" + xCoordinates +
-      ", yCoordinates=" + yCoordinates +
-      ", widestCoordinateString=" + widestCoordinateString +
-      '}';
+      "\n xCoordinates=" + xCoordinates +
+      ",\n yCoordinates=" + yCoordinates +
+      ",\n widestCoordinateString=" + widestCoordinateString +
+      "\n}";
   }
 }
