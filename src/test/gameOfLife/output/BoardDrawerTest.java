@@ -70,7 +70,7 @@ public class BoardDrawerTest {
     return (coord + coordLengthModifier);
   }
 
-  private Coordinates createCoordinates(Cell cell1, Cell cell2) {
+  private static Coordinates createCoordinates(Cell cell1, Cell cell2) {
     List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(cell1, cell2);
     BoardBounds boardBounds = new BoardBounds(cells);
     return new Coordinates(boardBounds);
