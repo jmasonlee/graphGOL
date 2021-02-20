@@ -53,7 +53,7 @@ public class BoardDrawerTest {
     for (Cell baseCoordinate : baseCoordinates) {
       axisModifiers.get(axisModifier).call(coordLengthModifier, baseCoordinate);
     }
-    return createCoordinates(baseCoordinates[0], baseCoordinates[1]);
+    return CellCoverage.createCoordinates(baseCoordinates[0], baseCoordinates[1]);
   }
 
   private Cell applyModifiersToXCoord(int coordLengthModifier, Cell cell) {
@@ -68,12 +68,6 @@ public class BoardDrawerTest {
 
   private int applyModifiers(int coordLengthModifier, int coord) {
     return (coord + coordLengthModifier);
-  }
-
-  private static Coordinates createCoordinates(Cell cell1, Cell cell2) {
-    List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(cell1, cell2);
-    BoardBounds boardBounds = new BoardBounds(cells);
-    return new Coordinates(boardBounds);
   }
 
   private StringBuilder createStoryBoard(Coordinates coordinates, List<String> headerRow) {

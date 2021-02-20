@@ -1,6 +1,8 @@
 package gameOfLife.TestUtils;
 
 import gameOfLife.cell.Cell;
+import gameOfLife.output.BoardBounds;
+import gameOfLife.output.Coordinates;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,5 +18,11 @@ public class CellCoverage {
     }
 
     return cells;
+  }
+
+  public static Coordinates createCoordinates(Cell cell1, Cell cell2) {
+    List<Cell> cells = generateAllPossibleCellsBetweenTwoCells(cell1, cell2);
+    BoardBounds boardBounds = new BoardBounds(cells);
+    return new Coordinates(boardBounds);
   }
 }
