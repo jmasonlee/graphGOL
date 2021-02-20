@@ -70,8 +70,8 @@ public class BoardDrawerTest {
     return (coord + coordLengthModifier);
   }
 
-  private Coordinates createCoordinates(Cell cell1, Cell shortPositiveCoordinates2) {
-    List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(cell1, shortPositiveCoordinates2);
+  private Coordinates createCoordinates(Cell cell1, Cell cell2) {
+    List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(cell1, cell2);
     BoardBounds boardBounds = new BoardBounds(cells);
     return new Coordinates(boardBounds);
   }
