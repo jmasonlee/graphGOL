@@ -1,7 +1,9 @@
 package gameOfLife.output;
 
+import gameOfLife.TestUtils.CellCoverage;
 import gameOfLife.cell.Cell;
 import junit.framework.TestCase;
+import org.approvaltests.Approvals;
 import org.approvaltests.namer.NamedEnvironment;
 import org.approvaltests.namer.NamerFactory;
 
@@ -27,7 +29,8 @@ public class RowDrawerTest extends TestCase {
 
     for (int i = 0; i < cases.length; i++) {
       try(NamedEnvironment environment = NamerFactory.withParameters(cases[i])){
-
+        Coordinates coordinates = CellCoverage.createCoordinates(cases[i][0], cases[i][1]);
+        Approvals.verify(RowDrawer.drawEmptyRow(coordinates));
       }
     }
   }
