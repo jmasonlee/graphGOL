@@ -10,11 +10,11 @@ public class BoardOutputter {
   public static String createBoardOutput(List<Cell> cells) {
     BoardBounds boardBounds = new BoardBounds(cells);
     List<String> emptyBoard = emptyBoardOfSize(boardBounds);
-    return String.join("", BoardDrawer.drawLiveCellsOnBoard(emptyBoard, cells, boardBounds));
+    return String.join("", LiveCellDrawer.drawLiveCellsOnBoard(emptyBoard, cells, boardBounds));
   }
 
   static List<String> emptyBoardOfSize(BoardBounds boardBounds) {
-    List<String> board = new ArrayList<String>();
+    List<String> board = new ArrayList<>();
 
     Coordinates coordinates = new Coordinates(boardBounds);
 
