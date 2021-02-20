@@ -27,9 +27,9 @@ public class RowDrawerTest extends TestCase {
         new Cell[]{new Cell(2, 1004),new Cell(5, 1009)},
     };
 
-    for (int i = 0; i < cases.length; i++) {
-      try(NamedEnvironment environment = NamerFactory.withParameters(cases[i])){
-        Coordinates coordinates = CellCoverage.createCoordinates(cases[i][0], cases[i][1]);
+    for (Cell[] aCase : cases) {
+      try (NamedEnvironment environment = NamerFactory.withParameters(aCase)) {
+        Coordinates coordinates = CellCoverage.createCoordinates(aCase[0], aCase[1]);
         Approvals.verify(RowDrawer.drawEmptyRow(coordinates));
       }
     }
