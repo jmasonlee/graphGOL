@@ -2,6 +2,8 @@ package gameOfLife.output;
 
 import gameOfLife.cell.Cell;
 import junit.framework.TestCase;
+import org.approvaltests.namer.NamedEnvironment;
+import org.approvaltests.namer.NamerFactory;
 
 public class RowDrawerTest extends TestCase {
 
@@ -22,5 +24,11 @@ public class RowDrawerTest extends TestCase {
         //four digits on y
         new Cell[]{new Cell(2, 1004),new Cell(5, 1009)},
     };
+
+    for (int i = 0; i < cases.length; i++) {
+      try(NamedEnvironment environment = NamerFactory.withParameters(cases[i])){
+
+      }
+    }
   }
 }
