@@ -18,7 +18,7 @@ public class BoardOutputter {
 
     Coordinates coordinates = new Coordinates(boardBounds);
 
-    board.addAll(BoardDrawer.drawHeaderRow(coordinates));
+    board.addAll(HeaderDrawer.drawHeaderRow(coordinates));
     board.addAll(RowDrawer.drawEmptyRow(coordinates));
 
     return board;

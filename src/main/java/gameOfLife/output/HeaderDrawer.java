@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BoardDrawer {
+public class HeaderDrawer {
 
   static List<String> drawHeaderRow(Coordinates coordinates) {
     List<String> board = new ArrayList<>();

@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BoardDrawerTest {
+public class HeaderDrawerTest {
 
   private Map<String, Function2<Integer, Cell, Cell>> axisModifiers;
   private Map<String, Integer> coordLengthModifiers;
@@ -40,7 +40,7 @@ public class BoardDrawerTest {
 
     Coordinates coordinates = getCoordinates(coordLengthModifierKey, axisModifier);
 
-    List<String> headerRow = BoardDrawer.drawHeaderRow(coordinates);
+    List<String> headerRow = HeaderDrawer.drawHeaderRow(coordinates);
 
     return createStoryBoard(coordinates, headerRow);
   }
