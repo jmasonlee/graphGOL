@@ -19,7 +19,7 @@ public class BoardOutputter {
     Coordinates coordinates = new Coordinates(boardBounds);
 
     board.addAll(HeaderDrawer.drawHeaderRow(coordinates));
-    board.addAll(RowDrawer.drawEmptyRow(coordinates));
+    board.addAll(RowDrawer.drawRows(coordinates));
 
     return board;
   }

@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class RowDrawer {
-  static List<String> drawEmptyRow(Coordinates coordinates) {
+  static List<String> drawRows(Coordinates coordinates) {
     List<String> board = new ArrayList<String>();
     int boardWidth = coordinates.xCoordinates.size();
 

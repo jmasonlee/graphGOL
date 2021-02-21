@@ -30,7 +30,7 @@ public class RowDrawerTest extends TestCase {
     for (Cell[] aCase : cases) {
       try (NamedEnvironment environment = NamerFactory.withParameters(aCase)) {
         Coordinates coordinates = CellCoverage.createCoordinates(aCase[0], aCase[1]);
-        Approvals.verify(RowDrawer.drawEmptyRow(coordinates));
+        Approvals.verify(RowDrawer.drawRows(coordinates));
       }
     }
   }
