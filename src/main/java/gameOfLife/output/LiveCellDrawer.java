@@ -14,7 +14,7 @@ public class LiveCellDrawer {
     return oldBoard;
   }
 
-  static int getCellPositionInBoard(Cell cell, BoardBounds boardBounds) {
+  private static int getCellPositionInBoard(Cell cell, BoardBounds boardBounds) {
     int adjustedX = Math.abs(boardBounds.getLeftmostXValue() - cell.x);
     int adjustedY = Math.abs(boardBounds.getUpperYValue() - cell.y);
 
