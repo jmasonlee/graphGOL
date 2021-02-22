@@ -18,7 +18,7 @@ public class HeaderDrawer {
   }
 
   private static List<String> addSpacingToColumnHeaders(List<String> headers) {
-    return headers.stream().map(c -> BoardSquare.SPACE.getValue() + c).collect(Collectors.toList());
+    return headers.stream().map(c -> c.length() == 1 ? BoardSquare.SPACE.getValue() + BoardSquare.SPACE.getValue() + c : BoardSquare.SPACE.getValue() + c).collect(Collectors.toList());
   }
 
 }
