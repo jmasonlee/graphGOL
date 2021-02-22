@@ -11,12 +11,7 @@ public class CoordinatesTest {
 
   @Test
   public void testWillCreateCoordinateObject() {
-//    List<String> xCoordinates =
-//        IntStream.rangeClosed(-106, -95).boxed().map(i -> i.toString()).collect(Collectors.toList());
-//    List<String> yCoordinates =
-//        IntStream.rangeClosed(12, 22).boxed().map(i -> i.toString()).collect(Collectors.toList());
-
-    List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(new Cell(-106, 12), new Cell(-95, 22));
+    List<Cell> cells = CellCoverage.generateAllPossibleCellsBetweenTwoCells(new Cell(-106, 1), new Cell(95, 22));
 
     BoardBounds boardBounds = new BoardBounds(cells);
 
