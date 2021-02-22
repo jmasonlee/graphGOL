@@ -8,6 +8,7 @@ public enum BoardSquare {
   LIVE_CELL("|X_");
 
   private String value;
+  public int MIN_WIDTH = 2;
 
   public String getValue() {
     return value;
