@@ -17,7 +17,11 @@ public class RowDrawer {
 
     coordinates.yCoordinates.forEach(
         yCoordinate -> {
-          board.add(yCoordinate);
+          if (yCoordinate.length() == 1) {
+            board.add(BoardSquare.SPACE.getValue() + yCoordinate);
+          } else {
+            board.add(yCoordinate);
+          }
           board.addAll(Collections.nCopies(boardWidth, BoardSquare.EMPTY_CELL.getValue()));
           board.add(BoardSquare.ROW_END.getValue());
         });
