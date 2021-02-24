@@ -35,7 +35,7 @@ public class Coordinates {
 
   private static List<String> createCoordinates(int startAt, int endAt) {
     return IntStream.rangeClosed(startAt, endAt).boxed()
-      .map(coord -> coord < 0 || 9 < coord ? coord.toString() : " " + coord.toString())
+      .map(Object::toString)
       .collect(Collectors.toList());
   }
 
