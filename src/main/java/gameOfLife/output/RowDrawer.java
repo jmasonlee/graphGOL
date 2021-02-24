@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RowDrawer extends Drawer {
+public class RowDrawer extends CoordinateSquareDrawer {
   static List<String> drawRows(Coordinates coordinates) {
     return drawRows(coordinates, new ArrayList<>());
   }

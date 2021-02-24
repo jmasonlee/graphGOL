@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HeaderDrawerTest {
+public class HeaderDrawerTest extends CoordinateSquareDrawer {
 
   private Map<String, Function2<Integer, Cell, Cell>> axisModifiers;
   private Map<String, Integer> coordLengthModifiers;
