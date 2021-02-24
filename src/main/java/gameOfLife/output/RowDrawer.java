@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RowDrawer {
+public class RowDrawer extends Drawer {
   static List<String> drawRows(Coordinates coordinates) {
     return drawRows(coordinates, new ArrayList<>());
   }
@@ -25,11 +25,4 @@ public class RowDrawer {
     return board;
   }
 
-  private static void drawCoordinateSquare(List<String> board, String yCoordinate) {
-    if (yCoordinate.length() == 1) {
-      board.add(BoardSquare.SPACE.getValue() + yCoordinate);
-    } else {
-      board.add(yCoordinate);
-    }
-  }
 }
